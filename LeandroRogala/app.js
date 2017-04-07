@@ -1,34 +1,127 @@
-'use strict'; //Permite mostrar alguns logs a + de erros que o javascript normal permite
+'use strict';
 
-// console.log('Bem vindo a aula do dia 30/03/2017');
+//tipos e valores
+//tipo de um valor é a sua forma de representação
+//var, let, const
 
-var x = 10;
-var y = "qualquercoisa";
+const valorConstante = 10;
+//valorConstante = 20;
+console.log(valorConstante); //imprimi valor no terminal
 
-//let z = 10;
-//let k = "outra string";
+//tipos
+var valorInt = 10; //integer, number (número)
+console.log(typeof valorInt);//number
+var valorStr = "Hello"; //string, cadeia de caracteres
+console.log(typeof valorStr)//String
+var valorBooleanTrue = true; //true or false, verdadeiro ou falso
+console.log(typeof valorBooleanTrue);//Boolean
+var valorBooleanFalse = false;
 
-const c = 10; //Uma variavel constante só pode ser preenchida na hora da declaração... Ela não muda o valor após declarada
-// console.log(c);
+var valorNulo = null; //Nulo, vaziu, sem valor
+console.log(typeof valorNulo);//Object
+var valorIndefinido = undefined; //não definido
+console.log(typeof valorIndefinido); //undefined
+
+var valorObjeto = {}; //Objeto
+console.log(typeof valorObjeto); //object
+
+//var str = "World";
+//str = new String("");
+//var num = new number();
+//var object = new object();
+
+var valorArray  = []; //Array
+console.log(typeof valorArray);//Objct
+
+function funcaoQualquer(){
+
+}
+
+console.log(typeof funcaoQualquer); //function
+
+console.log(typeof batataFrita); //Undefined
+
+var pessoa = {
+  nome: "Lucas",
+  idade: 24,
+  graduado: false
+};
+
+console.log(pessoa.nome); //Lucas
+console.log(pessoa.idade); // 24
+console.log(pessoa['graduado']); //false
+
+var umaVariavel = 55;
+
+var arrayDoThalles = [
+  "sóescrever",
+  umaVariavel,
+  true,
+  pessoa
+]
+
+console.log(arrayDoThalles);
+console.log(arrayDoThalles[0]);
 
 //função
-
-function liberarOsAlunosDaAula(algumNome){  //Nao precisa coloca o tipo de retorno da função, retorna qual quer tipo;
-  // console.log(algumNome)
-  algumNome("ola");
-  return false;
+function calcula(){
+  console.log("Estou dentro de uma função");
 }
 
-// var resposta = liberarOsAlunosDaAula('Leandro');
-// console.log(resposta);
+calcula();
 
-var minhaFuncao = liberarOsAlunosDaAula; //Pode-se copiar uma função em uma variavel
-// minhaFuncao("Não");
+var intervalo = function calculaDenovo(){
+  console.log("função calcula denovo");
+};
 
-var func2 = function(a){  //Pode-se armazena uma função em uma variavel
-  console.log(a);
+intervalo();
+
+var objeto = {
+  bar: "sasa",
+  foo: intervalo
+};
+
+console.log(objeto.foo());
+objeto.foo();
+
+var calculaOutraVez = function(valor1){
+
+  console.log(valor1);
+
+  var variavel1 = {
+    attr: 69
+  };
+  var variavel2 = [
+    "qualquer",
+    variavel1
+  ];
+
+  var erro = {
+    xpto: "e131"
+  };
+
+  console.log(erro.xpto);
+
+  var variavelFunc = function(){
+    console.log("variavelFunc....");
+  }
+
+  return variavelFunc;
 }
 
-// func2("oi");
+calculaOutraVez(); //Sem valor
+calculaOutraVez("Com valor"); //Com valor
 
-liberarOsAlunosDaAula(func2); //Mandando uma funcao como parametro
+var funcRetorno = calculaOutraVez("deve ter um retorno"); // Com retorno
+//console.log(funcRetorno.attr);
+console.log(funcRetorno());
+
+var funcParametro = function(){
+  console.log("Função que passei por parametro");
+}
+
+function recebeFuncao(funcaoRecebida){
+  console.log(funcaoRecebida);
+  funcaoRecebida();
+}
+recebeFuncao(funcParametro);
