@@ -38,6 +38,8 @@ A baixo serão adicionadas linhas referenciando os *commits* que serão feitos e
 2. Commit 0. -> Após alterar o arquivo: `$ git add README.md` e `$ git commit -m'Faz primeiro commit da imagem'`
 3. Commit 1. -> Após alterar o arquivo: `$ git add README.md` e `$ git commit -m'Faz segundo commit da imagem'`
 4. Commit 2. -> Após alterar o arquivo: `$ git add README.md` e `$ git commit -m'Faz terceiro commit da imagem'`
+5. Commit 4. -> Aqui voltamos para o branch `master` e estamos fazendo o quinto commit representado na imagem. `$ git add README.md` e `$ git commit -m'Faz quinto commit da imagem'`
+
 
 ### 4. A imagem a seguir representa um estado posterior à imagem apresentada na questão 3. Explique o que representa a imagem e descreva quais comandos Git foram executados para se obter este estado.
 *IMAGEM* -> https://git-scm.com/book/en/v2/images/basic-merging-2.png
