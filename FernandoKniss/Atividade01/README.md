@@ -16,3 +16,5 @@ Por Exemplo, o estado atual do nosso repositório:
 
 '''
 '''
+
+### 3. The "treta" has been planted !!
