@@ -31,3 +31,16 @@ Este  $ git status indica que o arquivo README.md que esta dentro do repositorio
 ### 3.Levando em consideração commits e branches criados com Git, explique o que representa a imagem abaixo e descreva quais comandos Git foram executados para se obter este estado.
 
 A imagem representa dois branches e seus commits
+
+$ git branch iss53
+$ git commit -am "resposta da questão 3"
+$ it checkout iss53
+$ git status
+$ git branch
+$ git commit -am "vai dar pt"
+
+### 4. ...
+
+A imagem representa que foi juntado os dois branches usando o merge
+
+$ git checkout master
