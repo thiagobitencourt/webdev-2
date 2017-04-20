@@ -9,7 +9,7 @@
 
 ### 2. Explique para que serve o comando git status. Use exemplo para complementar a resposta.
 
-- Mostra o estado do repositório, mostra arquivos que foram modificados, adicionados, removidos, e/ou estão pendentes de commit.
+Mostra o estado do repositório, mostra arquivos que foram modificados, adicionados, removidos, e/ou estão pendentes de commit.
 
 Por exemplo, o estado atual do respositório:
 
@@ -27,3 +27,7 @@ no changes added to commit (use "git add" and/or "git commit -a")
 '''
 
 Neste caso, temos os arquivos /CONTRIBUTING.md e Atividade01/README.md que precisam ser adicionados para poder fazer o commit.
+
+### 3. Levando em consideração commits e branches criados com Git, explique o que representa a imagem abaixo e descreva quais comandos Git foram executados para se obter este estado
+
+-
