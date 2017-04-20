@@ -27,3 +27,7 @@ Changes not staged for commit:
 no changes added to commit
 ```
 Este  $ git status indica que o arquivo README.md que esta dentro do repositorio Atividade01 foi modificado e precisa ser comitado.
+
+### 3.Levando em consideração commits e branches criados com Git, explique o que representa a imagem abaixo e descreva quais comandos Git foram executados para se obter este estado.
+
+```
