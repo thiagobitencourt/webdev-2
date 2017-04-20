@@ -117,4 +117,43 @@ ccfc35b..292dab0 master -> master
 
 ### 5. Em que situação acontece um conflito ao executar um merge entre dois branches com Git? E como resolvemos esse conflito? Em sua resposta cite os comandos envolvidos no processo de merge e se julgar necessário represente a situação de forma gráfica, assim como apresentado nas questões 3 e 4.
 
+- Um conflito ocorre quando dois branches, que estão sendo mantidos em paralelo, possuem alterações distintas em lugares iguais, e alguém tenta mesclar essas alterações de um branch para outro.
+
+- Para resolver um conflito, é necessário que ambas as pessoas que fizeram alterações nesse mesmo lugar comuniquem-se e encontrem a melhor forma de unir as alterações.
+
+- Na prática, devem ser removidas as linhas que possuem `<<<<<<< HEAD`, `========` e `>>>>>>>{branch que foi mesclado}`.
+
+#### Exemplo: 
+
+- No arquivo README.md:
+```
+$ git merge iss53
+
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
+
+Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+
+        both modified:   matheuseduardo/Atividade01/README.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+```
+
+#### Conteúdo do arquivo README.md com a mescla:
+- O que está do `<<<<<<< HEAD` até o `=======` são as alterações do branch atual (master)
+- O que está do `=======` até o `>>>>>>> iss53` são as alterações do branch que foi mesclado (iss53)
+```
+<<<<<<< HEAD
 oidsajasjdas
+=======
+dajadjasdsdajdasdaadsdaijdasiasiadijdaijdaijadijdakmxzczxmkcxzmkczxkmczxc
+adasjoicasocmasiocasocnsaoicnasoicnasoicnaosicnaosinaocinaoicnasoincoain
+>>>>>>> iss53
+```
+
