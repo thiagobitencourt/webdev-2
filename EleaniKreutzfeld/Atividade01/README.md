@@ -42,3 +42,8 @@ $ git checkout iss53 - alterado para o branch iss53
 $ git add/git commit - Realizado dois commits no branch iss53
 
 ### 4. A imagem a seguir representa um estado posterior à imagem apresentada na questão 3. Explique o que representa a imagem e descreva quais comandos Git foram executados para se obter este estado.
+
+Após a atividade 3, feito os passos
+
+$git checkout master - Mudado para o branch master
+$git merge iss53 - Mergeado as alterações do branch iss53 para o master
