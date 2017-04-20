@@ -31,7 +31,7 @@ A saída do comando indica que o arquivo **README.md** foi alterado e está agua
 
 ### 3. Levando em consideração commits e branches criados com Git, explique o que representa a imagem abaixo e descreva quais comandos Git foram executados para se obter este estado
 *IMAGEM* -> https://git-scm.com/book/en/v2/images/basic-branching-6.png
-**RESPOSTA:**
+**Resposta:**
 A baixo serão adicionadas linhas referenciando os *commits* que serão feitos e serão criados *branchs* para este arquivo para continuar a representação da imagem.
 
 1. Inicia a questão.
@@ -129,6 +129,9 @@ A saída desse commando é a seguinte:
 Nele conseguimos ver a arvore de commits do nosso repositório entre os branchs.
 
 ### 5. Em que situação acontece um conflito ao executar um merge entre dois branches com Git? E como resolvemos esse conflito? Em sua resposta cite os comandos envolvidos no processo de merge e se julgar necessário represente a situação de forma gráfica, assim como apresentado nas questões 3 e 4.
+**Resposta:**
+Conforme descrevemos na questão anterior, um conflito de merge ocorre quando temos dois `branch's` dentro de um repositório e um arquivo sofre alterações no mesmo ponto nos dois `branch's`.
+Quando executamos o `$ git merge iss53` temos ali uma mescla do ramo atual no nosso exemplo anterior o `master` com o ramo `iss53`. A representação de como identificar o conflito está descrito anteriormente (`<<<<<<< HEAD` / `=======` / `>>>>>>> iss53`).
 
 ### 6. Usando a sintaxe da linguagem JavaScript, crie um objeto com um atributo que tenha um valor do tipo string, um atributo do tipo number e um atributo com valor do tipo array. Atribua este objeto a uma constante.
 
