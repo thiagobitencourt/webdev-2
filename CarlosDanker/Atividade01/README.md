@@ -23,7 +23,7 @@ Untracked files:
 
 nothing added to commit but untracked files present (use "git add" to track)
 
-### 3. The "Treta" has been planted !!
+### 3. Levando em consideração commits e branches criados com Git, explique o que representa a imagem abaixo e descreva quais comandos Git foram executados para se obter este estado.
 
 '''
 $ git branch iss53
