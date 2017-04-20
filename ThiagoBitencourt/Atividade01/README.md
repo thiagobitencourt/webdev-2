@@ -28,3 +28,12 @@ A saida do comando indica que o arquivo README.md que esta dentro do diretório 
 
 
 ### 3. The "treta" has been planted !!
+
+```
+$ git branch iss53
+$ git commit -am "um commit"
+$ git checkout iss53
+$ git status
+$ git branch
+$ git commit -am "outro commit"
+```
