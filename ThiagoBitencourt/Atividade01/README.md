@@ -27,3 +27,12 @@ no changes added to commit (use "git add" and/or "git commit -a")
 A saida do comando indica que o arquivo README.md que esta dentro do diretório Atividade foi alterado e precisa ser comitado.
 
 ### 3. Levando em consideração commits e branches criados com Git, explique o que representa a imagem abaixo e descreva quais comandos Git foram executados para se obter este estado
+
+```
+$ git branch iss53
+$ git commit -am "um commit"
+$ git checkout iss53
+$ git status
+$ git branch
+$ git commit -am "outro commit"
+```
