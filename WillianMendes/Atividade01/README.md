@@ -12,6 +12,7 @@
 	
 	o comando "status" é utilizado para demonstrar o que tem de diferente do computador com o repositorio,
 
+
 	```
 
 	$ git status
