@@ -27,4 +27,20 @@ no changes added to commit (use "git add" and/or "git commit -a")
 ```
 Esta mostrando que o arquivo Atividade01/README.md foi modificado.
 
-### 3. The "trata" has been planted !!
+### 3. The "treta" has been planted !!
+
+foi criado um branch iss53 e feito um commit
+depois foi criado um checkout para iss53
+usado git status para ver oque tem para commitar
+git branch para ver em qual branch Esta
+git commit para commitar na iss53
+
+```
+git branch iss53
+git commit -am "um commit"
+git checkout isso53
+git status
+git branch
+git commit -am "outro commit"
+
+```
