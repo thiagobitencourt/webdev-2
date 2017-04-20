@@ -40,3 +40,5 @@ $ git add/git commit - Alterado o arquivo e comitado, assim temos o commit C2 do
 $ git checkout iss53 - alterado para o branch iss53
 
 $ git add/git commit - Realizado dois commits no branch iss53
+
+### 4. A imagem a seguir representa um estado posterior à imagem apresentada na questão 3. Explique o que representa a imagem e descreva quais comandos Git foram executados para se obter este estado.
