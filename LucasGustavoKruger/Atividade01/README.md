@@ -39,10 +39,37 @@ A baixo serão adicionadas linhas referenciando os *commits* que serão feitos e
 3. Commit 1. -> Após alterar o arquivo: `$ git add README.md` e `$ git commit -m'Faz segundo commit da imagem'`
 4. Commit 2. -> Após alterar o arquivo: `$ git add README.md` e `$ git commit -m'Faz terceiro commit da imagem'`
 5. Commit 4. -> Aqui voltamos para o branch `master` e estamos fazendo o quinto commit representado na imagem. `$ git add README.md` e `$ git commit -m'Faz quinto commit da imagem'`
+6. Aqui é criado um **ramo** para a `iss53` (issue da imagem), com o commando `$ git branch iss53`.
+7. Usamos o commando `$ git checkout iss53` para que seja alterado para o branch `iss53`.
+8. Commit 3. -> Alterado para o branch `iss53` é feito o terceiro commit. Com: `$ git add README.md` e `$ git commit -m'Faz quarto commit da imagem'`.
+9. Commit 5. -> Aqui voltamos para o branch `iss53` e fazemos nosso ultimo `commit` no repositório para este ramo. Com: `$ git add README.md` e `$ git commit -m'Faz ultimo commit do branch da imagem'`.
 
 
 ### 4. A imagem a seguir representa um estado posterior à imagem apresentada na questão 3. Explique o que representa a imagem e descreva quais comandos Git foram executados para se obter este estado.
 *IMAGEM* -> https://git-scm.com/book/en/v2/images/basic-merging-2.png
+**Resposta:**
+Após seguidos os passos da questão 3.
+
+Estando no branch `master` é executado o commando `$ git merge iss53` para então ser feito o merge dos dois ramos no arquivo.
+
+Na execução do commando foi feito o merge dos dois ramos porém houve conflito de merge, isso ocorre quando o mesmo ponto do arquivo é alterado em ramos diferentes, e então é solicitado para que seja feito um merge manual para que não haja perda de informação no merge.
+
+O conflito ocorreu e neste ponto e representado desta forma:
+
+```
+#<<<<<<< HEAD
+5. Commit 4. -> Aqui voltamos para o branch `master` e estamos fazendo o quinto commit representado na imagem. `$ git add README.md` e `$ git commit -m'Faz quinto commit da imagem'`
+
+#=======
+5. Aqui é criado um **ramo** para a `iss53` (issue da imagem), com o commando `$ git branch iss53`.
+6. Usamos o commando `$ git checkout iss53` para que seja alterado para o branch `iss53`.
+7. Commit 3. -> Alterado para o branch `iss53` é feito o terceiro commit. Com: `$ git add README.md` e `$ git commit -m'Faz quarto commit da imagem'`.
+8. Commit 5. -> Aqui voltamos para o branch `iss53` e fazemos nosso ultimo `commit` no repositório para este ramo. Com: `$ git add README.md` e `$ git commit -m'Faz ultimo commit do branch da imagem'`.
+#>>>>>>> iss53
+```
+Onde a entre `<<<<<<< HEAD` até `=======` é o que estava no ramo HEAD no nosso caso o `master`, e de `=======` até `>>>>>>> iss53` é o que tinhamos no ramo `iss53`.
+
+Após visualizarmos os dois pontos vemos que toda a informação é relevante para o arquivo então o merge manual é manter os dois pontos no arquivo. Então se o professor leu este texto de um like no pull request depois! Após resolvermos o conflito, fazemos um commit pelo terminal descrevendo a resolução do commit. Fazemos isso com os commandos `$ git add README.md` e o `$ git commit -m 'Resolve conflitos de merge'`. 
 
 ### 5. Em que situação acontece um conflito ao executar um merge entre dois branches com Git? E como resolvemos esse conflito? Em sua resposta cite os comandos envolvidos no processo de merge e se julgar necessário represente a situação de forma gráfica, assim como apresentado nas questões 3 e 4.
 
