@@ -1,12 +1,12 @@
 'use strict';
 
 const valorConstante = 10;
-valorConstante = 20;
+// valorConstante = 20;
 
 console.log(valorConstante);
 
 var valorInt = 10;
-console.console.log(typeof valorInt);
+console.log(typeof valorInt);
 
 var valorStr = "Hello";
 var valorBooleanTrue = true;
