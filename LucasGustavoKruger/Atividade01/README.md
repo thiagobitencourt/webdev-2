@@ -38,6 +38,11 @@ A baixo serão adicionadas linhas referenciando os *commits* que serão feitos e
 2. Commit 0. -> Após alterar o arquivo: `$ git add README.md` e `$ git commit -m'Faz primeiro commit da imagem'`
 3. Commit 1. -> Após alterar o arquivo: `$ git add README.md` e `$ git commit -m'Faz segundo commit da imagem'`
 4. Commit 2. -> Após alterar o arquivo: `$ git add README.md` e `$ git commit -m'Faz terceiro commit da imagem'`
+5. Aqui é criado um **ramo** para a `iss53` (issue da imagem), com o commando `$ git branch iss53`.
+6. Usamos o commando `$ git checkout iss53` para que seja alterado para o branch `iss53`.
+7. Commit 3. -> Alterado para o branch `iss53` é feito o terceiro commit. Com: `$ git add README.md` e `$ git commit -m'Faz quarto commit da imagem'`.
+ 
+
 
 ### 4. A imagem a seguir representa um estado posterior à imagem apresentada na questão 3. Explique o que representa a imagem e descreva quais comandos Git foram executados para se obter este estado.
 *IMAGEM* -> https://git-scm.com/book/en/v2/images/basic-merging-2.png
