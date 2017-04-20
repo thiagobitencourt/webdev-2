@@ -29,3 +29,12 @@ no changes added to commit (use "git add" and/or "git commit -a")
 Neste exemplo ele mostrou o arquivo que foi modificado
 
 ### 3. The "treta" has been planted !!
+
+```
+$ git branch iss53
+$ git commit -am "um commit"
+$ git checkout iss53
+$ git status
+$ git branch
+$ git commit -am "outro commmit"
+```
