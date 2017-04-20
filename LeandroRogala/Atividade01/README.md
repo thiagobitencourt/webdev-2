@@ -28,3 +28,12 @@ no changes added to commit (use "git add" and/or "git commit -a")
 A saida do comando diz que teve arquivos modificados e precisa ser adicionado para realizar o commit.
 
 ### 3.Levando em consideração commits e branches criados com Git, explique o que representa a imagem abaixo e descreva quais comandos Git foram executados para se obter este estado.
+
+```
+$ git branch iss53
+$ git commit -am "Uma mensagem"
+$ git checkout iss53
+$ git status
+$ git branch
+$ git commit -am "Outra mensagem"
+```
