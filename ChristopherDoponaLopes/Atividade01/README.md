@@ -32,7 +32,7 @@ no changes added to commit (use "git add" and/or "git commit -a")
 - Mostrando que na pasta ```Atividade01``` tem o programa ```README.md``` e ele esta modificado (modified) e deve ser comitado.
 
 
-### 3. The "treta" has been planted !!
+### 3. Levando em consideração commits e branches criados com Git, explique o que representa a imagem abaixo e descreva quais comandos Git foram executados para se obter este estado.
 
 ```
 $ git branch iss53
