@@ -25,3 +25,6 @@ no changes added to commit (use "git add" and/or "git commit -a")
 ```
 
 A saida do comando indica que o arquivo README.md que esta dentro do diretório Atividade foi alterado e precisa ser comitado.
+
+
+### 3. The "treta" has been planted !!
