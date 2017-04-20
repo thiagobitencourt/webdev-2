@@ -27,3 +27,5 @@ Changes not staged for commit:
 no changes added to commit (use "git add" and/or "git commit -a")
 ```
 Neste exemplo ele mostrou o arquivo que foi modificado
+
+### 3. The "treta" has been planted !!
