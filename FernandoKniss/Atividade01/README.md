@@ -18,3 +18,12 @@ Por Exemplo, o estado atual do nosso repositório:
 '''
 
 ### 3. The "treta" has been planted !!
+
+'''
+$ git branch iss53
+$ git commit "um commit"
+$ git checkout iss53
+$ git status
+$ git branch
+$ git commit -am "outro commit"
+'''
