@@ -41,8 +41,7 @@ A baixo serão adicionadas linhas referenciando os *commits* que serão feitos e
 5. Aqui é criado um **ramo** para a `iss53` (issue da imagem), com o commando `$ git branch iss53`.
 6. Usamos o commando `$ git checkout iss53` para que seja alterado para o branch `iss53`.
 7. Commit 3. -> Alterado para o branch `iss53` é feito o terceiro commit. Com: `$ git add README.md` e `$ git commit -m'Faz quarto commit da imagem'`.
- 
-
+8. Commit 5. -> Aqui voltamos para o branch `iss53` e fazemos nosso ultimo `commit` no repositório para este ramo. Com: `$ git add README.md` e `$ git commit -m'Faz ultimo commit do branch da imagem'`.
 
 ### 4. A imagem a seguir representa um estado posterior à imagem apresentada na questão 3. Explique o que representa a imagem e descreva quais comandos Git foram executados para se obter este estado.
 *IMAGEM* -> https://git-scm.com/book/en/v2/images/basic-merging-2.png
