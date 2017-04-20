@@ -3,13 +3,31 @@
 ## Questões
 
 ### 1. Quais são as duas formas de se obter um repositório git?
-**Resposta**:
+**Resposta:**: É possível obter um repositório **git** com `$ git init` e `$ git status`.  
 
-`git init`: Coloca o diretório atual para controle de versão do git.
+`$ git init`: Coloca o diretório atual para controle de versão do git.
 
-`git clone`: Clona um repositório de uma origem existente.
+`$ git clone`: Clona um repositório de uma origem existente.
 
 ### 2. Explique para que serve o comando git status. Use exemplo para complementar a resposta.
+**Resposta:**
+Utiliza-se o comando `git status` para verificar o estado atual do repositório, com ele podesse visualizar qual o branch corrente, se existem arquivos para serem adicionados ao controle de versão do git, arquivos que foram alterados/deletados e estão aguardado para que seja feito *commit* e também a quantidade de *commits* da sua origem.
+
+***Exemplo:***
+Em um repositório controlado pelo *git* se lá existir algum arquivo que já está adicionado para ser controlada sua versão pelo git, e esse arquivo estiver sido alterado e ainda não foi feito o `commit` do mesmo, se executar `$ git status` dentro do repositório, será listado no terminal o arquivo, descrito que ele está com alterações pendentes para serem oficializadas ao controle de versão.  
+
+```
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   README.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+```
+A saída do comando indica que o arquivo **README.md** foi alterado e está aguardado para ser feito seu *commit*.
 
 ### 3. Levando em consideração commits e branches criados com Git, explique o que representa a imagem abaixo e descreva quais comandos Git foram executados para se obter este estado
 *IMAGEM* -> https://git-scm.com/book/en/v2/images/basic-branching-6.png
