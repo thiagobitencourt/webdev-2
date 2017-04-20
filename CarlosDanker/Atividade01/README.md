@@ -25,4 +25,13 @@ nothing added to commit but untracked files present (use "git add" to track)
 
 ### 3. The "Treta" has been planted !!
 
+'''
+$ git branch iss53
+$ git commit -am "primeiro commit"
+$ git checkout iss53
+$ git status
+$ git branch
+$ git commit -am "outro commit"
+'''
+
 ### 4. Causou Treta
