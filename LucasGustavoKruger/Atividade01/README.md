@@ -35,7 +35,7 @@ A saída do comando indica que o arquivo **README.md** foi alterado e está agua
 A baixo serão adicionadas linhas referenciando os *commits* que serão feitos e serão criados *branchs* para este arquivo para continuar a representação da imagem.
 
 1. Inicia a questão.
- 
+2. Commit 0.
 
 ### 4. A imagem a seguir representa um estado posterior à imagem apresentada na questão 3. Explique o que representa a imagem e descreva quais comandos Git foram executados para se obter este estado.
 *IMAGEM* -> https://git-scm.com/book/en/v2/images/basic-merging-2.png
