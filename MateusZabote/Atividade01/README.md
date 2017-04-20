@@ -26,3 +26,5 @@ Changes not staged for commit:
 no changes added to commit (use "git add" and/or "git commit -a")
 ```
 Esta mostrando que o arquivo Atividade01/README.md foi modificado.
+
+### 3. The "trata" has been planted !!
