@@ -29,3 +29,16 @@
 
 		
 	```
+
+
+### 3. Levando em consideração commits e branches criados com Git, explique o que representa a imagem abaixo e descreva quais comandos Git foram executados para se obter este estado
+
+	a imagem representa uma brench (master) na versao "c4" e uma segunda brench (iss53) que se originou na versao "c2" e atualmente esta na versao "c5"
+
+
+
+	'''
+
+	$ git checkout -b iss53	
+
+	'''
