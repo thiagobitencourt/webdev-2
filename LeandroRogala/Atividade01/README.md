@@ -27,4 +27,4 @@ no changes added to commit (use "git add" and/or "git commit -a")
 
 A saida do comando diz que teve arquivos modificados e precisa ser adicionado para realizar o commit.
 
-### 3.
+### 3. Uma outra questão The "treta" has been planted !!.
