@@ -30,4 +30,18 @@ Esta mostrando que o arquivo Atividade01/README.md foi modificado.
 
 ## 3. Levando em consideração commits e branches criados com Git, explique o que representa a imagem abaixo e descreva quais comandos Git foram executados para se obter este estado
 
-IMAGEM -> https://git-scm.com/book/en/v2/images/basic-branching-6.png
+foi criado um branch iss53 e feito um commit
+depois foi criado um checkout para iss53
+usado git status para ver oque tem para commitar
+git branch para ver em qual branch Esta
+git commit para commitar na iss53
+
+```
+git branch iss53
+git commit -am "um commit"
+git checkout isso53
+git status
+git branch
+git commit -am "outro commit"
+
+```
