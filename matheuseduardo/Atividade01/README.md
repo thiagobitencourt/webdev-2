@@ -52,7 +52,7 @@ nothing to commit, working tree clean
 // São feitas algumas alterações
 
 $ git status
-Your branch is up-to-date with 'origin/master'.
+Your branch is up-to-date with 'origin/iss53'.
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git checkout -- <file>..." to discard changes in working directory)
@@ -68,19 +68,51 @@ $ git commit -m "Altera README." // Aqui está o commit C3
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 $ git pull
-
+Updating ccfc35b..292dab0
+nothing to commit, working tree clean
 
 $ git status
+On branch iss53
+Your branch is ahead of 'origin/iss53' by 1 commit.
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
 
-$ git add {novas alterações}
+        modified:   Atividade01/README.md
 
-$ git commit -m "{mensagem descrevendo a alteração}" // Aqui está o commit C5
+no changes added to commit (use "git add" and/or "git commit -a")
+
+$ git add Atividade01/README.md
+
+$ git commit -m "Altera README (c5)."
+[iss53 292dab0] Altera README (c5).
+ 1 file changed, 77 insertions(+)
+
 ```
 
 ### 4. A imagem a seguir representa um estado posterior à imagem apresentada na questão 3. Explique o que representa a imagem e descreva quais comandos Git foram executados para se obter este estado.
 
-### Partindo do commit C5
+#### A partir do commit C5:
 ```
-$ git status
 
+$ git checkout master
+Switched to branch 'master'
+Your branch is up-to-date with 'origin/master'.
+
+$ git merge iss53
+Updating ccfc35b..292dab0
+Fast-forward
+ matheuseduardo/Atividade01/README.md | 77 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 77 insertions(+)
+
+$ git push origin master
+Counting objects: 5, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (5/5), 1.48 KiB | 0 bytes/s, done.
+Total 5 (delta 0), reused 0 (delta 0)
+To https://github.com/eduardosmatheus/webdev-2.git
+ccfc35b..292dab0 master -> master
 ```
+
+### 5. Em que situação acontece um conflito ao executar um merge entre dois branches com Git? E como resolvemos esse conflito? Em sua resposta cite os comandos envolvidos no processo de merge e se julgar necessário represente a situação de forma gráfica, assim como apresentado nas questões 3 e 4.
