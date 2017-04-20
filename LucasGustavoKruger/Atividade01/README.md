@@ -69,7 +69,64 @@ O conflito ocorreu e neste ponto e representado desta forma:
 ```
 Onde a entre `<<<<<<< HEAD` até `=======` é o que estava no ramo HEAD no nosso caso o `master`, e de `=======` até `>>>>>>> iss53` é o que tinhamos no ramo `iss53`.
 
-Após visualizarmos os dois pontos vemos que toda a informação é relevante para o arquivo então o merge manual é manter os dois pontos no arquivo. Então se o professor leu este texto de um like no pull request depois! Após resolvermos o conflito, fazemos um commit pelo terminal descrevendo a resolução do commit. Fazemos isso com os commandos `$ git add README.md` e o `$ git commit -m 'Resolve conflitos de merge'`. 
+Após visualizarmos os dois pontos vemos que toda a informação é relevante para o arquivo então o merge manual é manter os dois pontos no arquivo. Então se o professor leu este texto de um like no pull request depois! Após resolvermos o conflito, fazemos um commit pelo terminal descrevendo a resolução do commit. Fazemos isso com os commandos `$ git add README.md` e o `$ git commit -m 'Resolve conflitos de merge'`.
+
+Podemos visualizar o que ocorreu atráves do commando: `$ git log --graph --decorate  --all`
+
+A saída desse commando é a seguinte:
+
+```
+*   commit 43ee8b58b0c092031ca1a58c12b409e715d240e5 (HEAD -> master)
+|\  Merge: 6c64d2c ed6a41d
+| | Author: Lucas Kruger <lucas.kr1996@gmail.com>
+| | Date:   Thu Apr 20 20:41:25 2017 -0300
+| |
+| |     Resolve conflitos de merge
+| |
+| * commit ed6a41dd1b8c2ef4f917084f4a9347a1d58e249f (iss53)
+| | Author: Lucas Kruger <lucas.kr1996@gmail.com>
+| | Date:   Thu Apr 20 20:29:48 2017 -0300
+| |
+| |     Faz o ultimo commit no branch da iss53
+| |
+| * commit 4c5c633b84fef3a099e1ccccf70f01e1530a2898 (origin/iss53)
+| | Author: Lucas Kruger <lucas.kr1996@gmail.com>
+| | Date:   Thu Apr 20 20:20:18 2017 -0300
+| |
+| |     Faz quarto commit da imagem
+| |
+* | commit 6c64d2c2e1cfff5a89cb145a801e71db1894b0b4
+|/  Author: Lucas Kruger <lucas.kr1996@gmail.com>
+|   Date:   Thu Apr 20 20:27:45 2017 -0300
+|
+|       Faz quinto commit da imagem
+|
+* commit 8d5ef82d63992961fbd150f87c4e3eb241dbd5ef
+| Author: Lucas Kruger <lucas.kr1996@gmail.com>
+| Date:   Thu Apr 20 20:13:21 2017 -0300
+|
+|     Faz terceiro commit da imagem
+|
+* commit 65395be00cb4b00da753e48009fa16cb43991127
+| Author: Lucas Kruger <lucas.kr1996@gmail.com>
+| Date:   Thu Apr 20 20:09:07 2017 -0300
+|
+|     Faz o segundo commit da imagem
+|
+* commit 3721d2275e8c330c2add32ed1c161367bf2535c2
+| Author: Lucas Kruger <lucas.kr1996@gmail.com>
+| Date:   Thu Apr 20 20:07:44 2017 -0300
+|
+|     Faz primeiro commit da imagem
+|
+* commit 5e050286d052fe63cac3045ff3ffe98420db2e6d
+| Author: Lucas Kruger <lucas.kr1996@gmail.com>
+| Date:   Thu Apr 20 20:05:26 2017 -0300
+|
+|     Inicia a questão nr 3
+
+```
+Nele conseguimos ver a arvore de commits do nosso repositório entre os branchs.
 
 ### 5. Em que situação acontece um conflito ao executar um merge entre dois branches com Git? E como resolvemos esse conflito? Em sua resposta cite os comandos envolvidos no processo de merge e se julgar necessário represente a situação de forma gráfica, assim como apresentado nas questões 3 e 4.
 
