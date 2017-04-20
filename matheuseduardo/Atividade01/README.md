@@ -116,3 +116,5 @@ ccfc35b..292dab0 master -> master
 ```
 
 ### 5. Em que situação acontece um conflito ao executar um merge entre dois branches com Git? E como resolvemos esse conflito? Em sua resposta cite os comandos envolvidos no processo de merge e se julgar necessário represente a situação de forma gráfica, assim como apresentado nas questões 3 e 4.
+
+oidsajasjdas
