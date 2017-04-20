@@ -33,5 +33,5 @@ $ git commit -am "um commit"
 $ git checkout iss53
 $ git status
 $ git branch
-$ git commit -am "um outro commit"
+$ git commit -am "um outro commit questao 3"
   ```
