@@ -1,50 +1,85 @@
 'use strict';
 
-// ele da erros que o js nao da de padrao
-// undefild e um tipo no js
-// nao e fortemente tipado
-console.log('Bem vindo a aula do dia 30/03/2017');
-/*
-var x = 10;
-var y = "qualquercoisa";
+// Tipo e velores.
+// Tipo de um valor e a sua forma de representacao
+// formas de fazer variaveis
+// var, let, const
 
-// var global let escopo
-// let z = 11;
+/*const valorConstante = 10;
+valorConstante = 20;
+console.log(valorConstante); // imprime valor no console.
+*/
 
-const c = 10; // constante
-// c = 20;
-console.log(c);
+// tipos
+var valorInt = 10; // inteiro
+console.log(typeof valorInt) // number
+
+var valorStr = "Hello"; // string, cadeia de caracteres
+console.log(typeof valorStr) // string
+
+var valorBooleanTrue = true; // true or false, verdadeiro ou falso
+console.log(typeof valorBooleanTrue) // boolean
+
+var valorBooleanFalse = false; // valor falso
+console.log(typeof valorBooleanFalse) // boolean
+
+var valorNulo = null; // nulo, vazio, sem valor.
+console.log(typeof valorNulo); // Object
+
+var valorIdenfinido = undefined // nao definido
+console.log(typeof valorIdenfinido); // undefined
+
+var valorObjeto = {}; // Objeto
+console.log(typeof valorObjeto) // Objeto
+
+var valorArray = []; // Array.
+var valorArray2 = new Array();
+console.log(typeof valorArray) // Objeto
+
+function funcaoQualquer(){}
+console.log(typeof funcaoQualquer); // Function
+
+
+
+
+
+/// Objetos
+
+// Aspa
+var stringComAspaDuplas = "stringQualquer";
+var stringSemASpasSimples = 'StringQualquer';
+
+var pessoa = {
+  nome: "Lucas",
+  idade: 24,
+  graduado: false
+};
+
+console.log(pessoa.nome) // Lucas
+console.log(pessoa.idade) // 24
+console.log(pessoa.graduado) // false
+
+console.log(pessoa)
+
+var umaVariavel = 55;
+
+var arrayDoThalles = [
+  "soEscrever",
+  umaVariavel,
+  true.
+  pessoa
+]
+
+console.log(arrayDoThalles["0"]);
+console.log(arrayDoThalles[1]);
+console.log(pessoa["nome"]);
+
+
 
 // Funcao
 
-function liberarOsAlunosDaAuala(algumNome) {
-  console.log(algumNome);
-  return false;
+function calcula() {
+  console.log("estou dentro da funcao.");
 }
 
-var resposta = liberarOsAlunosDaAuala("Hello World");
-
-console.log(resposta);
-
-var func2 = function(2) {
-  console.log(2);
-}
-
-var minhaFuncao = liberarOsAlunosDaAuala;
-minhaFuncao("nao");
-*/
-
-
-function liberarOsAlunosDaAuala(algumNome) {
-  console.log(algumNome);
-  //algumNome("a");
-}
-
-var func2 = function(a) {
-  console.log(a);
-  return a;
-}
-
-//func2("ola");
-
-liberarOsAlunosDaAuala(func2("chris"))
+calcula();
