@@ -58,3 +58,7 @@ $ git commit -am "Resolve conflitos entre os branch"
 
 Não há diferença no acesso nas duas opções.
 Será necessário usar a segunda opção quando a nomenclatura estiver fora do permitido (a-z, A-Z, _ ou $).
+
+### 8. Descreva o funcionamento de um escopo em JavaScript
+
+Escopo limita o acesso e a modificacao da variavel, no JavaScript existe dois typos de escopos global e local.
