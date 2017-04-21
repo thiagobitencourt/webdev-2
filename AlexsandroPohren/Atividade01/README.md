@@ -41,7 +41,7 @@ $ git branch
 $ git commit -am "vai dar pt"
 ```
 
-### 4. ...
+### 4. A imagem a seguir representa um estado posterior à imagem apresentada na questão 3. Explique o que representa a imagem e descreva quais comandos Git foram executados para se obter este estado.
 
 A imagem representa que foi juntado os dois branches usando o merge
 ```
@@ -76,6 +76,21 @@ $ Git commit -m "Resolvendo conflito"
    atributoArray:[],
    atributoFunc: function () { }
  };
+
+```
+### 7. Usando a sintaxe da linguagem JavaScript, defina uma função que recebe como parâmetro dois valores e que retorna um objeto que armazena os valores recebidos nos atributos a e b. Execute esta função e imprima o resultado no console.
+
+```
+function questaosete(valor1, valor2) {
+  var objetoDeRetorno ={
+  a:valor1,
+  b:valor2
+};
+  return objetoDeRetorno;
+}
+
+var valorRetorno = questaosete(5, "seis");
+console.log(valorRetorno);
 
 ```
 
