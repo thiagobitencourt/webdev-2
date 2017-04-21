@@ -4,7 +4,7 @@
 
 ### 1. Quais são as duas formas de se obter um repositório git?
 
-- git init: faz um novo repositorio em uma devida pasta para ser controlada e gerenciada pelo git.
+- git init: faz um novo repositório em uma devida pasta para ser controlada e gerenciada pelo git.
 - git clone: faz o clone (copia) de algum repositorio local ou na nuvem.
 
 ### 2. Explique para que serve o comando git status. Use exemplo para complementar a resposta.
@@ -42,3 +42,8 @@ $ git status
 $ git brach
 $ git commit -am "outro commit"
 ```
+
+
+### 4. A imagem a seguir representa um estado posterior à imagem apresentada na questão 3. Explique o que representa a imagem e descreva quais comandos Git foram executados para se obter este estado.
+
+- Ocorre um conflito pelo motivo de ter feito alterações ao mesmo arquivo.
