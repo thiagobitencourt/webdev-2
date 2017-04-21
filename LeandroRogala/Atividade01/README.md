@@ -49,3 +49,12 @@ $ git merge iss53
 ###5. Em que situação acontece um conflito ao executar um merge entre dois branches com Git? E como resolvemos esse conflito? Em sua resposta cite os comandos envolvidos no processo de merge e se julgar necessário represente a situação de forma gráfica, assim como apresentado nas questões 3 e 4.
 
 {A ser respondida}
+
+###9. Veja o código a seguir, descreva o que está acontecendo e, em sua ordem correta, quais informações serão impressas na tela?
+
+```
+$ undefined
+$"ctrl"
+$"impresso"
+$"passou aqui"
+${ impresso: "impresso"}
