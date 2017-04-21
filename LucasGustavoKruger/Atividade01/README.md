@@ -31,6 +31,9 @@ A saída do comando indica que o arquivo **README.md** foi alterado e está agua
 
 ### 3. Levando em consideração commits e branches criados com Git, explique o que representa a imagem abaixo e descreva quais comandos Git foram executados para se obter este estado
 *IMAGEM* -> https://git-scm.com/book/en/v2/images/basic-branching-6.png
+
+[Imagem git não mergeado](https://git-scm.com/book/en/v2/images/basic-branching-6.png)
+
 **Resposta:**
 A baixo serão adicionadas linhas referenciando os *commits* que serão feitos e serão criados *branchs* para este arquivo para continuar a representação da imagem.
 
@@ -47,6 +50,8 @@ A baixo serão adicionadas linhas referenciando os *commits* que serão feitos e
 
 ### 4. A imagem a seguir representa um estado posterior à imagem apresentada na questão 3. Explique o que representa a imagem e descreva quais comandos Git foram executados para se obter este estado.
 *IMAGEM* -> https://git-scm.com/book/en/v2/images/basic-merging-2.png
+[Imagem git mergeado](https://git-scm.com/book/en/v2/images/basic-merging-2.png)
+
 **Resposta:**
 Após seguidos os passos da questão 3.
 
@@ -252,4 +257,4 @@ A ordem de saída será:
 
 ### 10. Ao acessar o atributo de um objeto, qual a diferença entre as sintaxes objeto.atributo e objeto[‘atributo’]. Quando deve-se utilizar a segunda opção?
 **Resposta:**
-Em termos de acesso aos atributos não há diferença, porém quando seu atributo possuir uma nomenclatura fora do permitido (a-z, A-Z, _ ou $) será necessário a utilização do `objecto['atributo']`, ou seja, quando seu atributo tiver nomenclatura iniciada com um número ou um caracter especial. 
+Em termos de acesso aos atributos não há diferença, porém quando seu atributo possuir uma nomenclatura fora do permitido (a-z, A-Z, _ ou $) será necessário a utilização do `objecto['atributo']`, ou seja, quando seu atributo tiver nomenclatura iniciada com um número ou um caracter especial.
