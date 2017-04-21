@@ -47,3 +47,14 @@ $ git commit -am "outro commit"
 ### 4. A imagem a seguir representa um estado posterior à imagem apresentada na questão 3. Explique o que representa a imagem e descreva quais comandos Git foram executados para se obter este estado.
 
 - Ocorre um conflito pelo motivo de ter feito alterações ao mesmo arquivo.
+
+
+### 6. Usando a sintaxe da linguagem JavaScript, crie um objeto com um atributo que tenha um valor do tipo string, um atributo do tipo number e um atributo com valor do tipo array. Atribua este objeto a uma constante.
+
+```
+const foo = {
+  chave: 'valor string',
+  atributoInt: 50,
+  atributoArray : []
+};
+```
