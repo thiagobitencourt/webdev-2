@@ -74,3 +74,7 @@ A linguagem JavaScript tem o global e local.  Uma variável declarada fora de um
  $ impresso
  $ passou aqui
  $ { impresso: 'impresso' }
+
+### 10. Ao acessar o atributo de um objeto, qual a diferença entre as sintaxes objeto.atributo e objeto[‘atributo’]. Quando deve-se utilizar a segunda opção?
+
+  Não há diferença. A segunda sintaxe geralmente é usada para obter por exemplo, quando for buscar um atribudo com um valor numérico.
