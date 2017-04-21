@@ -112,7 +112,7 @@ console.log(valorRetorno);
 O escopo é uma forma de limitar informações entre funções,metodos, variaveis...
 Onde a variaveis de fora é global e tem acesso a qualquer função.
 Já funções de dentro do escopo não tem acesso a variaveis de fora.
-
+```
 Ex:
 _____________________________________
 |                                    |
@@ -126,3 +126,4 @@ _____________________________________
 |          |             |VARIAVEL2  |
 |          |             |           |
 |__________|_____________|___________|
+```
