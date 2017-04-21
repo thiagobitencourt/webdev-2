@@ -54,6 +54,11 @@ $ git status
 $ git commit -am "Resolve conflitos entre os branch"
 ```
 
+### 5. Em que situação acontece um conflito ao executar um merge entre dois branches com Git? E como resolvemos esse conflito? Em sua resposta cite os comandos envolvidos no processo de merge e se julgar necessário represente a situação de forma gráfica, assim como apresentado nas questões 3 e 4.
+
+Um conflito ocore quando um arquivo é modificado(mesmos pontos)/criado/eliminado em outro branch ou local e quando são atualizados gera o conflito.
+O conflito normalmente tem que ser corridigo manualmente, no arquivo que está com conflito ira aparecer '<<<<<<< HEAD' indicando o arquivo na sua máquina/branch,  '=======' separador dos conflitos e  '>>>>>>> BRANCH' para o arquivo de onde veio o conflito
+
 ### 10. Ao acessar o atributo de um objeto, qual a diferença entre as sintaxes objeto.atributo e objeto[‘atributo’]. Quando deve-se utilizar a segunda opção?
 
 Não há diferença no acesso nas duas opções.
