@@ -44,3 +44,7 @@ git merge iss53
 git status
 git commit
 ```
+### 8.Descreva o funcionamento de um escopo em JavaScript.
+
+-resposta:
+O funcionamento do escopo em JavaScript,  é do seguinte metodo: existe o escopo global que pode ser utilizado em qualquer parte do programa, já o escopo local pode ser utilizado apenas  dentro da sua função, mais se esta funcao possui outras funcões, ela pode ser acessada e pode ser manipulada dentro da função.
