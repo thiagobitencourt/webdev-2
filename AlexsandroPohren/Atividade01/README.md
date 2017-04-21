@@ -50,6 +50,22 @@ $ git merge iss53
 $ git add.
 $ git commit -am "Resolvendo conflito entre os branches"
 ```
+### 5. Em que situação acontece um conflito ao executar um merge entre dois branches com Git? E como resolvemos esse conflito? Em sua resposta cite os comandos envolvidos no processo de merge e se julgar necessário represente a situação de forma gráfica, assim como apresentado nas questões 3 e 4.
+
+O conflito acontece quando é feito o merge entre os dois branches e exatamente na mesma linha de um possui alguma coisa no outro, com isso é disparado um conflito, que e resolvido deletando a parte que não precisa ter no codigo ou texto
+
+```
+Comandos:
+
+$ git status
+$ git merge iss53
+$ git status
+$ git add .
+$ Git commit -m "Resolvendo conflito"
+
+```
+
+
 ### 8. Descreva o funcionamento de um escopo em JavaScript.
 
 O funcionamento do escopo em JavaScript, funciona da sequinte forma, existe o escopo global que pode ser utilizado em qualquer parte do programa e o escopo local que é utilizado apenas  dentro da sua função, mais se esta funcao possui outras funcões, ela pode ser acessada e pode ser manipulada dentro da funcao.
