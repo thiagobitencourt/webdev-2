@@ -32,3 +32,8 @@ function questaosete(valor1, valor2) {
 
 var valorRetorno = questaosete(5, "seis");
 console.log(valorRetorno);
+
+/*
+Questão 8:
+Descreva o funcionamento de um escopo em JavaScript
+*/

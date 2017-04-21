@@ -50,3 +50,26 @@ $ git merge iss53
 $ git add.
 $ git commit -am "Resolvendo conflito entre os branches"
 ```
+### 9. Veja o código a seguir, descreva o que está acontecendo e,em sua ordem correta,quais informações serão impressas na tela?
+
+
+resposta
+var1 esta recebendo o valor "impresso"
+ctrlP esta recebendoo valor [function]
+ctrlP passa a receber o nome val, que recebe o valor var1
+ctrlP passa a receber o nome imp, que passa a receber a [funcion]
+rt possui um valor vazio
+imp retorna val que possui o valor { impresso: 'impresso' }
+var1 passa a receber o valor "passou aqui"
+var1 ira imprimir o valor impresso na tela
+
+
+```
+Ordem de Impressão do codigo
+
+$ undefined
+$ "ctrl"
+$ "impresso"
+$ "passou aqui"
+$ { impresso: 'impresso' }
+```
