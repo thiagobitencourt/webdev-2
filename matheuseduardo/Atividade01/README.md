@@ -2,13 +2,13 @@
 
 ## Questões
 
-### 1. Quais as duas formas de se obter um repositório Git?
+## 1. Quais as duas formas de se obter um repositório Git?
 ```
 $ git init: coloca o diretório atual sob controle de versão do Git
 $ git clone: Faz o clone de um repositório existente
 ```
 
-### 2. Explique para que serve o comando git status. Use exemplo para complementar a resposta.
+## 2. Explique para que serve o comando git status. Use exemplo para complementar a resposta.
 
 #### O comando `git status` serve para exibir o estado do repositório local e remoto no momento.
 #### Exibe as seguintes informações:
@@ -37,7 +37,7 @@ no changes added to commit (use "git add" and/or "git commit -a")
 
 ### A saída do comando indica que o arquivo `README.md`, que está no diretório `Atividade01` foi modificado e precisa ser commitado.
 
-### 3. Levando em consideração commits e branches criados com Git, explique o que representa a imagem abaixo e descreva quais comandos Git foram executados para se obter este estado.
+## 3. Levando em consideração commits e branches criados com Git, explique o que representa a imagem abaixo e descreva quais comandos Git foram executados para se obter este estado.
 
 #### Partindo do commit C2:
 ```
@@ -90,7 +90,7 @@ $ git commit -m "Altera README (c5)."
 
 ```
 
-### 4. A imagem a seguir representa um estado posterior à imagem apresentada na questão 3. Explique o que representa a imagem e descreva quais comandos Git foram executados para se obter este estado.
+## 4. A imagem a seguir representa um estado posterior à imagem apresentada na questão 3. Explique o que representa a imagem e descreva quais comandos Git foram executados para se obter este estado.
 
 #### A partir do commit C5:
 ```
@@ -115,7 +115,7 @@ To https://github.com/eduardosmatheus/webdev-2.git
 ccfc35b..292dab0 master -> master
 ```
 
-### 5. Em que situação acontece um conflito ao executar um merge entre dois branches com Git? E como resolvemos esse conflito? Em sua resposta cite os comandos envolvidos no processo de merge e se julgar necessário represente a situação de forma gráfica, assim como apresentado nas questões 3 e 4.
+## 5. Em que situação acontece um conflito ao executar um merge entre dois branches com Git? E como resolvemos esse conflito? Em sua resposta cite os comandos envolvidos no processo de merge e se julgar necessário represente a situação de forma gráfica, assim como apresentado nas questões 3 e 4.
 
 - Um conflito ocorre quando dois branches, que estão sendo mantidos em paralelo, possuem alterações distintas em lugares iguais, e alguém tenta mesclar essas alterações de um branch para outro.
 
@@ -157,3 +157,48 @@ adasjoicasocmasiocasocnsaoicnasoicnasoicnaosicnaosinaocinaoicnasoincoain
 >>>>>>> iss53
 ```
 
+## 9. Veja o código a seguir (disponível em `questao09.js`), descreva o que está acontecendo e, em sua ordem correta, quais informações serão impressas na tela?
+1. `var1` é declarada. (neste momento seu valor ainda é **undefined**.)
+
+2. A função `ctrlP` é definida, e recebe como parâmetro um valor e uma função.
+
+3. O retorno de `ctrlP` é o resultado da função `imp`.
+
+4. `var1` é imprimida no console. 
+```javascript
+undefined
+```
+
+5. o valor ``"impresso"`` é atribuído para `var1`.
+
+6. `ctrlP` é invocada, passando `var1` e uma função anônima, que espera `vlr` como parâmetro.
+
+  - Primeiramente, é impresso no console:
+  ```javascript
+  "ctrl"
+  ```
+  
+  - O valor `"passou aqui"` é atribuído a `var1`;
+  
+  - Então para atribuir ao resultado de `ctrlP`, a função anônima (`imp()`) é invocada.
+
+      - É impresso o valor da variável `vlr`:
+      ```javascript
+      "impresso"
+      ```
+
+      - A função anônima retorna um objeto com o atributo `impresso`, sendo seu respectivo valor a variável `vlr`;
+      
+      - **Então a execução da função anônima encerra e o retorno é passado para `ctrlP`**
+
+7. O resultado de `ctrlP` é salvo na variável `rt`
+  
+8. É impresso o valor de `vlr` no console:
+```javascript
+"passou aqui"
+```
+  
+9. E por último é impresso a variável `rt`: 
+```javascript 
+{ impresso: "impresso" }
+```
