@@ -106,3 +106,23 @@ function questaoSete(valor1, valor2){
 var valorRetorno = questaoSete(5, "seis");
 console.log(valorRetorno);
 ```
+
+### 8. Descreva o funcionamento de um escopo em JavaScript
+
+O escopo é uma forma de limitar informações entre funções,metodos, variaveis...
+Onde a variaveis de fora é global e tem acesso a qualquer função.
+Já funções de dentro do escopo não tem acesso a variaveis de fora.
+
+Ex:
+_____________________________________
+|                                    |
+|    GLOBAL                          |
+|           _________________________|
+|          |                         |
+|          |     VARIAVEl1           |
+|          |                         |
+|          |             ____________|
+|          |             |           |
+|          |             |VARIAVEL2  |
+|          |             |           |
+|__________|_____________|___________|
