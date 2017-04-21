@@ -9,25 +9,19 @@
 
 ### 2.Explique para que serve o comando git status. Use exemplo para complementar a resposta.
 
-- Serve para mostrar o status atual do repositorio, tambem mostra arquivos que foram modificados, adicionados, removidos e/ou estão pendentes de commit.
+- Mostra o estado do repositório, mostra arquivos que foram modificados, adicionados, removidos, e/ou estão pendentes para commit.
 
-Exemplo: o estado atual do nosso repositorio
+- Estarei usando o exemplo, do estado atual do respositório: (tenho os arquivos /Atividade01/README.md que precisam ser adicionados
+ para poderem ser commitados.)
 
-```
-$ git commit
-On branch master
-Your branch is up-to-date with 'origin/master'.
-Changes not staged for commit:
-        modified:   Atividade01/README.md
-        deleted:    Banana
-        modified:   app.js
-        deleted:    ../CONTRIBUTING.md
-        deleted:    ../contributing.md
+### 3. Levando em consideração commits e branches criados com Git, explique o que representa a imagem abaixo e descreva quais comandos
 
-no changes added to commit
-```
-Este  $ git status indica que o arquivo README.md que esta dentro do repositorio Atividade01 foi modificado e precisa ser comitado.
-
-### 3.Levando em consideração commits e branches criados com Git, explique o que representa a imagem abaixo e descreva quais comandos Git foram executados para se obter este estado.
+- Git foram executados para se obter este estado
 
 ```
+git branch iss53
+git commit -am "um commit"
+git checkout iss53
+git status
+git branch
+git commit -am "outro commit"
