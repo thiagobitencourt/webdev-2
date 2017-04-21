@@ -47,3 +47,8 @@ Após a atividade 3, feito os passos
 
 $git checkout master - Mudado para o branch master
 $git merge iss53 - Mergeado as alterações do branch iss53 para o master
+
+### 5. Em que situação acontece um conflito ao executar um merge entre dois branches com Git? E como resolvemos esse conflito? Em sua resposta cite os comandos envolvidos no processo de merge e se julgar necessário represente a situação de forma gráfica, assim como apresentado nas questões 3 e 4.
+
+Con
+$git merge iss53 - Mergeado as alterações do branch iss53 para o master
