@@ -15,6 +15,16 @@
 Por Exemplo, o estado atual do nosso repositório:
 
 '''
+On branch master
++    Your branch is up-to-date with 'origin/master'.
++    Changes not staged for commit:
++      (use "git add <file>..." to update what will be committed)
++      (use "git checkout -- <file>..." to discard changes in working directory)
++
++            modified:   ../CONTRIBUTING.md
++            modified:   Atividade01/README.md
++
++    no changes added to commit (use "git add" and/or "git commit -a")
 '''
 
 ### 3. The "treta" has been planted !!
@@ -27,3 +37,20 @@ $ git status
 $ git branch
 $ git commit -am "outro commit"
 '''
+
+-A imagem representa a criação de um novo branch iss53, onde foram feitos dois commit's e sua versão atualizada é C5 no branch iss53.
+
+### 4. A imagem a seguir representa um estado posterior à imagem apresentada na questão 3. Explique o que representa a imagem e descreva quais comandos Git foram executados para se obter este estado.
+
+É a continuação do branch, onde foi feito um novo commit no branch master e entrado em conflito.
+$ git checkout master
+$ git merge iss53
+
+
+### 5. Em que situação acontece um conflito ao executar um merge entre dois branches com Git? E como resolvemos esse conflito? Em sua resposta cite os comandos envolvidos no processo de merge e se julgar necessário represente a situação de forma gráfica, assim como apresentado nas questões 3 e 4.
+
+Ocorre quando tem o mesmo arquivo alterado em dois branchs diferentes e é feito um merge entre eles.
+Resolve o conflito indo até o arquivo alterando o conflito no caso reajustando para que poça ser feito uma nova versão ou no caso um novo commit.
+
+$ git add
+$ git commit -am " "
