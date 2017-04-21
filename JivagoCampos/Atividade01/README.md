@@ -12,4 +12,17 @@
 
 - Mostra o estado do repositório, mostra arquivos que foram modificados, adicionados, removidos, e/ou estão pendentes para commit.
 
-- Estarei usando o exemplo, do estado atual do respositório: (tenho os arquivos /Atividade01/README.md que precisam ser adicionados para poderem ser commitados.)
+- Estarei usando o exemplo, do estado atual do respositório: (tenho os arquivos /Atividade01/README.md que precisam ser adicionados
+  para poderem ser commitados.)
+
+### 3.Levando em consideração commits e branches criados com Git, explique o que representa a imagem abaixo e descreva quais comandos
+Git foram executados para se obter este estado
+
+```
+git branch iss53
+git commit -am "um commit"
+git checkout iss53
+git status
+git branch
+git commit -am "outro commit"
+```
