@@ -153,7 +153,7 @@ console.log(constanteDoObjeto.atributoTipoString);
 Para executar o código com nodejs basta executar o commando: `$ node questao6.js`.
 
 ### 7. Usando a sintaxe da linguagem JavaScript, defina uma função que recebe como parâmetro dois valores e que retorna um objeto que armazena os valores recebidos nos atributos a e b. Execute esta função e imprima o resultado no console.
-**Resposta**
+**Resposta:**
 
 ``` JavaScript
 'use strict';
@@ -175,7 +175,48 @@ console.log('Valor de a: ' + object.a + ' Valor de b:' + object.b);
 Para executar o código com nodejs basta executar o commando: `$ node questao7.js`.
 
 ### 8. Descreva o funcionamento de um escopo em JavaScript
+**Resposta:**
+Toda variavel criada fora do escopo de uma função é considerada uma variavel global.
+
+Toda variável declarada dentro de uma função não poderá ser acessada de fora do seu escopo.
+
+``` JavaScript
+'use strict';
+
+var variavelGlobal = 1; // Esssa variavel pode ser acessada por qualquer função.
+
+const funcao = () => {
+  var variavelDoEscopoDaFuncao = 2;
+  console.log(variavelGlobal); //Saida será: 1
+  console.log(variavelDoEscopoDaFuncao); //Saida será: 2
+}
+
+funcao();
+
+console.log(variavelGlobal); //Saida será: 1
+console.log(variavelDoEscopoDaFuncao); //Teremos um erro pois a variável não está definida no escopo global.
+```
 
 ### 9. Veja o código a seguir, descreva o que está acontecendo e, em sua ordem correta, quais informações serão impressas na tela?
+``` javascript
+var var1;
+
+function ctrlP(val, imp) {
+  console.log('ctrl');
+  var1 = "passou aqui"; // Altera o valor de var1
+  return imp(val);
+}
+
+console.log(var1);
+var1 = "impresso"; // Altera o valor de var1
+var rt = ctrlP(var1, function(vlr) {
+  console.log(vlr);
+  return {
+    impresso: vlr
+  }
+});
+console.log(var1);
+console.log(rt);
+```
 
 ### 10. Ao acessar o atributo de um objeto, qual a diferença entre as sintaxes objeto.atributo e objeto[‘atributo’]. Quando deve-se utilizar a segunda opção?
