@@ -89,3 +89,11 @@ impresso
 passou aqui
 { impresso: 'impresso' }
 ```
+### 10. Ao acessar o atributo de um objeto, qual a diferença entre as sintaxes objeto.atributo e objeto[‘atributo’]. Quando deve-se utilizar a segunda opção?
+
+- Não há diferença entre as formas de sintaxe de chamar o objeto, as duas formas podem obter o objeto,  o segundo jeito deve ser usado para  chamar  objeto['atributo'] quando for necessário criar uma variável que tenha receber numeros. Como no exemplo abaixo
+
+```
+var atributo = "numero cpf";
+console.log(pessoa[atributo]); //['numero cpf']);
+```
