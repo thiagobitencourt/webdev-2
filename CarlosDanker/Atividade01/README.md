@@ -25,7 +25,7 @@ nothing added to commit but untracked files present (use "git add" to track)
 
 ### 3. Levando em consideração commits e branches criados com Git, explique o que representa a imagem abaixo e descreva quais comandos Git foram executados para se obter este estado.
 
-A imagem descreve  um repositorio com 5 commits sendo separa em dois branches apartir do 3 commit sendo que o master está com o repositorio no 4 commit e o iss53 no 5 commit.
+- A imagem descreve  um repositorio com 5 commits sendo separa em dois branches apartir do 3 commit sendo que o master está com o repositorio no 4 commit e o iss53 no 5 commit.
 Abaixo está os comandos executados para chegar neste estado:
 '''
 $ git branch iss53
@@ -38,7 +38,7 @@ $ git commit -am "outro commit"
 
 ### 4. A imagem a seguir representa um estado posterior à imagem apresentada na questão 3. Explique o que representa a imagem e descreva quais comandos Git foram executados para se obter este estado.
 
-A imagem descreve  um repositorio com 6 commits sendo separa em dois branches apartir do 3 commit sendo que o master está com o repositorio no 4 commit e o iss53 no 5 commit. Após foi executado um merge no branche master com o branch iss53
+- A imagem descreve  um repositorio com 6 commits sendo separa em dois branches apartir do 3 commit sendo que o master está com o repositorio no 4 commit e o iss53 no 5 commit. Após foi executado um merge no branche master com o branch iss53
 Abaixo está os comandos executados para chegar neste estado:
 '''
 $ git branch iss53
@@ -51,7 +51,8 @@ $ git checkout master
 $ git merge iss53
 '''
 ### 5. Em que situação acontece um conflito ao executar um merge entre dois branches com Git? E como resolvemos esse conflito? Em sua resposta cite os comandos envolvidos no processo de merge e se julgar necessário represente a situação de forma gráfica, assim como apresentado nas questões 3 e 4.
-Após o merge corrigir as linhas listas pelo git, apagar as marcas e executar um novo commit.
+
+- Após o merge corrigir as linhas listas pelo git, apagar as marcas e executar um novo commit.
 Com os exemplos anteriores, abaixo está os comandos executados para chegar neste estado:
 '''
 $ git branch iss53
@@ -91,6 +92,15 @@ console.log(executaQuestao)
 '''
 ### 8. Descreva o funcionamento de um escopo em JavaScript
 
+- Escopo é o nome dos limites de variáveis, abaixo um exemplo de seu funcionamento onde temos um escopo dentro de outro, as variáveis declaradas dentro de "objetoDeRetorno" podem ser usadas até o limite do escopo de "questaoSete":
+
+function questaoSete(valor1, valor2){ //inicio do escopo questaoSete
+  var objetoDeRetorno = { //inicio escopo objetoDeRetorno
+    a: valor1,
+    b: valor2
+  }; //Fim do escopo objetoDeRetorno
+  return objetoDeRetorno
+} //fim do escopo questaoSete
 
 ### 9. Veja o código a seguir, descreva o que está acontecendo e, em sua ordem correta, quais informações serão impressas na tela?
 
@@ -103,3 +113,5 @@ passou aqui
 '''
 
 ### 10. Ao acessar o atributo de um objeto, qual a diferença entre as sintaxes objeto.atributo e objeto[‘atributo’]. Quando deve-se utilizar a segunda opção?
+
+-
