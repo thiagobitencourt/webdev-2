@@ -7,9 +7,9 @@
  * e um atributo com valor do tipo array. Atribua este objeto a uma constante.
  */
 const objeto = {
-	atributoString: '',
-	atributoNumber: 2123,
-	atributoArray: []
+  atributoString: '',
+  atributoNumber: 2123,
+  atributoArray: []
 };
 
 /**
@@ -21,10 +21,10 @@ const objeto = {
  * Execute esta função e imprima o resultado no console.
  */
 function someFunction(valorA, valorB) {
-	return {
-		a: valorA,
-		b: valorB
-	};
+  return {
+    a: valorA,
+    b: valorB
+  };
 }
 
 console.log(someFunction(1, 2)); // { a: 1, b: 2 }
@@ -35,11 +35,11 @@ console.log(someFunction(1, 2)); // { a: 1, b: 2 }
 var variavelGlobal = 123;
 
 function showScopeToTheTeacher() {
-	variavelDentroDaFuncao = 2; // Acabou de definir dentro da função
-	console.log(variavelGlobal); // 123
-	variavelGlobal = 2325;
-	console.log(variavelGlobal); // 2325
-	console.log(variavelDentroDaFuncao); // 2
+  variavelDentroDaFuncao = 2; // Acabou de definir dentro da função
+  console.log(variavelGlobal); // 123
+  variavelGlobal = 2325;
+  console.log(variavelGlobal); // 2325
+  console.log(variavelDentroDaFuncao); // 2
 }
 console.log(variavelGlobal); // 123
 /**
