@@ -41,6 +41,7 @@ Ativide 10
 var pessoa = {
   nome: "Carlos",
   idade: 28,
+  12: 69
 };
 
 console.log(pessoa.nome);
@@ -48,3 +49,4 @@ console.log(pessoa.idade);
 
 console.log(pessoa['nome']);
 console.log(pessoa['idade']);
+console.log(pessoa['12']);
