@@ -141,7 +141,7 @@ passou aqui
 
 - Você terá o mesmo resultado utlizando as duas opções como exemplo o código abaixo. Deve-se utlizar a segunda opção em casos de seu atributos seguirem uma nomenclatura iniciada com um número ou caracteres especiais.
 
-'''
+``` javascript
 var pessoa = {
   nome: "Carlos",
   idade: 28,
@@ -153,4 +153,4 @@ console.log(pessoa.idade);
 
 console.log(pessoa['nome']);
 console.log(pessoa['12']);
-'''
+```
