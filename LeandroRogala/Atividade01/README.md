@@ -4,12 +4,12 @@
 
 ### 1.Quais são as duas formas de se obter um repositório git?
 
-- git init - Coloca um determinado diretório sobre o controle do git.
-- git clone - Faz um clone de um repositório existente.
+git init - Coloca um determinado diretório sobre o controle do git.
+git clone - Faz um clone de um repositório existente.
 
 ### 2.Explique para que serve o comando git status. Use exemplo para complementar a resposta.
 
-- Mostra o estado atual do repositório, os arquivos que foram modificados, adicionados removidos e o que estão pendentes para adicionar ou commitar.
+Mostra o estado atual do repositório, os arquivos que foram modificados, adicionados removidos e o que estão pendentes para adicionar ou commitar.
 
 Exemplo, o estado atual do meu repositorio é:
 
