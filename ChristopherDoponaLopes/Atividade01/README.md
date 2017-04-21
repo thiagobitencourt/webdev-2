@@ -109,3 +109,7 @@ console.log(rt);
  +$"passou aqui"
  +${ impresso: "impresso"}
 ```
+
+### 10. Ao acessar o atributo de um objeto, qual a diferença entre as sintaxes objeto.atributo e objeto[‘atributo’]. Quando deve-se utilizar a segunda opção?
+
+- Não tem diferença em caso de acessar algo, pelo motivo que elas fazem a mesma coisa ate mesmo se for colocado " " deve ser usar ´´ somente quando for numerico
