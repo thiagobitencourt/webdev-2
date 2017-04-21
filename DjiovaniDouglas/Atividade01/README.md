@@ -36,3 +36,13 @@ $ git status
 $ git branch
 $ git commit -am "um outro commit questao 3"
   ```
+
+### 9.Veja o código a seguir, descreva o que está acontecendo e, em sua ordem correta, quais informações serão impressas na tela?
+
+```
+  $ Undefined
+  $ "ctrl"
+  $ "impresso"
+  $ "passou aqui"
+  $ {impresso: "impresso"}
+```
