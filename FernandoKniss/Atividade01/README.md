@@ -58,3 +58,11 @@ $ git commit -am " "
 ### 6. Usando a sintaxe da linguagem JavaScript, crie um objeto com um atributo que tenha um valor do tipo string, um atributo do tipo number e um atributo com valor do tipo array. Atribua este objeto a uma constante.
 
 Resposta na documento Atividade.js
+
+### 7. Usando a sintaxe da linguagem JavaScript, defina uma função que recebe como parâmetro dois valores e que retorna um objeto que armazena os valores recebidos nos atributos a e b. Execute esta função e imprima o resultado no console.
+
+Respondido no arquivo Atividade.js
+
+### 8. Descreva o funcionamento de um escopo em JavaScript
+
+A linguagem JavaScript tem o global e local.  Uma variável declarada fora de uma definição de função é uma variável global, e seu valor será acessível e modificável em todo o seu programa.  Uma variável declarada dentro de uma definição de função é local.  Ela é criada e destruída sempre que a função é executada e não pode ser acessada por qualquer código fora da função.
