@@ -153,3 +153,29 @@ console.log(constanteDoObjeto.atributoTipoString);
 Para executar o código com nodejs basta executar o commando: `$ node questao6.js`.
 
 ### 7. Usando a sintaxe da linguagem JavaScript, defina uma função que recebe como parâmetro dois valores e que retorna um objeto que armazena os valores recebidos nos atributos a e b. Execute esta função e imprima o resultado no console.
+**Resposta**
+
+``` JavaScript
+'use strict';
+
+/*
+### 7. Usando a sintaxe da linguagem JavaScript, defina uma função que recebe como parâmetro dois valores e que retorna um objeto que armazena os valores recebidos nos atributos a e b. Execute esta função e imprima o resultado no console.
+*/
+const funcao = (var1, var2) => {
+  return {
+    a: var1,
+    b: var2
+  }
+}
+
+const object = funcao('valor1 em a', 'valor2 em b');
+
+console.log('Valor de a: ' + object.a + ' Valor de b:' + object.b);
+```
+Para executar o código com nodejs basta executar o commando: `$ node questao7.js`.
+
+### 8. Descreva o funcionamento de um escopo em JavaScript
+
+### 9. Veja o código a seguir, descreva o que está acontecendo e, em sua ordem correta, quais informações serão impressas na tela?
+
+### 10. Ao acessar o atributo de um objeto, qual a diferença entre as sintaxes objeto.atributo e objeto[‘atributo’]. Quando deve-se utilizar a segunda opção?
