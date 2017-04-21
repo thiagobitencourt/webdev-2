@@ -92,3 +92,8 @@ $ ctrl
 $ impresso
 $ passou aqui
 $ { impresso: 'impresso' }
+
+
+###10. Ao acessar o atributo de um objeto, qual a diferença entre as sintaxes objeto.atributo e objeto[‘atributo’]. Quando deve-se utilizar a segunda opção?
+
+Não existe diferença, ambas as formas obtem o atributo do objeto, porem obtendo o atributo atraves do conchetes '[]', é util para atributos que começam com numeros, ou contenham espaço ou hífen.
