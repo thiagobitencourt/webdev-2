@@ -56,20 +56,20 @@ Conflito ocorre, quando duas branchs tem o mesmo arquivo alterado e é feito o m
     $ git add/git commit
 
 
-###6. Usando a sintaxe da linguagem JavaScript, crie um objeto com um atributo que tenha um valor do tipo string, um atributo do tipo number e um atributo com valor do tipo array. Atribua este objeto a uma constante.
+### 6. Usando a sintaxe da linguagem JavaScript, crie um objeto com um atributo que tenha um valor do tipo string, um atributo do tipo number e um atributo com valor do tipo array. Atribua este objeto a uma constante.
 
 Resposta no arquivo Atividade.js
 
-###7. Usando a sintaxe da linguagem JavaScript, defina uma função que recebe como parâmetro dois valores e que retorna um objeto que armazena os valores recebidos nos atributos a e b. Execute esta função e imprima o resultado no console.
+### 7. Usando a sintaxe da linguagem JavaScript, defina uma função que recebe como parâmetro dois valores e que retorna um objeto que armazena os valores recebidos nos atributos a e b. Execute esta função e imprima o resultado no console.
 
 Resposta no arquivo Atividade.js
 
-###8. Descreva o funcionamento de um escopo em JavaScript
+### 8. Descreva o funcionamento de um escopo em JavaScript
 
 O escopo no JavaScript, existe o global que pode ser utilizado por modicado ou obtido em qualquer parte do programa, já o escopo local, apenas é acessivel dentro de sua função, porem se a funcao possui mais funcões dentro dela, esta variavel poderá ser manipulada dento desta função (funcao que está dentro da funcao em que foi declarada a variavel).
 Exemplo: em uma funcao 'dados' eu tenho declarada a variavel 'salario', dentro desta funcao 'dados', eu tenho a funcao 'calcularBonificao' eu utilizo a variavel 'salario', para multiplicar com a variavel 'percentualBonus' declarada na funcao 'calcularBonificao'. Neste caso, por causa do escopo, a funcao 'calcularBonificao', tem acesso as variaveis 'salario' e 'percentualBonus', enquanto a funcao 'dados', que chama a funcao 'calcularBonificao', apenas possui acesso a variavel 'salario'.
 
-###9. Veja o código a seguir, descreva o que está acontecendo e, em sua ordem correta, quais informações serão impressas na tela?
+### 9. Veja o código a seguir, descreva o que está acontecendo e, em sua ordem correta, quais informações serão impressas na tela?
 
 1) declara a variavel var1 igual a undefined
 2) declara a funcao ctrlP
@@ -94,6 +94,6 @@ $ passou aqui
 $ { impresso: 'impresso' }
 
 
-###10. Ao acessar o atributo de um objeto, qual a diferença entre as sintaxes objeto.atributo e objeto[‘atributo’]. Quando deve-se utilizar a segunda opção?
+### 10. Ao acessar o atributo de um objeto, qual a diferença entre as sintaxes objeto.atributo e objeto[‘atributo’]. Quando deve-se utilizar a segunda opção?
 
 Não existe diferença, ambas as formas obtem o atributo do objeto, porem obtendo o atributo atraves do conchetes '[]', é util para atributos que começam com numeros, ou contenham espaço ou hífen.
