@@ -28,3 +28,16 @@ const objeto = {
 
  var valorRetorno = funcao(5, "seis");
  console.log(valorRetorno);
+
+/*
+8. Descreva o funcionamento de um escopo em JavaScript
+*/
+
+var a; //Escopo GLOBAL em qual quer lugar podemos acessar
+
+function escopomenor(){
+  var b; //Variavel está limitada apenas dentro da funcao
+  a = b; // Pode-se usar a A pois ela é global.
+}
+
+b = 'ESCOPO' //Variavel B não pode ser acessada fora da funcao, pois esta fora de seu escopo

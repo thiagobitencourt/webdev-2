@@ -39,7 +39,7 @@ $ git commit -am "Outra mensagem" - Realiza um commmit no branch iss53
 $ git commit -am "Outro commit" - Realiza outro commit no branch iss53.
 ```
 
-###4. A imagem a seguir representa um estado posterior à imagem apresentada na questão 3. Explique o que representa a imagem e descreva quais comandos Git foram executados para se obter este estado.
+### 4. A imagem a seguir representa um estado posterior à imagem apresentada na questão 3. Explique o que representa a imagem e descreva quais comandos Git foram executados para se obter este estado.
 
 ```
 $ git checkout master - Altera para o branch master
@@ -47,12 +47,16 @@ $ git branch - Verifica o branch que está
 $ git merge iss53 - realiza um merge do brench atual (MASTER) com o branch ISS53.
 ```
 
-###5. Em que situação acontece um conflito ao executar um merge entre dois branches com Git? E como resolvemos esse conflito? Em sua resposta cite os comandos envolvidos no processo de merge e se julgar necessário represente a situação de forma gráfica, assim como apresentado nas questões 3 e 4.
+### 5. Em que situação acontece um conflito ao executar um merge entre dois branches com Git? E como resolvemos esse conflito? Em sua resposta cite os comandos envolvidos no processo de merge e se julgar necessário represente a situação de forma gráfica, assim como apresentado nas questões 3 e 4.
 
 Um conflito acontece quando vai realizar um merge entre dois brench, e no mesmo arquivo e na mesma linha tem coisas diferente. Para se resolver o git faz uma marcação no arquivo com <HEAD> dizendo o codigo que esta no branch principal e em <<<<  NOMEDOBRANCH
 o codigo que esta no branch do merge, para isso, devemos apagar um dos blocos de codigo para corrigir o conflito.
 
-###9. Veja o código a seguir, descreva o que está acontecendo e, em sua ordem correta, quais informações serão impressas na tela?
+### 8. Descreva o funcionamento de um escopo em JavaScript
+
+O escopo ele limita acesso das variavel. Exemplo no arquivo atividade.js
+
+### 9. Veja o código a seguir, descreva o que está acontecendo e, em sua ordem correta, quais informações serão impressas na tela?
 
 ```
 $ undefined
