@@ -72,4 +72,8 @@ $ "ctrl"
 $ "impresso"
 $ "passou aqui"
 $ { impresso: 'impresso' }
+
 ```
+### 10. Ao acessar o atributo de um objeto, qual a diferença entre as sintaxes objeto.atributo e objeto[‘atributo’]. Quando deve-se utilizar a segunda opção?
+
+- Não há diferença entre as sintaxes, porém para acessar um atributo que inicia com um numero deve-se usar a sintaxe 'objecto['atributo']'. 
