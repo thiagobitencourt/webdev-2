@@ -34,4 +34,29 @@ $ git branch
 $ git commit -am "outro commit"
 '''
 
-### 4. Causou Treta
+### 4. A imagem a seguir representa um estado posterior à imagem apresentada na questão 3. Explique o que representa a imagem e descreva quais comandos Git foram executados para se obter este estado.
+
+'''
+$ git branch iss53
+$ git commit -am "primeiro commit"
+$ git checkout iss53
+$ git status
+$ git branch
+$ git commit -am "outro commit"
+$ git checkout master
+$ git merge iss53
+'''
+### 5. Em que situação acontece um conflito ao executar um merge entre dois branches com Git? E como resolvemos esse conflito? Em sua resposta cite os comandos envolvidos no processo de merge e se julgar necessário represente a situação de forma gráfica, assim como apresentado nas questões 3 e 4.
+
+'''
+$ git branch iss53
+$ git commit -am "primeiro commit"
+$ git checkout iss53
+$ git status
+$ git branch
+$ git commit -am "outro commit"
+$ git checkout master
+$ git merge iss53
+Abrir arquivos com conflito apagar linhas marcadas pelo git e corrigir o código conforme desejado.
+$ git commit -am "ultimo commit"  
+'''
