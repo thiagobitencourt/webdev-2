@@ -202,3 +202,17 @@ undefined
 ```javascript 
 { impresso: "impresso" }
 ```
+
+## 10. Ao acessar o atributo de um objeto, qual a diferença entre as sintaxes objeto.atributo e objeto[‘atributo’]? Quando deve-se utilizar a segunda opção?
+
+### É possível acessar um atributo de um objeto igualmente das duas formas. 
+### **Porém, para acessar da forma:**
+```javascript
+objeto.atributo
+```
+### **a chave de um atributo deve começar com letras de A a Z (seja maíuscula ou minúscula), $ ou _ .**
+
+### Deve-se utilizar a forma abaixo quando a chave de um atributo não está dentro dos parâmetros citados anteriormente.
+```javascript
+objeto['atributo']
+```
