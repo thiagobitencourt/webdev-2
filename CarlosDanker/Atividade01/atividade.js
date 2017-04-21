@@ -31,3 +31,20 @@ function questaoSete(valor1, valor2){
 
 var executaQuestao = questaoSete(5, 'seis');
 console.log(executaQuestao)
+
+
+
+/*
+Ativide 10
+*/
+
+var pessoa = {
+  nome: "Carlos",
+  idade: 28,
+};
+
+console.log(pessoa.nome);
+console.log(pessoa.idade);
+
+console.log(pessoa['nome']);
+console.log(pessoa['idade']);

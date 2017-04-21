@@ -114,4 +114,17 @@ passou aqui
 
 ### 10. Ao acessar o atributo de um objeto, qual a diferença entre as sintaxes objeto.atributo e objeto[‘atributo’]. Quando deve-se utilizar a segunda opção?
 
--
+- Você terá o mesmo resultado utlizando as duas opções como exemplo o código abaixo. Fica a critério do desenvolvedor utilizar a opção que tem mais identificação.
+
+'''
+var pessoa = {
+  nome: "Carlos",
+  idade: 28,
+};
+
+console.log(pessoa.nome);
+console.log(pessoa.idade);
+
+console.log(pessoa['nome']);
+console.log(pessoa['idade']);
+'''
