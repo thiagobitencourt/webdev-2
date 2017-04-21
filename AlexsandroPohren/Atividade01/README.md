@@ -32,15 +32,21 @@ Este  $ git status indica que o arquivo README.md que esta dentro do repositorio
 
 A imagem representa dois branches e seus commits
 
+```
 $ git branch iss53
 $ git commit -am "resposta da questão 3"
 $ it checkout iss53
 $ git status
 $ git branch
 $ git commit -am "vai dar pt"
+```
 
 ### 4. ...
 
 A imagem representa que foi juntado os dois branches usando o merge
-
+```
 $ git checkout master
+$ git merge iss53
+$ git add.
+$ git commit -am "Resolvendo conflito entre os branches"
+```
