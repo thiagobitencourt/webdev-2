@@ -170,3 +170,7 @@ impresso
 passou aqui
 { impresso: 'impresso' }
 ```
+
+### 10. Ao acessar o atributo de um objeto, qual a diferença entre as sintaxes objeto.atributo e objeto[‘atributo’]. Quando deve-se utilizar a segunda opção?
+
+As duas formas de acesso não tem diferenças, porem a segunda opção deve se usar em atributos que contenham espaço,hífen ou comecem com numeros.
