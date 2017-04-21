@@ -53,3 +53,8 @@ $ git status
  Corrigido manualmente o conflito
 $ git commit -am "Resolve conflitos entre os branch"
 ```
+
+### 10. Ao acessar o atributo de um objeto, qual a diferença entre as sintaxes objeto.atributo e objeto[‘atributo’]. Quando deve-se utilizar a segunda opção?
+
+Não há diferença no acesso nas duas opções.
+Será necessário usar a segunda opção quando a nomenclatura estiver fora do permitido (a-z, A-Z, _ ou $).
