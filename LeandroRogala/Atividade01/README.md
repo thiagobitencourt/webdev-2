@@ -64,3 +64,11 @@ $"ctrl"
 $"impresso"
 $"passou aqui"
 ${ impresso: "impresso"}
+```
+
+### 10. Ao acessar o atributo de um objeto, qual a diferença entre as sintaxes objeto.atributo e objeto[‘atributo’]. Quando deve-se utilizar a segunda opção?
+
+Na verdade elas não tem diferença para acessar o atributo, apenas para ser declarada...
+no javascript tem uma regra que só pode declarar variavel com a-z - A-Z - _ ou seja
+se por algum motivo precise que sua variavel comece com algo fora desse padrao
+deve-se criar a variavel e acessa-la atraves do metodo objeto['atributo'];
