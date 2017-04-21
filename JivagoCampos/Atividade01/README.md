@@ -30,5 +30,7 @@ git commit -am "outro commit"
 
 #### Conforme o professor falou em sala poderia partir do commit C5 para fazer a questão 4.
 
+```
 git checkout master - Para voltar para o branch master
 git merge iss53 - Mergeado as alterações do branch iss53 para o master
+```
