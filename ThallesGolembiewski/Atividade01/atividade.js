@@ -9,5 +9,14 @@
     const object = {
         keyString: 'string',
         keyNumber: 12,
-        keyArray: []
+        keyArray: [],
+        keyFunction: function(){}
      };
+
+/*
+7 - Usando a sintaxe da linguagem JavaScript, defina uma função que recebe como parâmetro dois valores e que retorna um objeto que armazena os valores recebidos nos atributos a e b. Execute esta função e imprima o resultado no console.
+*/
+
+function parameter(valueA, valueB){ return { A: valueA, B: valueB }; }
+
+console.log(parameter(7, "sete"));
