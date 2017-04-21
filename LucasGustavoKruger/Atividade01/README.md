@@ -251,3 +251,5 @@ A ordem de saída será:
 ```
 
 ### 10. Ao acessar o atributo de um objeto, qual a diferença entre as sintaxes objeto.atributo e objeto[‘atributo’]. Quando deve-se utilizar a segunda opção?
+**Resposta:**
+Em termos de acesso aos atributos não há diferença, porém quando seu atributo possuir uma nomenclatura fora do permitido (a-z, A-Z, _ ou $) será necessário a utilização do `objecto['atributo']`, ou seja, quando seu atributo tiver nomenclatura iniciada com um número ou um caracter especial. 
