@@ -50,6 +50,10 @@ $ git merge iss53
 $ git add.
 $ git commit -am "Resolvendo conflito entre os branches"
 ```
+### 8. Descreva o funcionamento de um escopo em JavaScript.
+
+O funcionamento do escopo em JavaScript, funciona da sequinte forma, existe o escopo global que pode ser utilizado em qualquer parte do programa e o escopo local que é utilizado apenas  dentro da sua função, mais se esta funcao possui outras funcões, ela pode ser acessada e pode ser manipulada dentro da funcao.
+
 ### 9. Veja o código a seguir, descreva o que está acontecendo e,em sua ordem correta,quais informações serão impressas na tela?
 
 
@@ -76,4 +80,4 @@ $ { impresso: 'impresso' }
 ```
 ### 10. Ao acessar o atributo de um objeto, qual a diferença entre as sintaxes objeto.atributo e objeto[‘atributo’]. Quando deve-se utilizar a segunda opção?
 
-- Não há diferença entre as sintaxes, porém para acessar um atributo que inicia com um numero deve-se usar a sintaxe 'objecto['atributo']'. 
+- Não há diferença entre as sintaxes, porém para acessar um atributo que inicia com um numero deve-se usar a sintaxe 'objecto['atributo']'.
