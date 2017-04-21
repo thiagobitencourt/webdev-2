@@ -72,5 +72,8 @@ function questaoSete(valorUm, valorDois) {
 
 var valorRetorno = questaoSete(5, "seis");
 console.log(valorRetorno);
-
 ```
+
+### 8. Descreva o funcionamento de um escopo em JavaScript.
+
+- Escopo limita o acesso e a modificacao da variavel, pelo motivo do JavaScript ter dois escopos global e local, quando é declarado uma variavel declarada fora de uma definição de uma funcao e uma variavel global, quando é feita dentro de uma funcao uma variavel se torna local.
