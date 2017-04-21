@@ -34,3 +34,13 @@ git commit -am "outro commit"
 git checkout master - Para voltar para o branch master
 git merge iss53 - Mergeado as alterações do branch iss53 para o master
 ```
+### 5. Em que situação acontece um conflito ao executar um merge entre dois branches com Git? E como resolvemos esse conflito? Em sua resposta cite os comandos envolvidos no processo de merge e se julgar necessário represente a situação de forma gráfica, assim como apresentado nas questões 3 e 4.
+
+- resposta:
+De acordo com a questão 4, um conflito de merge acontece quando temos dois branch's dentro do mesmo repositório e um arquivo é          alterado no mesmo local nos dois branch's. Digitamos o git merge iss53 para podermos combinar o master com o iss53. A melhor maneira de resolver é ver as alterações feitas e uni-las do melhor jeito possivel.
+
+```
+git merge iss53
+git status
+git commit
+```
