@@ -66,3 +66,11 @@ Respondido no arquivo Atividade.js
 ### 8. Descreva o funcionamento de um escopo em JavaScript
 
 A linguagem JavaScript tem o global e local.  Uma variável declarada fora de uma definição de função é uma variável global, e seu valor será acessível e modificável em todo o seu programa.  Uma variável declarada dentro de uma definição de função é local.  Ela é criada e destruída sempre que a função é executada e não pode ser acessada por qualquer código fora da função.
+
+### 9. Veja o código a seguir, descreva o que está acontecendo e, em sua ordem correta, quais informações serão impressas na tela?
+
+ $ undefined
+ $ ctrl
+ $ impresso
+ $ passou aqui
+ $ { impresso: 'impresso' }
