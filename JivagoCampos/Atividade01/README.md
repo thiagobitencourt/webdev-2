@@ -14,9 +14,9 @@
 - Estarei usando o exemplo, do estado atual do respositório: (tenho os arquivos /Atividade01/README.md que precisam ser adicionados
  para poderem ser commitados.)
 
-### 3. Levando em consideração commits e branches criados com Git, explique o que representa a imagem abaixo e descreva quais comandos
+### 3. Levando em consideração commits e branches criados com Git, explique o que representa a imagem abaixo e descreva quais comandos.
 
-- Git foram executados para se obter este estado.
+- Git foram executados para se obter este estado.(comentando iss53)
 
 ```
 git branch iss53
