@@ -44,7 +44,7 @@ $ git commit -am "Outro commit" - Realiza outro commit no branch iss53.
 ```
 $ git checkout master - Altera para o branch master
 $ git branch - Verifica o branch que está
-$ git merge iss53 - realiza um merge do brench atual (MASTER) com o branch ISS53
+$ git merge iss53 - realiza um merge do brench atual (MASTER) com o branch ISS53.
 ```
 
 ###5. Em que situação acontece um conflito ao executar um merge entre dois branches com Git? E como resolvemos esse conflito? Em sua resposta cite os comandos envolvidos no processo de merge e se julgar necessário represente a situação de forma gráfica, assim como apresentado nas questões 3 e 4.
