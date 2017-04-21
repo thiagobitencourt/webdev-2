@@ -36,7 +36,7 @@ $ git checkout iss53 - Muda para o branch iss53
 $ git status - Verifica o status do projeto
 $ git branch - Verifica se está dentro do branch correto
 $ git commit -am "Outra mensagem" - Realiza um commmit no branch iss53
-$ git commit -am "Outro commit" - Realiza outro commit no branch iss53
+$ git commit -am "Outro commit" - Realiza outro commit no branch iss53.
 ```
 
 ###4. A imagem a seguir representa um estado posterior à imagem apresentada na questão 3. Explique o que representa a imagem e descreva quais comandos Git foram executados para se obter este estado.
