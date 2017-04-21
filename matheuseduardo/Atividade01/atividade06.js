@@ -1,4 +1,4 @@
-//'use strict'
+'use strict'
 
 /**
  * 6.
@@ -35,11 +35,15 @@ console.log(someFunction(1, 2)); // { a: 1, b: 2 }
 var variavelGlobal = 123;
 
 function showScopeToTheTeacher() {
-  variavelDentroDaFuncao = 2; // Acabou de definir dentro da função
+  /* Acabou de definir dentro da função.
+   * Importante: com 'use strict' não vai permitir a interpretação da linha abaixo.
+   * Para que o console interprete, descomente e remova o 'use strict'.
+   */
+  // variavelDentroDaFuncao = 2;
   console.log(variavelGlobal); // 123
   variavelGlobal = 2325;
   console.log(variavelGlobal); // 2325
-  console.log(variavelDentroDaFuncao); // 2
+  //console.log(variavelDentroDaFuncao); // 2 (descomente e remova o 'use strict' para funcionar)
 }
 console.log(variavelGlobal); // 123
 /**
