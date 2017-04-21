@@ -46,5 +46,46 @@ git commit
 ```
 ### 8.Descreva o funcionamento de um escopo em JavaScript.
 
--resposta:
+- resposta:
 O funcionamento do escopo em JavaScript,  é do seguinte metodo: existe o escopo global que pode ser utilizado em qualquer parte do programa, já o escopo local pode ser utilizado apenas  dentro da sua função, mais se esta funcao possui outras funcões, ela pode ser acessada e pode ser manipulada dentro da função.
+
+### 9. Veja o código a seguir, descreva o que está acontecendo e, em sua ordem correta, quais informações serão impressas na tela?
+
+- resposta:
+Teste de mesa
+
+'var1' é declarada e recebe o valor undefined
+criando a função 'ctrlP' é definida, e recebe como parâmetro um valor e uma função.
+
+imprime na tela = undefined
+
+'var1' recebe 'impresso' e declara outra variavel 'rt', valor de 'rt' valor de retorno de 'ctrlP'
+ctrlP recebe dois valores como parâmetro, o primeiro valor que ela recebe é 'var1'
+executando 'ctrlP' que esta passando dois valores, mais chegou aqui como 'val' e esta recebendo como valor 'var1'
+que na verdade recebe o valor 'impresso'
+
+ela recebe outro parâmetro que é 'imp' , e o valor que 'imp' recebe uma função anômima, e passa ela como segundo parâmetro,quando essa função chega no ctrlP
+ela tem o valor de 'imp' e o valor é anômimo
+
+imprime na tela = ctrl
+
+'ctrlP' recebe a função anônima e executa a função 'imp' e passa o valor impresso da variável 'vlr'.
+É impresso o valor da variável 'vlr':
+
+imprime na tela = impresso
+
+A função 'var1' executa e retorna na tela
+
+imprime na tela = passou aqui
+
+Executa a função anônima e salva o valor de 'ctrlP' na variável 'rt', e envia para a tela o atributo e valor impresso.
+
+imprime na tela = { impresso: 'impresso' }
+
+```
+undefined
+ctrl
+impresso
+passou aqui
+{ impresso: 'impresso' }
+```
