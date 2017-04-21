@@ -43,14 +43,11 @@
 	a brench principal (master) esta no commit versao "c6" e a segunda branch (iss53) esta fazendo uma migração para
 	a o commit atual da master.
 
-	
+
 
 	```
+	$(iss53) git checkout master
 	$(master) git commit
-	$(master) git checkout iss53
-	```
-
-	```
-	$(iss53) git pull origin master
-	$(iss53) git merge master
+	$(master) git pull origin master
+	$(master) git merge iss53
 	```	
