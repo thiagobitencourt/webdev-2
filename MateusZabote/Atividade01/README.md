@@ -3,7 +3,6 @@
 ## Questões
 
 ### 1. Quais são as duas formas de se obter um repositório git?
-
 - git init: Coloca o diretório sobre controle do Git.
 
 - git clone: Faz o clone de um repositorio existente.
@@ -30,11 +29,11 @@ Esta mostrando que o arquivo Atividade01/README.md foi modificado.
 
 ### 3. Levando em consideração commits e branches criados com Git, explique o que representa a imagem abaixo e descreva quais comandos Git foram executados para se obter este estado
 
-foi criado um branch iss53 e feito um commit
-depois foi criado um checkout para iss53
-usado git status para ver oque tem para commitar
-git branch para ver em qual branch Esta
-git commit para commitar na iss53
+foi criado um branch iss53 e feito um commit</br>
+depois foi criado um checkout para iss53</br>
+usado git status para ver oque tem para commitar</br>
+git branch para ver em qual branch Esta</br>
+git commit para commitar na iss53</br>
 
 ```
 git branch iss53
@@ -52,12 +51,12 @@ git commit -am "outro commit"
 IMAGEM -> https://git-scm.com/book/en/v2/images/basic-merging-2.png
 
 
-após ter feito um commit no iss53
-git branch para saber em que branch esta
-foi feito um checkout para trocar de branch para o master
-git branch para saber se trocou de branch
-e foi feito um merge para copiar as informações do iss53
-usado commit para commitar o master
+após ter feito um commit no iss53</br>
+git branch para saber em que branch esta</br>
+foi feito um checkout para trocar de branch para o master</br>
+git branch para saber se trocou de branch</br>
+e foi feito um merge para copiar as informações do iss53</br>
+usado commit para commitar o master</br>
 
 ```
 git branch
@@ -109,9 +108,9 @@ console.log(valorRetorno);
 
 ### 8. Descreva o funcionamento de um escopo em JavaScript
 
-O escopo é uma forma de limitar informações entre funções,metodos, variaveis...
-Onde a variaveis de fora é global e tem acesso a qualquer função.
-Já funções de dentro do escopo não tem acesso a variaveis de fora.
+O escopo é uma forma de limitar informações entre funções,metodos, variaveis...</br>
+Onde a variaveis de fora é global e tem acesso a qualquer função.</br>
+Já funções de dentro do escopo não tem acesso a variaveis de fora.</br>
 ```
 Ex:
 _____________________________________
@@ -126,4 +125,48 @@ _____________________________________
 |          |             |VARIAVEL2  |
 |          |             |           |
 |__________|_____________|___________|
+```
+
+
+### 9. Veja o código a seguir, descreva o que está acontecendo e, em sua ordem correta, quais informações serão impressas na tela?
+```
+var var1;
+function ctrlP(val, imp) {
+  console.log('ctrl');
+  var1 = "passou aqui"; // Altera o valor de var1
+  return imp(val);
+}
+
+console.log(var1);
+var1 = "impresso"; // Altera o valor de var1
+var rt = ctrlP(var1, function(vlr) {
+  console.log(vlr);
+  return {
+    impresso: vlr
+  }
+});
+console.log(var1);
+console.log(rt);
+
+```
+declara var1 com valor indefinindo</br>
+cria uma função ctrlP com parametro val,imp</br>
+imprime a ctrl como undefined</br>
+var1 recebe "passou aqui"</br>
+executa a função com parametro val</br>
+imprime valor de var1</br>
+var1 recebe "impresso"</br>
+cria variavel rt que recebe função ctrlP</br>
+imprime vlr</br>
+retorna objeto com valor de vlr</br>
+imprime var1i</br>
+imprime rt</br>
+```
+Resultado:
+
+undefined
+ctrl
+impresso
+passou aqui
+{ impresso: 'impresso' }
 ```
