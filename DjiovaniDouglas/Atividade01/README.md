@@ -58,6 +58,36 @@
 
  ```
 
+### 5. Em que situação acontece um conflito ao executar um merge entre dois branches com Git? E como resolvemos esse conflito? Em sua resposta cite os comandos envolvidos no processo de merge e se julgar necessário represente a situação de forma gráfica, assim como apresentado nas questões 3 e 4.
+
+    - Acontece um conflito quando dois dois branches no mesmo repositorio e o mesmo arquivo é alterado, assim se uma alteração estiver sobre uma linha que já tenha conteudo acontece o conflito.
+
+    - Para resolver deve ver no arquivo onde esta o conflito. É identificado por ```<<<<<<< HEAD` / `=======` / `>>>>>>> iss53```.
+    - E ajustar o arquivo conforme seja evitado o flito.
+```
+  $ git branch
+  $ git checkout master
+  $ git branch
+  $ git merge iss53
+  $ git commit -am "merge do iss53"  'vai dar erro de conflito'
+
+    ' após corrigir'
+  $ git commit -am "commit sem conflito"
+```
+
+### 6. Usando a sintaxe da linguagem JavaScript, crie um objeto com um atributo que tenha um valor do tipo string,um atributo do tipo number e um atributo com valor do tipo array. Atribua este objeto a uma constante.
+
+```
+  const foo = {
+  chave: 'valor string',
+  atributoInt: 33,
+  atributoArray: [],
+  atributoFunc: function(){}
+ };
+
+```
+
+
 ### 9.Veja o código a seguir, descreva o que está acontecendo e, em sua ordem correta, quais informações serão impressas na tela?
 
   ```
