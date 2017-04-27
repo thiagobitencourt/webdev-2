@@ -1,0 +1,19 @@
+{
+  "name": "webdev-2",
+  "version": "1.0.0",
+  "description": "Estive presente na aula do dia 30/03/2017\r teste de alteracao",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/djiovani-douglas/webdev-2.git"
+  },
+  "author": "djiovani-douglas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/djiovani-douglas/webdev-2/issues"
+  },
+  "homepage": "https://github.com/djiovani-douglas/webdev-2#readme"
+}
