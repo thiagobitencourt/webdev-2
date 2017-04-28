@@ -29,3 +29,4 @@ função questao7(valor1,valor2){
 }
 
 console.log(questao7(3,6););
+
