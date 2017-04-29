@@ -1,1 +1,0 @@
-# Lucas Gustavo Krüger
