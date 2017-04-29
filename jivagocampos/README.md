@@ -1,1 +1,0 @@
-# Jivago Campos Oliveira.
