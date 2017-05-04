@@ -11,8 +11,24 @@ const usuario = {
 };
 
 function Usuario(){
+
+    var funcaoPrivada = function(){
+      console.log("Aqui é privado");
+    }
+
+    this.id = 1;
+
     this.autenticarUsuario = function(user){
+      //funcaoPrivada();
       console.log("autentica");
+
+      // if(user.username === usuario.username && user.password === usuario.password){
+      //   return true;
+      // }else{
+      //   return false;
+      // }
+
+      return (user.username === usuario.username && user.password === usuario.password);
     }
 
     this.crearUsuario = function(user){
@@ -24,5 +40,8 @@ function Usuario(){
     }
 }
 
-var usu = new Usuario();
-usu.autenticarUsuario("um nome de usuario");
+//var usu = new Usuario();
+//usu.autenticarUsuario("um nome de usuario");
+//console.log(usu);
+
+module.exports = Usuario;
