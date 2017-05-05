@@ -1,56 +1,43 @@
 'use strict';
 
-//tipos e valores
-//tipo de um valor é a sua forma de representação
-//var, let, const
+//const fs = require('fs'); // modulo interno do node
 
-const valorConstante = 10;
-//valorConstante = 20;
-//console.log(valorConstante); //imprime valor no terminal...
+const express = require('express');
+const Usuario = require('./usuario');
 
-//tipos
-var valorInt = 10; //integer, number (numero)
-console.log(typeof valorInt);
-var valorStr = "Hello"; //string, cadeia de caracteres
-console.log(typeof valorStr);
-var valorBooleanTrue = true; //true or false, verdadeiro ou falso
-console.log(typeof valorBooleanTrue);
-var valorBooleanFalse = false;
-console.log(typeof valorBooleanFalse);
-var valorNulo = null; //nulo, vazio, sem valor
-console.log(typeof valorNulo);
-var valorIndefinido = undefined; //não definido
-console.log(typeof valorIndefinido);
-var valorObjeto = {}; //objeto
-console.log(typeof valorObjeto);
-var valorArray = []; //Array
-console.log(typeof valorArray);//objetc
+const app = express();
 
-function funcaoQualquer(){
+app.get('/', function (req, res) {
+  console.log("Alguem chamou /")
+  res.send('Hello World!');
+});
 
-}
-console.log(typeof funcaoQualquer);
+app.get('/usuario', function(req, res) {
+  console.log("alguem chamou /usuario");
 
-var pessoa = {
-  nome: "Lucas",
-  idade: 24,
-  graduado: false
-};
+  const usuario = {
+    username: "nome",
+    password: "senha"
+  }
+  res.send(usuario);
+});
 
-console.log(pessoa.nome);
-console.log(pessoa.idade);
-
-console.log(pessoa['nome']);
-console.log(pessoa['graduado']);
+app.listen(3000, function () {
+  console.log('servidor ouvindo a porta 3000!');
+});
 
 
-var umaVariavel = 20;
-
-var arrayDoThalles = [
-  "sóescrever",
-  umaVariavel,
-  true,
-  pessoa
-];
-
-console.log(arrayDoThalles[0]);
+//  var usu = new Usuario();
+//  console.log(usu);
+//
+// var user = {
+//   username: 'fernandokniss',
+//   password: '123123'
+// };
+//
+// var usuarioValido = usu.autenticarUsuario(user);
+// if (usuarioValido) {
+//   console.log("Login efetuado com sucesso");
+// } else {
+//   console.log("Nome de usuario ou senha incorreto");
+// }
