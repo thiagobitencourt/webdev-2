@@ -1,47 +1,23 @@
 'use strict';
 
-// Tipos e valores
-// Tipo de um valor é a sua forma de representação
-// var, let, const
-const valorConstante = 10;
-console.log(valorConstante);
+const express = require('express');
 
-var valorInt = 10;
-console.log(typeof valorInt);
+let app = express();
 
-var valorStr = "Hello";
-console.log(typeof valorStr);
+app.get('/', (req, res) => {
+  console.log('Alguém chamou...');
+  res.send("Eu acessei a url no caminho /");
+});
 
-var valorBoolean = true || false;
-console.log(typeof valorBoolean);
+app.get('/usuario', (req, res) => {
+  const usuario = {
+    username: "nome",
+    senha: "0932184901"
+  };
+  console.log("Alguém chamou um usuário.");
+  res.send(usuario);
+});
 
-var valorNulo = null;
-console.log(typeof valorNulo);
-
-var valorIndefinido = undefined;
-console.log(typeof valorIndefinido);
-
-var valorObjeto = { };
-console.log(typeof valorObjeto);
-
-var valorArray = [];
-console.log(typeof valorArray);
-
-var str = new String("");
-console.log(typeof str);
-
-var num = new Number(12);
-console.log(typeof num);
-
-function foo() {}
-console.log(typeof foo);
-
-var pessoa = {
-  nome: "Lucas",
-  idade: 24,
-  graduado: false
-};
-
-console.log(pessoa.nome);
-console.log(pessoa.idade);
-console.log(pessoa['graduado']);
+app.listen(3000, () => {
+  console.log('Servidor ouvindo na porta 3000.');
+})
