@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/willink01/webdev-2/issues"
   },
-  "homepage": "https://github.com/willink01/webdev-2#readme"
+  "homepage": "https://github.com/willink01/webdev-2#readme",
+  "dependencies": {
+    "express": "^4.15.2"
+  },
+  "devDepedencies":{
+    "mocha":"1.0.0"
+  }
 }

@@ -1,24 +1,49 @@
 'use strict';
 
-console.log("Ola Mundo");
+const Express = require('express');
+const Usuario = require('./usuario');
+
+const app = Express();
+
+app.get('/',function(){
+	console.log("alguem chamou /")
+
+});
 
 
-var x=10;
-var y="ximbinha";
+app.get('/usuario',function(req, res){
+	console.log("alguem chamou /usurio")
 
-const c=9;
+	const usuario = {
+		username: "nome",
+		password: "senha"
+		}
+		res.send(usuario);
+});
 
-console.log(c);
+app.listen(3000,function(){
+	console.log('exemplo de app ouvindo a porta 3000!')
+});
 
-function liberarOsAlunosDaAula(){
-	return false;
+
+
+
+
+var usu=new Usuario();
+
+console.log(usu);
+
+var user={
+	username: 'willink01',
+	password: '12123',
+	email:'paulistinhaem@hotmail.com',
+	age:20
 }
 
-var resposta = liberarOsAlunosDaAula();
+var usuarioValido = usu.autenticar(user);
+if (usuarioValido){
+	console.log("login com sucesso");
+} else {
+	console.log("usuario ou senha invalido");
+}
 
-console.log(resposta);
-//undefined = valor indefinido;
-
-var valorObjeto={ };
-//typeof = retorna o tipo do q seja q for ex:typeof x;
-var valorArray=[];
