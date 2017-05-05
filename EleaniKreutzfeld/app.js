@@ -1,29 +1,43 @@
 'use strict';
 
-const valorConstante = 10;
-// valorConstante = 20;
+const Usuario = require('./usuario');
+const express = require('express');
 
-console.log(valorConstante);
+const app = express();
 
-var valorInt = 10;
-console.log(typeof valorInt);
+app.get('/', function(req, res){
+  console.log("Alguém chamou /");
+  res.send('retornou o /');
+});
 
-var valorStr = "Hello";
-var valorBooleanTrue = true;
-var valorBooleanFalse = false;
+app.get('/usuario', function(req, res){
+  console.log("Alguém chamou /usuario");
 
-var valorNulo = null;
-var valorIndefinido = undefined;
+  const usuario = {
+    username: "nome",
+    password: "senha"
+  }
 
-var valorObjeto = { };
+  res.send(usuario);
 
-var valorArray = [];
-var valorArray2 = new Array();
+});
 
-var pessoa = {
-  nome: "Lucas",
-  idade: 24,
-  graduado: false
+app.listen(3000, function () {
+  console.log('Exemplo app listening on port 3000!');
+});
+
+
+var uso = new Usuario();
+console.log(uso);
+
+var user = {
+  username: 'Eleani',
+  password: '123'
 };
 
-console.log(pessoa.nome);
+var usuarioValido = uso.autenticarUsuario(user);
+if (usuarioValido){
+  console.log('Login efetuado com sucesso!');
+} else {
+  console.log("Nome do usuário ou senha incorretos!");
+}
