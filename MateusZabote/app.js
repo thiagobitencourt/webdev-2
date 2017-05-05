@@ -1,138 +1,40 @@
-'Use strict';
-//tipos e valores
-//tipo de um valor é a sua forma de representação
-//var, let, const
-const valorConstante = 10;
-//valorConstante =20;
-//console.log(valorConstante);//imprime valor no terminal
+'use strict';
 
-//tipos
-var valorInt = 10; //inteiro,number (numero)
-console.log(typeof valorInt);//imprime tipo do valor
+// const fs = require('fs'); // modulo interno do node
 
-var valorStr = "Hello"; //cadeia de caracteres
-var valorBooleanTrue = true; //true or false
-var valorBooleanFalse = false; //true or false
 
-var valorNulo = null; // nulo, vaziu, sem valor
-var valorIndefinido = undefined; //não definido
+const express = require('express');
+const Usuario = require('./usuario');
 
-var valorObjeto = { }; //objeto
+const app = express();
 
-var str = "world";
-str = new String(""); //forma não literal de criar uma string
-var num = new Object();
+app.get('/usuario', function(req, res){
+  console.log("alguem chamou /usuario");
 
-var valorArray = []; //Array é um tipo especial de object
-
-function funcaoQualquer(){ // function
-
+const usuario = {
+  username: "nome",
+  password: "senha"
 }
-//Aspas
-//"StringQualquer" 'StringQualquer';//não tem difereça as Aspas
+res.send(usuario);
+});
 
-//Objetos
 
-var pessoa = {
-  nome: "Lucas",
-  idade: 24 ,
-  graduado: false,
-  "numero cpf" : "indigente"
+
+app.listen(3000, function () {
+  console.log("servidor ouvindo na porta 3000");
+});
+
+
+var usu = new Usuario();
+console.log(usu);
+
+var user ={
+  username: "MateusZabote",
+  password: '123456'
 };
-
-console.log(pessoa.nome);//imprime o nome
-console.log(pessoa.idade);// imprime a idade
-
-console.log(pessoa['nome']);//imprime o nome
-console.log(pessoa['idade']);// imprime a idade
-
-pessoa['2'] = 40;
-var atributo = "numero cpf";
-console.log(pessoa[atributo]); //['numero cpf']);
-
-
-//Array
-var umaVariavel = 55;
-
-var arrayDoThalles = [
-  "sóescrever",
-  umaVariavel,
-  true,
-  pessoa
-];
-
-
-
-console.log(arrayDoThalles["0"]);
-console.log(pessoa["nome"]);
-
-
-//Função
-
-function Calcula() {
-console.log("Estou dentro da função");
-
-//  var a;
-//  var obj ={};
-//  var arr = {};
-//
-//  function x(){
-//
-//  }
+var usuarioValido = usu.autenticarUsuario(user);
+if(usuarioValido){
+  console.log("login efetuado com sucesso");
+} else {
+  console.log("Nome de usuario ou senha incorreto");
 }
-
-Calcula();
-
-var chamada = function calculaDenovo(){
-  console.log("função calcula denovo");
-};
-
-chamada();
-
-var objeto = {
-  bar: "asda",
-  foo: chamada
-};
-
-objeto.bar;//
-console.log(objeto.foo);// diz que é uma functione mostra o nome
-objeto.foo();// chama oque esta dentro da fução
-
-var calculaOutrVez = function(valor1){
-  console.log(valor1);
-  var variavel1 ={
-    attr: 69
-  };
-
-  var variavelArray =[
-    "qualquer",
-    variavel1
-  ];
-
-  var variavelFunc = function(){
-    console.log("variavelFunc...");
-  }
-
-return variavelFunc;
-//  return variavelArray;
-  //return " Retorno da função";
-}
-
-calculaOutrVez();//sem valor
-calculaOutrVez("Com valor");
-var funcRetorno = calculaOutrVez("deve ter um retorno");//com retorno
-
-console.log(funcRetorno);
-console.log(funcRetorno.attr);
-//console.log( funcRetorno[1].attr);
-console.log(funcRetorno());
-
-function recebeFuncao(funcaoRecebida){
-  console.log(funcaoRecebida);
-  funcaoRecebida();
-}
-
-var funcParametro = function(){
-  console.log("Função que eu passei por parametro");
-}
-recebeFuncao(funcParametro);
