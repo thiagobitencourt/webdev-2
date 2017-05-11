@@ -1,0 +1,37 @@
+'use strict';
+
+const presenca = [
+  {
+    aula: "04/05/2017",
+    alunosPresentes: [
+      { aluno: "Alexandro", aulas: 4 },
+      { aluno: "Jivago", aulas: 4 },
+      { aluno: "Fernando", aulas: 4 },
+      { aluno: "Christopher", aulas: 4 },
+      { aluno: "Matheus", aulas: 4 },
+      { aluno: "Mateus", aulas: 4 },
+      { aluno: "Leandro", aulas: 4 },
+      { aluno: "Eleani", aulas: 4 },
+      { aluno: "Willian", aulas: 4 },
+      { aluno: "Diogo", aulas: 4 },
+      { aluno: "Djovani", aulas: 4 },
+      { aluno: "Lucas", aulas: 1 }
+    ]
+  },
+  {
+    aula: "11/05/2017",
+    alunosPresentes: [
+      
+    ]
+  }
+];
+
+
+function mostraPresenca() {
+  presenca.forEach(aula => {
+    console.log("aula: ", aula.aula);
+    console.log("alunos presentes: ", aula.alunosPresentes.length);
+  });
+}
+
+mostraPresenca();
