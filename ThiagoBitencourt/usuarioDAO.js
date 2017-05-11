@@ -1,11 +1,4 @@
 'use strict';
-// objeto usuario
-const usuario = {
-  username: 'thiagobitencourt',
-  password: 'minhasenhasegura',
-  email: 'thiago@bitencourt.com.br',
-  age: 25
-};
 
 var arrayUsuarios = [];
 
@@ -23,13 +16,19 @@ function Usuario() {
     arrayUsuarios.push(user);
   }
 
-  this.obterTodosOsUsuario = function() {
+  this.obterTodosOsUsuarios = function() {
     return arrayUsuarios;
   };
 
-  this.obterUsuario = function() {
+  this.obterUsuario = function(username) {
     console.log("obter usuario");
-    return usuario;
+    var usuarioRetorno;
+    arrayUsuarios.forEach(function(usuario) {
+      if(usuario.username === username) {
+        usuarioRetorno = usuario;
+      }
+    });
+    return usuarioRetorno;
   }
 }
 
