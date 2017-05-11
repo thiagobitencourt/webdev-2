@@ -7,6 +7,8 @@ const usuario = {
   age: 25
 };
 
+var arrayUsuarios = [];
+
 function Usuario() {
   this.autenticarUsuario = function(user) {
     console.log("autenticar usuario");
@@ -17,8 +19,13 @@ function Usuario() {
   }
 
   this.criarUsuario = function(user) {
-    console.log("criar usuario");
+    console.log("criar usuario ", user);
+    arrayUsuarios.push(user);
   }
+
+  this.obterTodosOsUsuario = function() {
+    return arrayUsuarios;
+  };
 
   this.obterUsuario = function() {
     console.log("obter usuario");

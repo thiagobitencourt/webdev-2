@@ -7,7 +7,6 @@ const app = express();
 // parser para json
 app.use(bodyParser.json());
 
-
 const usuarioRepo = new UsuarioDAO();
 
 app.get('/', function(req, res) {
@@ -17,11 +16,12 @@ app.get('/', function(req, res) {
 
 app.get('/usuario', function(req, res) {
   console.log("alguém chamou /usuario");
-  res.send(usuarioRepo.obterUsuario());
+  res.send(usuarioRepo.obterTodosOsUsuario());
 });
 
 app.post('/usuario', function(req, res) {
-  console.log(req.body);
+  // console.log(req.body);
+  usuarioRepo.criarUsuario(req.body);
   res.send(req.body);
 });
 
