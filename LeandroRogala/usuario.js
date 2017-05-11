@@ -10,6 +10,8 @@ const usuario = {
   email: 'leandrorogala17@hotmail.com'
 };
 
+var arrayUsuarios = [];
+
 function Usuario(){
 
     var funcaoPrivada = function(){
@@ -20,23 +22,24 @@ function Usuario(){
 
     this.autenticarUsuario = function(user){
       //funcaoPrivada();
-      console.log("autentica");
-
       // if(user.username === usuario.username && user.password === usuario.password){
       //   return true;
       // }else{
       //   return false;
       // }
-
       return (user.username === usuario.username && user.password === usuario.password);
     }
 
-    this.crearUsuario = function(user){
-      console.log("crear");
+    this.criarUsuario = function(user){
+      arrayUsuarios.push(user);
+    }
+
+    this.obterTodosOsUsuarios = function(){
+      return arrayUsuarios;
     }
 
     this.obterUsuario = function(){
-      console.log("obter ");
+      return usuario;
     }
 }
 
