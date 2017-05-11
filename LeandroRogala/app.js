@@ -1,6 +1,6 @@
 'use strict';
 
-const usuario = require('./04-05/usuario');
+const usuario = require('./usuario');
 const express = require('express');
 
 const app = express();
