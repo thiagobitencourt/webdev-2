@@ -24,7 +24,7 @@ app.post('/usuario', function(req, res){
 });
 
 app.get('/usuario/:username', function(req, res){
-
+  res.send(req.params);
 });
 
 app.get('/', function (req, res) {
