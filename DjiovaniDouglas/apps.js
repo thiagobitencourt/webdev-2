@@ -1,41 +1,39 @@
 'use strict';
-
-
 const express = require('express');
-const Usuario = require('./usuario');
+const bodyParser = require('body-parser');
 
+const UsuarioDAO = require('./usuarioDAO');
 const app = express();
+// parser para json
+app.use(bodyParser.json());
 
-app.get('/', function(req, res){
-  console.log("alguem chamou /")
-  res.send("alguem chamou /")
-});
+const usuarioRepo = new UsuarioDAO();
 
-app.listen(3000, function (){
-    console.log('Servidor ouvindo na porta 3000')
+app.get('/', function(req, res) {
+  console.log("Alguém chamou /");
+  res.send("você acessou a rota /");
 });
 
 app.get('/usuario', function(req, res) {
-  console.log("alguem chamou /usuario");
-
-  const usuario = {
-    username: "nome",
-    passsword: "senha"
-  }
-  res.send(usuario);
+  console.log("alguém chamou /usuario");
+  res.send(usuarioRepo.obterTodosOsUsuarios());
 });
 
-var usu = new Usuario();
-//console.log(usu);
+app.post('/usuario', function(req, res) {
+  // console.log(req.body);
+  usuarioRepo.criarUsuario(req.body);
+  res.send(req.body);
+});
 
-var user = {
-    username: 'djiovani',
-    password: '123456'
-};
+app.get('/usuario/:username', function(req, res) {
+  var usuario = usuarioRepo.obterUsuario(req.params.username);
+  if(usuario) {
+    res.send(usuario);
+  } else {
+    res.status(404).send("Não encontramos o usuário " + req.params.username);
+  }
+});
 
-var usuarioValido = usu.autenticarUsuario(user);
-if(usuarioValido) {
-  console.log("Login efetuado com sucesso");
-} else {
-  console.log("Nome de Usuário ou senha incorreto");
-}
+app.listen(3000, function() {
+  console.log("Servidor ouvindo na porta 3000");
+});
