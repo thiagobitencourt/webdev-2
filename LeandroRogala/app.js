@@ -23,6 +23,10 @@ app.post('/usuario', function(req, res){
   res.send(req.body);
 });
 
+app.get('/usuario/:username', function(req, res){
+
+});
+
 app.get('/', function (req, res) {
   res.send('Hello World!');
 });
