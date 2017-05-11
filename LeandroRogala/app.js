@@ -24,7 +24,13 @@ app.post('/usuario', function(req, res){
 });
 
 app.get('/usuario/:username', function(req, res){
-  res.send(req.params);
+  var usuario = usuarioRepo.obterUsuario(req.params.username);
+  if(usuario){
+    res.send(usuario);
+  } else {
+    res.status(404).send("Não encontramos o usuario: "+req.params.username);
+  }
+  // res.send(req.params.username);
 });
 
 app.get('/', function (req, res) {
