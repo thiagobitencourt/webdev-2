@@ -16,7 +16,12 @@ app.get('/', function(req, res) {
 
 app.get('/usuario', function(req, res) {
   console.log("alguém chamou /usuario");
-  res.send(usuarioRepo.obterTodosOsUsuarios());
+  const todosUsuarios = usuarioRepo.obterTodosOsUsuarios();
+  if(todosUsuarios.length > 0) {
+    res.send(todosUsuarios);
+  } else {
+    res.send("Nenhum usuário cadastrado!");
+  }
 });
 
 app.post('/usuario', function(req, res) {
