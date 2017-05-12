@@ -2,7 +2,7 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
-const UsuarioDAO = require('./usuario');
+const UsuarioDAO = require('./usuarioDAO');
 
 const usuarioRepo = new UsuarioDAO();
 
@@ -38,8 +38,8 @@ app.get('/usuario/:username', (req, res) => {
 });
 
 app.post('/usuario', (req, res) => {
-  usuarioRepo.criarUsuario(req.body);
-  res.send(usuarioRepo.obterUsuarios());
+  const updatedUserList = usuarioRepo.criarUsuario(req.body);
+  res.send(updatedUserList);
 });
 
 app.put('/usuario/:username', (req, res) => {
