@@ -12,7 +12,6 @@ function Usuario() {
   }
 
   this.criarUsuario = function(user) {
-    console.log("criar usuario ", user);
     arrayUsuarios.push(user);
   }
 
@@ -21,7 +20,6 @@ function Usuario() {
   };
 
   this.obterUsuario = function(username) {
-    console.log("obter usuario");
     var usuarioRetorno;
     arrayUsuarios.forEach(function(usuario) {
       if(usuario.username === username) {
@@ -38,13 +36,27 @@ function Usuario() {
         usuarioIndex = index;
       }
     });
-    console.log(usuarioIndex);
     if(typeof usuarioIndex !== 'undefined') {
       arrayUsuarios.splice(usuarioIndex, 1);
       return true;
     } else {
       return false;
     }
+  }
+
+  this.alterarUsuario = function(username, newUser) {
+    // achar o usuario, alterar o usuario
+    var alterou = false;
+    arrayUsuarios.forEach(function(usuario) {
+      if(usuario.username === username) {
+        usuario.username = newUser.username;
+        usuario.password = newUser.password;
+        usuario.email = newUser.email;
+        usuario.age = newUser.age;
+        alterou = true;
+      }
+    });
+    return alterou;
   }
 }
 
