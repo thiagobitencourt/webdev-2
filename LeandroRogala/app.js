@@ -56,6 +56,15 @@ app.delete('/usuario/:username', function(req, res){
   }
 });
 
+app.post('/login', function(req, res){
+  var autenticado = usuarioRepo.autenticarUsuario(req.body.username, req.body.password);
+  if(autenticado){
+    res.send("Usuario autenticado com sucesso");
+  }else{
+    res.status(400).send("Usuario ou senha invalido");
+  }
+});
+
 app.get('/', function (req, res) {
   res.send('Hello World!');
 });

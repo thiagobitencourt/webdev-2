@@ -11,14 +11,21 @@ function Usuario(){
 
     this.id = 1;
 
-    this.autenticarUsuario = function(user){
+    this.autenticarUsuario = function(login, password){
       //funcaoPrivada();
       // if(user.username === usuario.username && user.password === usuario.password){
       //   return true;
       // }else{
       //   return false;
       // }
-      return (user.username === usuario.username && user.password === usuario.password);
+      var usuario = arrayUsuarios.find(function(usuario){
+        return usuario.username === login;
+      });
+      if(usuario){
+        return usuario.password === password;
+      }else{
+        return false;
+      }
     }
 
     this.criarUsuario = function(user){
