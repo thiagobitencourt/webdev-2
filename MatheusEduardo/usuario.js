@@ -1,19 +1,38 @@
 'use strict';
 
-const usuario = {
-  username: "matheuseduardo",
-  password: "123456",
-  email: "matheus.eduardo7890@gmail.com",
-  age: 20
-};
+let users = [];
 
-function Usuario() {
+function UsuarioDAO() {
   
-  this.autenticar = function(user) {
-    console.log(user);
+  this.autenticarUsuario = (user) => {
+    return users.some(u => u.username == user.username && u.password == u.password);
   }
 
+  this.criarUsuario = (usuario) => {
+    users.push(usuario);
+  }
+
+  this.obterUsuario = (username) => {
+    return users.find(user => user.username === username);
+  }
+
+  this.obterUsuarios = () => users;
+
+  this.updateUsuario = (username, updatedUser) => {
+    users = users.map(user => (
+      username === user.username ? Object.assign({}, user, updatedUser) : user
+    ));
+    return obterUsuario(updatedUser.username);
+  }
+
+  this.removerUsuario = (username) => {
+    const currentUser = users.find(user => user.username === username);
+    if(currentUser) {
+      users.splice(users.indexOf(currentUser), 1);
+      return true;
+    }
+    return false;
+  }
 }
 
-let usu = new Usuario();
-usu.autenticar(usuario);
+module.exports = UsuarioDAO;
