@@ -10,19 +10,24 @@ app.use(bodyParser.json());
 const usuarioRepo = new UsuarioDAO();
 
 app.get('/', function(req, res) {
-  console.log("Alguém chamou /");
   res.send("você acessou a rota /");
 });
 
-app.get('/usuario', function(req, res) {
-  console.log("alguém chamou /usuario");
-  res.send(usuarioRepo.obterTodosOsUsuarios());
+app.post('/login', function(req, res) {
+  var sucesso = usuarioRepo.autenticarUsuario(req.body.username, req.body.password);
+  if(sucesso) {
+    res.send("Usuário autenticado com sucesso!");
+  } else {
+    res.status(400).send("Nome de usuário ou senha estão incorretos");
+  }
 });
 
-app.post('/usuario', function(req, res) {
-  // console.log(req.body);
-  usuarioRepo.criarUsuario(req.body);
-  res.send(req.body);
+app.get('/usuario', function(req, res) {
+  const todosUsuarios = usuarioRepo.obterTodosOsUsuarios();
+  if(todosUsuarios.length) {
+    return res.send(todosUsuarios);
+  }
+  res.send("Nenhum usuário cadastrado!");
 });
 
 app.get('/usuario/:username', function(req, res) {
@@ -31,6 +36,29 @@ app.get('/usuario/:username', function(req, res) {
     res.send(usuario);
   } else {
     res.status(404).send("Não encontramos o usuário " + req.params.username);
+  }
+});
+
+app.post('/usuario', function(req, res) {
+  usuarioRepo.criarUsuario(req.body);
+  res.send(req.body);
+});
+
+app.delete('/usuario/:username', function(req, res) {
+  var sucesso = usuarioRepo.removerUsuario(req.params.username);
+  if(sucesso) {
+    res.send("Usuário removido com sucesso!");
+  } else {
+    res.send("Usuário não foi encontrado");
+  }
+});
+
+app.put('/usuario/:username', function(req, res) {
+  var alterou = usuarioRepo.alterarUsuario(req.params.username, req.body);
+  if(alterou) {
+    res.send("Usuário alterado com sucesso!");
+  } else {
+    res.send("Usuário não foi encontrado");
   }
 });
 
