@@ -15,7 +15,12 @@ var user = {
 }
 
 app.get('/usuario', function(req, res){
-  res.send(usuarioRepo.obterTodosOsUsuarios());
+  var arrayDeUsuarios = usuarioRepo.obterTodosOsUsuarios();
+  if(arrayDeUsuarios[0]){
+    res.send(usuarioRepo.obterTodosOsUsuarios());
+  }else{
+    res.status(404).send("Nenhum usuario encontrado !");
+  }
 });
 
 app.post('/usuario', function(req, res){
@@ -31,6 +36,15 @@ app.get('/usuario/:username', function(req, res){
     res.status(404).send("Não encontramos o usuario: "+req.params.username);
   }
   // res.send(req.params.username);
+});
+
+app.delete('/usuario/:username', function(req, res){
+  var sucesso = usuarioRepo.removerUsuario(req.params.username);
+  if(sucesso){
+    res.send("O usuario foi removido com sucesso");
+  }else{
+    res.send("O usuário não foi encontrado");
+  }
 });
 
 app.get('/', function (req, res) {
