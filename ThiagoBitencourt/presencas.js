@@ -21,7 +21,18 @@ const presenca = [
   {
     aula: "11/05/2017",
     alunosPresentes: [
-      
+      { aluno: "Lucas", aulas: 4 },
+      { aluno: "Matheus", aulas: 4 },
+      { aluno: "Christopher", aulas: 4 },
+      { aluno: "Jivago", aulas: 4 },
+      { aluno: "Fernando", aulas: 4 },
+      { aluno: "Leandro", aulas: 4 },
+      { aluno: "Herykson", aulas: 4 },
+      { aluno: "Thales", aulas: 4 },
+      { aluno: "Willyan", aulas: 4 },
+      { aluno: "Mateus", aulas: 4 },
+      { aluno: "Djovani", aulas: 2 },
+      { aluno: "Alexandro", aulas: 1 }
     ]
   }
 ];
