@@ -30,6 +30,22 @@ function Usuario() {
     });
     return usuarioRetorno;
   }
+
+  this.removerUsuario = function(username) {
+    var usuarioIndex;
+    arrayUsuarios.forEach(function(usuario, index) {
+      if(usuario.username === username) {
+        usuarioIndex = index;
+      }
+    });
+    console.log(usuarioIndex);
+    if(typeof usuarioIndex !== 'undefined') {
+      arrayUsuarios.splice(usuarioIndex, 1);
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
 
 module.exports = Usuario;
