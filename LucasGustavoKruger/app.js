@@ -1,32 +1,20 @@
 'use strict';
 
-const port = 3000;
-
+const dbConfig = require('./db');
 const express = require('express');
 const bodyParser = require('body-parser');
-const app = express();
 
-app.use(bodyParser.json())
+const produto = require('./crud/produto'); 
+const port = 3000;
+const app = express(); 
 
-app.get('/', function(req, res) {
-  console.log('Alguém chamou /');
-  res.send('Olá...');
-});
+app.use(bodyParser.json());
+app.use(dbConfig.connect);
+app.get('/', ((req, res) => res.status(200).send("Hello World")));
+app.get('/produtos', produto.getAll); 
+app.get('/produto/:id', produto.get);
+app.post('/produto', produto.save);
+app.put('/produto/:id', produto.update);
+app.delete('/produto/:id', produto.delete);
 
-app.get('/usuario', function(req, res) {
-  console.log('alguém chamou /usuario');
-  const usuario = {
-    username: 'nome',
-    password: 'senha'
-  }
-  res.send(usuario);
-});
-
-app.post('/usuario', (req, res) => {
-  console.log(req.body);
-  res.send('Fine!');
-});
-
-app.listen(port, function() {
-  console.log(`Servidor ouvindo na porta ${port}`);
-});
+app.listen(port, (() => console.log(`Servidor ouvindo na porta ${port}`)));
