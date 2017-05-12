@@ -53,6 +53,20 @@ function Usuario(){
         return false;
       }
     }
+
+    this.alterarUsuario = function(username, newUser){
+      var alterou = false;
+      arrayUsuarios.forEach(function(usuario){
+        if(usuario.username === username){
+          usuario.username = newUser.username;
+          usuario.password = newUser.password;
+          usuario.email = newUser.email;
+          usuario.age = newUser.age;
+          alterou = true;
+        }
+      });
+      return alterou;
+    }
 }
 
 //var usu = new Usuario();

@@ -38,6 +38,15 @@ app.get('/usuario/:username', function(req, res){
   // res.send(req.params.username);
 });
 
+app.put('/usuario/:username', function(req, res){
+  var alterou = usuarioRepo.alterarUsuario(req.params.username, req.body);
+  if(alterou){
+      res.send("Funcionou");
+  }else{
+      res.send("Usuario não foi encontrado");
+  }
+});
+
 app.delete('/usuario/:username', function(req, res){
   var sucesso = usuarioRepo.removerUsuario(req.params.username);
   if(sucesso){
