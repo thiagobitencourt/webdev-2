@@ -13,6 +13,15 @@ app.get('/', function(req, res) {
   res.send("você acessou a rota /");
 });
 
+app.post('/login', function(req, res) {
+  var sucesso = usuarioRepo.autenticarUsuario(req.body.username, req.body.password);
+  if(sucesso) {
+    res.send("Usuário autenticado com sucesso!");
+  } else {
+    res.status(400).send("Nome de usuário ou senha estão incorretos");
+  }
+});
+
 app.get('/usuario', function(req, res) {
   const todosUsuarios = usuarioRepo.obterTodosOsUsuarios();
   if(todosUsuarios.length) {

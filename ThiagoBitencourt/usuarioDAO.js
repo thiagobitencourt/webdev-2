@@ -1,14 +1,17 @@
 'use strict';
-
 var arrayUsuarios = [];
 
 function Usuario() {
-  this.autenticarUsuario = function(user) {
-    console.log("autenticar usuario");
-    return (
-      user.username === usuario.username &&
-      user.password === usuario.password
-    )
+  this.autenticarUsuario = function(username, password) {
+    var usu = arrayUsuarios.find(function(usuario) {
+      return usuario.username === username
+    });
+
+    if(usu) {
+      return usu.password === password;
+    } else {
+      return false;
+    }
   }
 
   this.criarUsuario = function(user) {
