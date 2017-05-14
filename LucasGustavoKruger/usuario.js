@@ -30,6 +30,6 @@ function Usuario() {
   this.obterUsuario = function() {
     console.log("obter usuario");
   }
-} 
+}
 
 module.exports = Usuario;

@@ -25,20 +25,30 @@ module.exports = {
   delete: ((req, res) => {
     const collection = getCollection(req);
     collection.remove({
-      _id: new ObjectID(req.body.id)
+      _id: new ObjectID(req.params.id)
     }, (err, doc) => {
       res.status(200).send(doc);
     });
   }),
-  update: ((req, res) => {
+  update: ((req, res) => { 
     const collection = getCollection(req);
+    collection.update({
+      _id: new ObjectID(req.params.id)
+    }, {
+      $set: req.body
+    }, (err, result) => {
+      if(err)
+        throw err;
+      reply().code(204);
+    });
     res.status(200).send();
   }),
   get: ((req, res) => {
     const collection = getCollection(req);
     collection.find({
-      _id: req.body.id
+      _id: new ObjectID(req.params.id)
     }, (err, doc) => {
+      console.log(doc);
       res.status(200).send(doc);
     });
   }),
