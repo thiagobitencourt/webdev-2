@@ -2,7 +2,6 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
-const productRepo = require('./product');
 const MongoClient = require('mongodb').MongoClient;
 const ObjectID = require('mongodb').ObjectID;
 
@@ -13,9 +12,12 @@ const dbPassword = 'baguvix';
 const dbUrl = `mongodb://${dbUser}:${dbPassword}@ds159880.mlab.com:59880/product-api`;
 
 MongoClient.connect(dbUrl, (err, db) => {
+  
   if(err) {
-    throw err;
+    console.error(err);
+    process.exit(1);
   }
+
   const products = db.collection('products');
   app.use(bodyParser.json());
 
@@ -31,39 +33,48 @@ MongoClient.connect(dbUrl, (err, db) => {
 
   app.post('/products', (req, res) => {
     
-    const newProduct = Object.assign({}, req.body, {
-      _id: new ObjectID()
-    });
+    const newProduct = {
+      _id: new ObjectID(),
+      nome: req.body.nome,
+      codigo: req.body.codigo,
+      quantidade: req.body.quantidade,
+      disponivel: req.body.disponivel
+    };
 
     products.save(newProduct, (err, result) => {
       if(err) {
         throw err;
       }
       console.log(`${req.body.nome} saved successfully!`);
-      res.redirect('/');
+      res.send(result);
     });
   });
 
   app.get('/products/:id', (req, res) => {
-    products.findOne({ _id: req.params.id }, (err, item) => {
-      res.send(item);
+    products.findOne({ _id: new ObjectID(req.params.id) }, (err, item) => {
+      if(!item) {
+        res.status(404).send('Produto não encontrado.');
+      } else {
+        res.send(item);
+      }
     });
   });
 
   app.put('/products/:id', (req, res) => {
     
-    products.updateOne({ _id: req.body._id }, req.body, (err, result) => {
+    products.updateOne({ _id: new ObjectID(req.params.id) }, req.body, (err, result) => {
       if (err) {
         throw err;
       }
-      console.log(`Product ${updatedProduct._id} updated successfully!`)
+      console.log(`Product ${req.params.id} updated successfully!`)
       res.send(result);
     });
   });
 
   app.delete('/products/:id', (req, res) => {
-    products.deleteOne({ _id: req.params.id }).then((result) => {
+    products.deleteOne({ _id: new ObjectID(req.params.id) }, (result) => {
       console.log(result);
+      res.send(`${req.params.id} removed successfully!`);
     });
   });
 
