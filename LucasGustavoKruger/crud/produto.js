@@ -48,7 +48,6 @@ module.exports = {
     collection.find({
       _id: new ObjectID(req.params.id)
     }, (err, doc) => {
-      console.log(doc);
       res.status(200).send(doc);
     });
   }),
