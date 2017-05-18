@@ -6,16 +6,35 @@
 
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
   </head>
-  <body>
+  <body class="container">
   <div ng-controller="mainController">
 
     <h1>{{ titulo }}</h1>
-    <input type="text" ng-model="texto">
-    <h3>{{ texto }}</h3>
 
-    <button type="button" ng-click="adicionarUsuario()">Adicionar</button>
-    <button type="button" ng-click="excluirUsuario()">Excluir</button>
-    <button type="button" ng-click="editarUsuario()">Editar</button>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Usuário</th>
+            <th>Senha</th>
+            <th>Idade</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ usuario.id }}</td>
+            <td>{{ usuario.username }}</td>
+            <td>{{ usuario.password }}</td>
+            <td>{{ usuario.age }}</td>
+            <td>{{ usuario.email }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+    <button type="button" class="btn btn-primary" ng-click="adicionarUsuario()">Adicionar</button>
+    <button type="button" class="btn btn-danger" ng-click="excluirUsuario()">Excluir</button>
+    <button type="button" class="btn btn-warning" ng-click="editarUsuario()">Editar</button>
 
   </div>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
