@@ -6,13 +6,6 @@ const bodyParser = require("body-parser");
 const app = express();
 const usuarioRepo = new usuarioDAO();
 app.use(bodyParser.json());
-//var usu = new Usuario();
-//console.log(usu);
-
-var user = {
-  username: 'xblade70',
-  password: '33778833'
-}
 
 app.get('/usuario', function(req, res){
   var arrayDeUsuarios = usuarioRepo.obterTodosOsUsuarios();
@@ -65,15 +58,7 @@ app.post('/login', function(req, res){
   }
 });
 
-app.get('/', function (req, res) {
-  res.send('Hello World!');
-});
-// var usuarioValido = usuarioRepo.autenticarUsuario(user);
-// if(usuarioValido){
-//   console.log("Login efetuado com sucesso");
-// }else{
-//   console.log("Nome de usuário ou senha incorretos");
-// }
+app.use('/', express.static('public'));
 
 app.listen(3000, function(){
   console.log("Example app listening on port 3000!");
