@@ -12,7 +12,7 @@ app.get('/produto', function(req, res){
   if(arrayProdutos[0]){
     res.send(arrayProdutos);
   }else{
-    res.status(404).send("Nenhum usuario cadastrado !");
+    res.status(404).send("Nenhum produto cadastrado !");
   }
 });
 

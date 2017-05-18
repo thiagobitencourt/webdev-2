@@ -1,6 +1,4 @@
 'use strict'
-//id, nome, codigo, quantidade, disponivel
-// objeto usuario
 var arrayProdutos = [];
 
 function Produto(){
