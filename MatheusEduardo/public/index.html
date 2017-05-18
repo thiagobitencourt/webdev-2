@@ -1,0 +1,39 @@
+<html ng-app="webdev-2">
+  <head>
+    <title>CRUD 18/05</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
+    <script src="webdev-2.js"></script>
+  </head>
+  <title>
+
+  </title>
+  
+  <body>
+    <div class="container">
+      <nav class="navbar navbar-inverse">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Aula de WEB 2</a>
+        </div>
+      </nav>
+      
+      <div ng-controller="mainController">
+        <p>Name</p>
+        <input type="text" placeholder="Digite seu nome:" ng-model="texto"/>
+        <h1>{{ texto }}</h1>
+
+        <button class="btn btn-primary" type="button" ng-click="adicionarUsuario()">Adicionar</button>
+        <button class="btn btn-danger" type="button" ng-click="excluirUsuario()">Excluir</button>
+        <button class="btn btn-default" type="button" ng-click="editarUsuario()">Editar</button>
+      </div>
+    </div>
+  </body>
+</html>
