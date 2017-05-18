@@ -1,33 +1,83 @@
-'use strict';
+'use strict'
 
-// objeto usuário
-const usuario = {
-  username: 'Eleani',
-  password: '123',
-  email: 'eleani.kreutzfeld@gmail.com',
-  age: 21
-};
-
+// objeto usuario
+var arrayUsuarios = [];
 
 function Usuario(){
-  console.log("executa a função Usuario");
-  this.autenticarUsuario = function(user){
-    console.log("autenticarUsuario");
 
-    return (user.username === usuario.username && user.password === usuario.password)
-  }
+    var funcaoPrivada = function(){
+      console.log("Aqui é privado");
+    }
 
-  this.criarUsuario = function(){
-    console.log("criarUsuario");
-  }
+    this.id = 1;
 
-  this.obterUsuario = function(){
-    console.log("obterUsuario");
-  }
+    this.autenticarUsuario = function(login, password){
+      //funcaoPrivada();
+      // if(user.username === usuario.username && user.password === usuario.password){
+      //   return true;
+      // }else{
+      //   return false;
+      // }
+      var usuario = arrayUsuarios.find(function(usuario){
+        return usuario.username === login;
+      });
+      if(usuario){
+        return usuario.password === password;
+      }else{
+        return false;
+      }
+    }
 
+    this.criarUsuario = function(user){
+      arrayUsuarios.push(user);
+    }
+
+    this.obterTodosOsUsuarios = function(){
+      return arrayUsuarios;
+    }
+
+    this.obterUsuario = function(username){
+      var usuarioRetorno;
+      arrayUsuarios.forEach(function(usuario){
+        if(usuario.username === username){
+          usuarioRetorno = usuario;
+        }
+      });
+      return usuarioRetorno;
+    }
+
+    this.removerUsuario = function(username){
+      var usuarioIndex;
+      arrayUsuarios.forEach(function(usuario, index){
+        if(usuario.username === username){
+          usuarioIndex = index;
+        }
+      });
+      if(typeof usuarioIndex !== "undefined"){
+        arrayUsuarios.splice(usuarioIndex, 1);
+        return true;
+      }else{
+        return false;
+      }
+    }
+
+    this.alterarUsuario = function(username, newUser){
+      var alterou = false;
+      arrayUsuarios.forEach(function(usuario){
+        if(usuario.username === username){
+          usuario.username = newUser.username;
+          usuario.password = newUser.password;
+          usuario.email = newUser.email;
+          usuario.age = newUser.age;
+          alterou = true;
+        }
+      });
+      return alterou;
+    }
 }
 
 //var usu = new Usuario();
-//usu.autenticarUsuario("um nome qualquer");
+//usu.autenticarUsuario("um nome de usuario");
+//console.log(usu);
 
 module.exports = Usuario;

@@ -1,43 +1,65 @@
 'use strict';
 
-const Usuario = require('./usuario');
+const usuarioDAO = require('./usuario');
 const express = require('express');
-
+const bodyParser = require("body-parser");
 const app = express();
-
-app.get('/', function(req, res){
-  console.log("Alguém chamou /");
-  res.send('retornou o /');
-});
+const usuarioRepo = new usuarioDAO();
+app.use(bodyParser.json());
 
 app.get('/usuario', function(req, res){
-  console.log("Alguém chamou /usuario");
-
-  const usuario = {
-    username: "nome",
-    password: "senha"
+  var arrayDeUsuarios = usuarioRepo.obterTodosOsUsuarios();
+  if(arrayDeUsuarios[0]){
+    res.send(usuarioRepo.obterTodosOsUsuarios());
+  }else{
+    res.status(404).send("Nenhum usuario encontrado !");
   }
-
-  res.send(usuario);
-
 });
 
-app.listen(3000, function () {
-  console.log('Exemplo app listening on port 3000!');
+app.post('/usuario', function(req, res){
+  usuarioRepo.criarUsuario(req.body);
+  res.send(req.body);
 });
 
+app.get('/usuario/:username', function(req, res){
+  var usuario = usuarioRepo.obterUsuario(req.params.username);
+  if(usuario){
+    res.send(usuario);
+  } else {
+    res.status(404).send("Não encontramos o usuario: "+req.params.username);
+  }
+  // res.send(req.params.username);
+});
 
-var uso = new Usuario();
-console.log(uso);
+app.put('/usuario/:username', function(req, res){
+  var alterou = usuarioRepo.alterarUsuario(req.params.username, req.body);
+  if(alterou){
+      res.send("Funcionou");
+  }else{
+      res.send("Usuario não foi encontrado");
+  }
+});
 
-var user = {
-  username: 'Eleani',
-  password: '123'
-};
+app.delete('/usuario/:username', function(req, res){
+  var sucesso = usuarioRepo.removerUsuario(req.params.username);
+  if(sucesso){
+    res.send("O usuario foi removido com sucesso");
+  }else{
+    res.send("O usuário não foi encontrado");
+  }
+});
 
-var usuarioValido = uso.autenticarUsuario(user);
-if (usuarioValido){
-  console.log('Login efetuado com sucesso!');
-} else {
-  console.log("Nome do usuário ou senha incorretos!");
-}
+app.post('/login', function(req, res){
+  var autenticado = usuarioRepo.autenticarUsuario(req.body.username, req.body.password);
+  if(autenticado){
+    res.send("Usuario autenticado com sucesso");
+  }else{
+    res.status(400).send("Usuario ou senha invalido");
+  }
+});
+
+app.use('/', express.static('public'));
+
+app.listen(3000, function(){
+  console.log("Example app listening on port 3000!");
+});

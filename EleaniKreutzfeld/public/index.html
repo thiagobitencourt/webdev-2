@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html ng-app="webdev-2">
+  <head>
+    <meta charset="utf-8">
+    <title>Usuario</title>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+  </head>
+  <body>
+    <div ng-controller="mainController">
+
+      <h1> {{ oi }} </h1>
+
+      <input type="text" ng-model="texto">
+
+      <h3>{{ texto }}</h3>
+
+      <button type="button" ng-click="usuarioClicou()">Salvar</button>
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
+    <script type="text/javascript">
+
+      var app = angular.module('webdev-2', []);
+      app.controller('mainController', function($scope){
+
+        $scope.oi = "Boa noite...";
+        $scope.texto;
+
+        $scope.usuarioClicou = function(){
+          console.log('Usuario clicou no botão');
+          console.log($scope.texto);
+        };
+
+      });
+
+    </script>
+
+  </body>
+</html>
