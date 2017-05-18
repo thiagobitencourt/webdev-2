@@ -14,7 +14,7 @@ app.post('/produto', function(req, res){
     produtoRepository.criarProduto(req.body);
     res.send("Produto cadastrado com sucesso!");
   }else{
-    res.send("Não foi possível cadastrar o produto. Favor verificar os dados do produto e tente novamente.");
+    res.send("Não foi possível cadastrar o produto.  Favor verificar os dados do produto e tente novamente.");
   }
 });
 

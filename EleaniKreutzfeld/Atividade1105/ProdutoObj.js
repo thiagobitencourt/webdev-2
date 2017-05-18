@@ -28,6 +28,7 @@ function Produto(){
     if(typeof produtoIndex !== "undefined"){
       produtos.splice(produtoIndex, 1);
       return true;
+      
     }else{
       return false;
     }
