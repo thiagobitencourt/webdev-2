@@ -1,7 +1,7 @@
 {
   "name": "matheuseduardo",
   "version": "1.0.0",
-  "description": "Estive presente na aula do dia 16 de Março Estive presente na aula do dia 23 de Março. Estive presente na aula do dia 6 de Abril",
+  "description": "A repository for academic purposes.",
   "main": "app.js",
   "scripts": {
     "start": "nodemon app.js",
@@ -11,7 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.17.1",
-    "express": "^4.15.2"
+    "express": "^4.15.2",
+    "mongodb": "^2.2.26"
   },
   "devDependencies": {
     "nodemon": "^1.11.0"

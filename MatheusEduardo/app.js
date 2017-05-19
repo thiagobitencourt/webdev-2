@@ -2,64 +2,81 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
-const UsuarioDAO = require('./usuarioDAO');
-
-const usuarioRepo = new UsuarioDAO();
+const MongoClient = require('mongodb').MongoClient;
+const ObjectID = require('mongodb').ObjectID;
 
 const app = express();
 
-app.use(bodyParser.json());
+const dbUser = 'matheus';
+const dbPassword = 'baguvix';
+const dbUrl = `mongodb://${dbUser}:${dbPassword}@ds159880.mlab.com:59880/product-api`;
 
-app.get('/', (req, res) => {
-  res.send('Eu acessei a url no caminho /');
-});
-
-app.post('/login', (req, res) => {
-  const sucesso = usuarioRepo.autenticarUsuario(req.body.username, req.body.password);
-  if(sucesso) {
-    res.send('Usuário autenticado com sucesso!');
-  } else {
-    res.status(400).send('Nome de usuário ou senha estão incorretos');
+MongoClient.connect(dbUrl, (err, db) => {
+  
+  if(err) {
+    console.error(err);
+    process.exit(1);
   }
-});
 
-app.get('/usuario', (req, res) => {
-  console.log('Alguém chamou um usuário.');
-  res.send(usuarioRepo.obterUsuarios());
-});
+  const products = db.collection('products');
+  app.use(bodyParser.json());
 
-app.get('/usuario/:username', (req, res) => {
-  const usuario = usuarioRepo.obterUsuario(req.params.username);
-  if(usuario) {
-    res.send(usuario);
-  } else {
-    res.status(404).send(`Usuário ${req.params.username} não encontrado.`);
-  }
-});
+  app.get('/', (req, res) => {
+    res.send('This is the Product API.');
+  });
 
-app.post('/usuario', (req, res) => {
-  const updatedUserList = usuarioRepo.criarUsuario(req.body);
-  res.send(updatedUserList);
-});
+  app.get('/products', (req, res) => {
+    products.find().toArray((err, results) => {
+      res.send(results);
+    });
+  });
 
-app.put('/usuario/:username', (req, res) => {
-  const updatedUser = usuarioRepo.updateUsuario(req.params.username, req.body);
-  if(updatedUser) {
-    res.send(updatedUser);
-  } else {
-    res.send('Não foi possível alterar o usuário.');
-  }
-});
+  app.post('/products', (req, res) => {
+    
+    const newProduct = {
+      _id: new ObjectID(),
+      nome: req.body.nome,
+      codigo: req.body.codigo,
+      quantidade: req.body.quantidade,
+      disponivel: req.body.disponivel
+    };
 
-app.delete('/usuario/:username', (req, res) => {
-  const hasRemovedSuccesfully = usuarioRepo.removerUsuario(req.params.username);
-  if(hasRemovedSuccesfully) {
-    res.send('Usuário removido com sucesso!');
-  } else {
-    res.send(`Não consegui remover o usuário ${req.params.username}`);
-  }
-});
+    products.save(newProduct, (err, result) => {
+      if(err) {
+        throw err;
+      }
+      console.log(`${req.body.nome} saved successfully!`);
+      res.send(result);
+    });
+  });
 
-app.listen(3000, () => {
-  console.log('Servidor ouvindo na porta 3000.');
+  app.get('/products/:id', (req, res) => {
+    products.findOne({ _id: new ObjectID(req.params.id) }, (err, item) => {
+      if(!item) {
+        res.status(404).send('Produto não encontrado.');
+      } else {
+        res.send(item);
+      }
+    });
+  });
+
+  app.put('/products/:id', (req, res) => {
+    
+    products.updateOne({ _id: new ObjectID(req.params.id) }, req.body, (err, result) => {
+      if (err) {
+        throw err;
+      }
+      console.log(`Product ${req.params.id} updated successfully!`)
+      res.send(result);
+    });
+  });
+
+  app.delete('/products/:id', (req, res) => {
+    products.deleteOne({ _id: new ObjectID(req.params.id) }, (result) => {
+      console.log(result);
+      res.send(`${req.params.id} removed successfully!`);
+    });
+  });
+
+  app.listen(8080, () => console.log('Listening on port 8080'));
 });
