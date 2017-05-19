@@ -50,5 +50,11 @@ app.controller('mainController', function($scope) {
     $scope.adicionandoUsuario = false;
   }
 
+  $scope.selecionaUsuario = function(usuario) {
+    $scope.usuarios.forEach(function(user) {
+      user.selecionado = false;
+    })
+    usuario.selecionado = !usuario.selecionado;
+  }
 
 })

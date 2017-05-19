@@ -5,6 +5,16 @@
     <title>Usuários</title>
 
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+      .sobre-linha {
+        cursor: pointer;
+      }
+
+      .selecionado {
+        background-color: #ccc;
+      }
+    </style>
+
   </head>
   <body class="container">
   <div ng-controller="mainController">
@@ -19,15 +29,21 @@
             <th>Senha</th>
             <th>Idade</th>
             <th>Email</th>
+            <th>Selecionado</th>
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="user in usuarios">
+          <tr ng-repeat="user in usuarios"
+            class="sobre-linha"
+            ng-class="{'selecionado': user.selecionado }"
+            ng-click="selecionaUsuario(user)"
+          >
             <td>{{ user.id }}</td>
             <td>{{ user.username }}</td>
             <td>{{ user.password }}</td>
             <td>{{ user.age }}</td>
             <td>{{ user.email }}</td>
+            <td>{{ user.selecionado }}</td>
           </tr>
         </tbody>
       </table>
