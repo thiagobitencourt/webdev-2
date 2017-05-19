@@ -80,4 +80,4 @@ function Usuario(){
 //usu.autenticarUsuario("um nome de usuario");
 //console.log(usu);
 
-module.exports = Usuario;
+ module.exports = Usuario;

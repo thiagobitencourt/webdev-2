@@ -5,6 +5,7 @@ const express = require('express');
 const bodyParser = require("body-parser");
 const app = express();
 const usuarioRepo = new usuarioDAO();
+
 app.use(bodyParser.json());
 
 app.get('/usuario', function(req, res){

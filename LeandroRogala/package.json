@@ -1,4 +1,4 @@
-npm {
+{
   "name": "leandrorogala",
   "version": "1.0.0",
   "description": "Estive presente na aula do dia 16 de Março",
@@ -10,6 +10,10 @@ npm {
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.17.1",
-    "express": "^4.15.2"
+    "express": "^4.15.2",
+    "mongoose": "^4.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
   }
 }
