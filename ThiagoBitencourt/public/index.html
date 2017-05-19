@@ -36,6 +36,43 @@
     <button type="button" class="btn btn-danger" ng-click="excluirUsuario()">Excluir</button>
     <button type="button" class="btn btn-warning" ng-click="editarUsuario()">Editar</button>
 
+    <div ng-show="adicionandoUsuario">
+      <hr/>
+      <h3>Cadastrar novo usuário</h3>
+
+      <div class="row">
+
+        <div class="col-md-12">
+          <label>Nome de usuário</label>
+          <input type="text" class="form-control" ng-model="novoUsuario.username">
+        </div>
+
+        <div class="col-md-12">
+          <label>Senha do usuário</label>
+          <input type="text" class="form-control" ng-model="novoUsuario.password">
+        </div>
+
+        <div class="col-md-12">
+          <label>Idade do usuário</label>
+          <input type="text" class="form-control" ng-model="novoUsuario.age">
+        </div>
+
+        <div class="col-md-12">
+          <label>Email do usuário</label>
+          <input type="text" class="form-control" ng-model="novoUsuario.email">
+        </div>
+
+      </div>
+
+      <button style="margin-top: 15px" type="button" ng-click="salvarNovoUsuario(novoUsuario)" class="btn btn-primary">Salvar usuário</button>
+
+      <br />
+      <pre>
+        {{ novoUsuario | json }}
+      </pre>
+    </div>
+
+
   </div>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 <script src="webdev2.js" type="text/javascript"></script>

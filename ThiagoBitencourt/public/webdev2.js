@@ -2,25 +2,26 @@
 
 var app = angular.module('webdev-2', []);
 app.controller('mainController', function($scope) {
+  var incrementaId = 1;
 
   $scope.titulo = "Usuários";
   $scope.usuarios = [
     {
-      id: 2,
+      id: incrementaId++,
       username: "chiquinha",
       password: "chavesquerido",
       age: 7,
       email: "chiquinha@vila.com"
     },
     {
-      id: 1,
+      id: incrementaId++,
       username: "jaime",
       password: "jaime123",
       age: 18,
       email: "jai@me.com"
     },
     {
-      id: 3,
+      id: incrementaId++,
       username: "tibursio",
       password: "12345",
       age: 89,
@@ -28,16 +29,9 @@ app.controller('mainController', function($scope) {
     }
   ];
 
-  $scope.usuario = {
-    id: 1,
-    username: "jaime",
-    password: "jaime123",
-    age: 18,
-    email: "jai@me.com"
-  };
-
   $scope.adicionarUsuario = function() {
     console.log("Adicionar usuario");
+    $scope.adicionandoUsuario = true;
   }
 
   $scope.excluirUsuario = function() {
@@ -47,5 +41,14 @@ app.controller('mainController', function($scope) {
   $scope.editarUsuario = function() {
     console.log("Editar usuario");
   }
+
+  $scope.salvarNovoUsuario = function(usuario) {
+    console.log(usuario);
+    usuario.id = incrementaId++;
+    $scope.usuarios.push(usuario);
+    $scope.novoUsuario = undefined;
+    $scope.adicionandoUsuario = false;
+  }
+
 
 })
