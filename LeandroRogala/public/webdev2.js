@@ -20,15 +20,28 @@ app.controller('mainController', function($scope){
     }
   ];
   $scope.titulo = "Usuários";
+
   $scope.adicionarUsuario = function(){
     console.log("adicionarUsuario");
     $scope.adicionandoUsuario = true;
   }
+
   $scope.excluirUsuario = function(){
-    console.log("Excluir usuario");
+    var usuarioIndex;
+    $scope.usuarios.forEach(function(user, index){
+      if(user.selecionado === true){
+        usuarioIndex = index;
+      }
+    });
+    console.log(usuarioIndex);
+    if(usuarioIndex !== undefined){
+      $scope.usuarios.splice(usuarioIndex, 1);
+      usuarioIndex = undefined;
+    }
   }
-  $scope.editarusuario = function(){
-    console.log("Editar usuario");
+
+  $scope.editarusuario = function(usuario){
+    console.log("Entro aqui");
   }
 
   $scope.selecionaUsuario = function(usuario){
