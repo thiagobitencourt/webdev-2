@@ -12,19 +12,30 @@ app.use(bodyParser.json());
 
 const usuarioRepo = new UsuarioDAO();
 
-app.get('/', function (req, res) {
-  console.log("Alguem chamou /")
-  res.send('você acessou a rota!');
-});
+
+app.use('/', express.static('public'));
+// app.get('/', function (req, res) {
+//   console.log("Alguem chamou /")
+//   res.send('você acessou a rota!');
+// });
 
 app.get('/usuario', function(req, res) {
-  console.log("alguem chamou /usuario");
-res.send(usuarioRepo.obterTodosOsUsuarios());
-  // const usuario = {
-  //   username: "nome",
-  //   password: "senha"
-  // }
-  // res.send(usuario);
+  const todosUsuarios = usuarioRepo.obterTodosOsUsuarios();
+  if (todosUsuarios.length) {
+    res.send(usuario);
+  } else {
+     res.status(404).send("Não encontramos o usuário " + req.params.username);
+  }
+});
+
+app.get('/usuario/:username', function(req, res) {
+  var usuario = usuarioRepo.obterUsuario(req.params.username);
+  if (usuario) {
+    res.send(usuario);
+  } else {
+    res.status(404).send("Não encontramos o usuário " + req.params.username);
+  }
+  res.send(req.params);
 });
 
 app.post('/usuario', function(req, res) {
@@ -43,19 +54,14 @@ app.delete('/usuario/:username', function(req, res) {
 });
 
 app.put('/usuario/:username', function(req, res) {
-usuarioRepo.alterarUsuario(req.params.username, req.body);
-  res.send(req.body);
+  var alterou = usuarioRepo.alterarUsuario(req.params.username, req.body);
+  if (alterou) {
+    res.send("Usuário alterado com sucesso!");
+  } else {
+    res.send("Usuário não foi encontrado");
+  }
 });
 
-app.get('/usuario/:username', function(req, res) {
-  var usuario = usuarioRepo.obterUsuario(req.params.username);
-  if (usuario) {
-    res.send(usuario);
-  } else {
-    res.status(404).send("Não encontramos o usuário " + req.params.username);
-  }
-  res.send(req.params);
-});
 
 app.listen(3000, function () {
   console.log('servidor ouvindo a porta 3000!');

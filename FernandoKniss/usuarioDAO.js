@@ -3,24 +3,18 @@
 var arrayUsuario = [];
 
 function Usuario() {
-  this.autenticarUsuario = function(user) {
-  console.log("autenticar usuario");
-
-  // if (user.username === usuario.username &&
-  //     user.password === usuario.password)
-  //   {
-  //   return true;
-  //   } else {
-  //   return false;
-  //   }
-  return (
-      user.username === usuario.username &&
-      user.password === usuario.password
-    )
+  this.autenticarUsuario = function(username, password) {
+    var usu = arrayUsuario.find(function(usuario) {
+      return usuario.username === username
+    });
+    if (usu) {
+      return usu.password === password;
+    } else {
+      return false;
+    }
   }
 
   this.criarUsuario = function(user) {
-    console.log("criar usuario", user);
     arrayUsuario.push(user);
   }
 
@@ -55,6 +49,7 @@ this.removerUsuario = function(username) {
   }
 
     this.alterarUsuario = function(username, newUser) {
+        var alterou = false;
         arrayUsuario.forEach(function (usuario) {
           if (usuario.username === username) {
             usuario.username = newUser.username;
@@ -63,8 +58,8 @@ this.removerUsuario = function(username) {
             usuario.age = newUser.age;
             alterou = true;
       }
-      return alterou;
     });
+    return alterou;
   }
 }
 // var usu = new Usuario();
