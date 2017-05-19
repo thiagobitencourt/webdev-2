@@ -22,12 +22,12 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>{{ usuario.id }}</td>
-            <td>{{ usuario.username }}</td>
-            <td>{{ usuario.password }}</td>
-            <td>{{ usuario.age }}</td>
-            <td>{{ usuario.email }}</td>
+          <tr ng-repeat="user in usuarios">
+            <td>{{ user.id }}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.password }}</td>
+            <td>{{ user.age }}</td>
+            <td>{{ user.email }}</td>
           </tr>
         </tbody>
       </table>
