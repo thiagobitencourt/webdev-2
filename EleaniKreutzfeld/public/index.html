@@ -6,18 +6,69 @@
 
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
   </head>
-  <body>
+  <body class="container">
     <div ng-controller="mainController">
 
       <h1> {{ titulo }} </h1>
 
-      <input type="text" ng-model="texto">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Usuário</th>
+            <th>Senha</th>
+            <th>Idade</th>
+            <th>E-mail</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="user in usuarios">
+            <th>{{ user.id }}</th>
+            <th>{{ user.username }}</th>
+            <th>{{ user.password }}</th>
+            <th>{{ user.age }}</th>
+            <th>{{ user.email }}</th>
+          </tr>
+        </tbody>
+      </table>
 
-      <h3>{{ texto }}</h3>
+      <button class="btn btn-primary" type="button" ng-click="adicionarUsuario()">Adicionar</button>
+      <button class="btn btn-danger" type="button" ng-click="excluirUsuario()">Excluir</button>
+      <button class="btn btn-warning" type="button" ng-click="editarUsuario()">Editar</button>
 
-      <button type="button" ng-click="adicionarUsuario()">Adicionar</button>
-      <button type="button" ng-click="excluirUsuario()">Excluir</button>
-      <button type="button" ng-click="editarUsuario()">Editar</button>
+      <div class="row" ng-show="adicinandoUsuario">
+        <hr/>
+
+        <h3>Cadastrar novo usuário</h3>
+
+        <div class="col-md-12">
+        <label>Nome de usuário</label>
+          <input type="text" class="form-control" ng-model="novoUsuario.usuario">
+        </div>
+
+        <div class="col-md-12">
+        <label>Password</label>
+          <input type="text" class="form-control" ng-model="novoUsuario.password">
+        </div>
+
+        <div class="col-md-12">
+        <label>Idade</label>
+          <input type="text" class="form-control" ng-model="novoUsuario.age">
+        </div>
+
+        <div class="col-md-12">
+        <label>E-mail</label>
+        <input type="text" class="form-control" ng-model="novoUsuario.email">
+        </div>
+
+        <br>
+        <button style="margin-top" class="btn btn-primary" type="button" ng-click="salvarNovoUsuario(novoUsuario)">Salvar </button>
+
+        <br>
+
+        <pre>
+          {{ novoUsuario | json }}
+        </pre>
 
     </div>
 
