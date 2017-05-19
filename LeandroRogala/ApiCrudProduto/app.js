@@ -3,54 +3,71 @@
 const produto = require('./produto');
 const express = require('express');
 const bodyParser = require("body-parser");
+const mongoose = require('mongoose');
 const app = express();
-const produtoRepository = new produto();
+mongoose.connect('mongodb://localhost/apiProduto');
 app.use(bodyParser.json());
 
 app.get('/produto', function(req, res){
-  var arrayProdutos = produtoRepository.obterTodosProdutos();
-  if(arrayProdutos[0]){
-    res.send(arrayProdutos);
-  }else{
-    res.status(404).send("Nenhum produto cadastrado !");
-  }
+  produto.find(function(err, produtos) {
+      if(err){
+        res.send(err);
+      }else{
+        res.json(produtos);
+      }
+  });
 });
 
 app.post('/produto', function(req, res){
-  if(req.body){
-    produtoRepository.criarProduto(req.body);
-    res.send("O produto foi cadastrado com sucesso");
-  }else{
-    res.send("Está faltando informação para cadastro !");
-  }
+  var newProduto = new produto();
+  newProduto.nome = req.body.nome;
+  newProduto.codigo = req.body.codigo;
+  newProduto.quantidade = req.body.quantidade;
+  newProduto.disponivel = req.body.disponivel;
+
+  newProduto.save(function(error) {
+      if(error){
+        res.send(error);
+      }else{
+        res.json({ message: 'Produto criado!' });
+      }
+  });
 });
 
 app.get('/produto/:id', function(req, res){
-  var produto = produtoRepository.obterProduto(req.params.id);
-  if(produto){
-    res.send(produto);
-  } else {
-    res.status(404).send("Não foi encontrado o produto com id: "+req.params.id);
-  }
-  // res.send(req.params.username);
+  produto.findById(req.params.id, function(error, produto) {
+      if(error){
+        res.send(error);
+      }else{
+        res.json(produto);
+      }
+  });
 });
 
 app.put('/produto/:id', function(req, res){
-  var alterou = produtoRepository.alterarProduto(req.params.id, req.body);
-  if(alterou){
-      res.send("Produto foi alterado com sucesso");
-  }else{
-      res.status(404).send("Produto não foi encontrado");
-  }
+  produto.findById(req.params.id, function(error, produto) {
+      if(error)
+          res.send(error);
+      produto.nome = req.body.nome;
+      produto.codigo = req.body.codigo;
+      produto.quantidade = req.body.quantidade;
+      produto.disponivel = req.body.disponivel;
+      produto.save(function(error) {
+          if(error)
+              res.send(error);
+          res.json({ message: 'Usuário Atualizado!' });
+      });
+  });
 });
 
 app.delete('/produto/:id', function(req, res){
-  var sucesso = produtoRepository.removerProduto(req.params.id);
-  if(sucesso){
-    res.send("O produto foi removido com sucesso");
-  }else{
-    res.status(404).send("O produto não está cadastrado");
-  }
+  produto.remove({_id: req.params.id}, function(error){
+      if(error){
+        res.send(error);
+      }else{
+        res.json({ message: 'Usuário excluído com Sucesso! '});
+      }
+  });
 });
 
 app.listen(3000, function(){
