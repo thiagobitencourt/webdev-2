@@ -1,38 +1,72 @@
 <!DOCTYPE html>
 <html ng-app="webdev-2">
-  <head>
-    <meta charset="utf-8">
-    <title>Usuários</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  </head>
-  <body class="container">
-    <div ng-controller="mainController">
-      <h1>{{titulo}}</h1>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Usuário</th>
-            <th>Senha</th>
-            <th>Idade</th>
-            <th>Email</th>
-          </tr>
-        </thread>
-        <tbody>
-          <tr>
-            <td>{{usuario.id}}</td>
-            <td>{{usuario.username}}</td>
-            <td>{{usuario.password}}</td>
-            <td>{{usuario.age}}</td>
-            <td>{{usuario.email}}</td>
-          </tr>
-        </tbody>
-      </table>
-      <button type="button" ng-click="adicionarUsuario()" class="btn btn primary">Adicionar</button>
-      <button type="button" ng-click="excluirUsuario()" class="btn btn-danger">Excluir</button>
-      <button type="button" ng-click="editarusuario()" class="btn btn-warning">Editar</button>
+<head>
+  <meta charset="utf-8">
+  <title>Usuários</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <style>
+  .sobre-linha {
+    cursor: pointer;
+  }
+
+  .selecionado {
+    background-color: red;
+  }
+  </style>
+</head>
+<body class="container">
+  <div ng-controller="mainController">
+    <h1>{{titulo}}</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Usuário</th>
+          <th>Senha</th>
+          <th>Idade</th>
+          <th>Email</th>
+          <th>Selecionado</th>
+        </tr>
+      </thread>
+      <tbody>
+        <tr ng-repeat="user in usuarios" class="sobre-linha" ng-click="selecionaUsuario(user)" ng-class="{'selecionado': user.selecionado}">
+          <td>{{user.id}}</td>
+          <td>{{user.username}}</td>
+          <td>{{user.password}}</td>
+          <td>{{user.age}}</td>
+          <td>{{user.email}}</td>
+          <td>{{user.selecionado}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <button type="button" ng-click="adicionarUsuario()" class="btn btn primary">Adicionar</button>
+    <button type="button" ng-click="excluirUsuario()" class="btn btn-danger">Excluir</button>
+    <button type="button" ng-click="editarusuario()" class="btn btn-warning">Editar</button>
+    <br/>
+    <div class="row" ng-show="adicionandoUsuario">>
+      <hr/>
+      <h3>Cadastrar novo usuário</h3>
+      <div class="col-md-12">
+        <label>Nome do usuário</label>
+        <input type="text" class="form-control" ng-model="novoUsuario.username">
+      </div>
+      <div class="col-md-12">
+        <label>Senha do usuário</label>
+        <input type="text" class="form-control" ng-model="novoUsuario.password">
+      </div>
+      <div class="col-md-12">
+        <label>Idade do usuário</label>
+        <input type="text" class="form-control" ng-model="novoUsuario.age">
+      </div>
+      <div class="col-md-12">
+        <label>Email do usuário</label>
+        <input type="text" class="form-control" ng-model="novoUsuario.email">
+      </div>
+      <br/>
+      <button type"button" ng-click="salvarNovoUsuario(novoUsuario)" class="btn btn-primary">Salvar</button>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-    <script src="webdev2.js" type="text/javascript"></script>
-  </body>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  <script src="webdev2.js" type="text/javascript"></script>
+</body>
 </html>
