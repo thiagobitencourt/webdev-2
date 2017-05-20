@@ -25,20 +25,22 @@
           <th>Codigo</th>
           <th>Quantidade</th>
           <th>Disponivel</th>
+          <th>Selecionado</th>
         </tr>
       </thread>
       <tbody>
-        <tr ng-repeat="product in produtos" class="sobre-linha">
+        <tr ng-repeat="product in produtos" class="sobre-linha" class="sobre-linha" ng-click="selecionaProduto(product)" ng-class="{'selecionado': product.selecionado}">
           <td>{{product._id}}</td>
           <td>{{product.nome}}</td>
           <td>{{product.codigo}}</td>
           <td>{{product.quantidade}}</td>
           <td>{{product.disponivel}}</td>
+          <td>{{product.selecionado}}</td>
         </tr>
       </tbody>
     </table>
     <button type="button" ng-click="adicionarProduto()" class="btn btn primary">Adicionar</button>
-    <button type="button" ng-click="" class="btn btn-danger">Excluir</button>
+    <button type="button" ng-click="excluirProduto()" class="btn btn-danger">Excluir</button>
     <button type="button" ng-click="" class="btn btn-warning">Editar</button>
     <br/>
     <div class="row" ng-show="adicionandoProduto">
