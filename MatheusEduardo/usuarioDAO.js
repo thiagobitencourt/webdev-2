@@ -10,7 +10,7 @@ function UsuarioDAO() {
 
   this.criarUsuario = (usuario) => {
     users.push(usuario);
-    return obterUsuarios();
+    return this.obterUsuarios();
   }
 
   this.obterUsuario = (username) => {

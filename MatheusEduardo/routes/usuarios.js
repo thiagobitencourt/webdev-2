@@ -1,6 +1,8 @@
 const UsuarioModel = require('../models/usuario');
 const ObjectId = require('mongoose').Types.ObjectId;
 
+const UsuarioDAO = require('../usuarioDAO');
+const usuarioRepo = new UsuarioDAO();
 //TODO: Trocar chamadas do usuarioRepo para chamadas do model correspondente.
 module.exports = {
 
