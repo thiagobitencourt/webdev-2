@@ -19,11 +19,9 @@
   <body style="background-color: #f7f7f7;">
 
     <div class="container">
-      <nav class="navbar navbar-inverse">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="#">Aula de WEB 2</a>
-        </div>
-      </nav>
+      <div class="page-header">
+        <h1>Usuários</h1>
+      </div>
       
       <div ng-controller="mainController">
         
@@ -59,17 +57,19 @@
 
           <div class="form-group">
             <div class="col-sm-2 control-label">
-              <button class="btn btn-primary" ng-click="adicionarNovoUsuario(novoUsuario)">
+              <button class="btn btn-primary" ng-click="adicionarNovoUsuario()">
                 Salvar
               </button>
 
+              <button class="btn btn-danger" ng-click="cancelarCriacao()">
+                Cancelar
+              </button>
             </div>
           </div>
         </form>
                 
-        <button class="btn btn-primary" type="button" ng-click="adicionarUsuario()">Adicionar</button>
-        <button class="btn btn-danger" type="button" ng-click="excluirUsuario()">Excluir</button>
-        <button class="btn btn-default" type="button" ng-click="editarUsuario()">Editar</button>
+        <button class="btn btn-primary" type="button" ng-show="!adicionandoNovoUsuario" ng-click="adicionarUsuario()">Adicionar</button>
+        <button class="btn btn-default" type="button" ng-show="!adicionandoNovoUsuario" ng-click="editarUsuario()">Editar</button>
 
         <table class="table">
           <thead>
@@ -88,6 +88,11 @@
               <td>{{ usuario.password }}</td>
               <td>{{ usuario.age }}</td>
               <td>{{ usuario.email }}</td>
+              <td>
+                <button class="btn btn-danger" aria-label="left-align" ng-click="removerUsuario(usuario.id)">
+                  <span class="glyphicon glyphicon-trash" aria-hidden="true"/>
+                </button>
+              </td>
             </tr>
           </tbody>
         </table>
