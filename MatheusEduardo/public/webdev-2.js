@@ -30,12 +30,12 @@
     };
 
     $scope.editarUsuario = () => {
-      
+
     }
 
     //TODO: Utilizar usuarioDAO.
-    $scope.removerUsuario = (id) => {
-      const currentUser = $scope.usuarios.find(user => user.id === id);
+    $scope.removerUsuario = (username) => {
+      const currentUser = $scope.usuarios.find(user => user.username === username);
       if(currentUser) {
         $scope.usuarios.splice($scope.usuarios.indexOf(currentUser), 1);
         return true;
