@@ -1,3 +1,7 @@
+const UsuarioModel = require('../models/usuario');
+const ObjectID = require('mongodb').ObjectID;
+
+//TODO: Trocar chamadas do usuarioRepo para chamadas do model correspondente.
 module.exports = {
 
   autenticarUsuario: ((req, res) => {
