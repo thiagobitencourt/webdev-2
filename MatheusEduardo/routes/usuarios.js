@@ -1,5 +1,5 @@
 const UsuarioModel = require('../models/usuario');
-const ObjectID = require('mongodb').ObjectID;
+const ObjectId = require('mongoose').Types.ObjectId;
 
 //TODO: Trocar chamadas do usuarioRepo para chamadas do model correspondente.
 module.exports = {
