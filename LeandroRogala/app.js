@@ -1,65 +1,15 @@
 'use strict';
 
-const usuarioDAO = require('./usuario');
 const express = require('express');
 const bodyParser = require("body-parser");
 const app = express();
-const usuarioRepo = new usuarioDAO();
+const rotaUsuarios = require('./routes/usuarioRoute');
 
 app.use(bodyParser.json());
 
-app.get('/usuario', function(req, res){
-  var arrayDeUsuarios = usuarioRepo.obterTodosOsUsuarios();
-  if(arrayDeUsuarios[0]){
-    res.send(usuarioRepo.obterTodosOsUsuarios());
-  }else{
-    res.status(404).send("Nenhum usuario encontrado !");
-  }
-});
-
-app.post('/usuario', function(req, res){
-  usuarioRepo.criarUsuario(req.body);
-  res.send(req.body);
-});
-
-app.get('/usuario/:username', function(req, res){
-  var usuario = usuarioRepo.obterUsuario(req.params.username);
-  if(usuario){
-    res.send(usuario);
-  } else {
-    res.status(404).send("Não encontramos o usuario: "+req.params.username);
-  }
-  // res.send(req.params.username);
-});
-
-app.put('/usuario/:username', function(req, res){
-  var alterou = usuarioRepo.alterarUsuario(req.params.username, req.body);
-  if(alterou){
-      res.send("Funcionou");
-  }else{
-      res.send("Usuario não foi encontrado");
-  }
-});
-
-app.delete('/usuario/:username', function(req, res){
-  var sucesso = usuarioRepo.removerUsuario(req.params.username);
-  if(sucesso){
-    res.send("O usuario foi removido com sucesso");
-  }else{
-    res.send("O usuário não foi encontrado");
-  }
-});
-
-app.post('/login', function(req, res){
-  var autenticado = usuarioRepo.autenticarUsuario(req.body.username, req.body.password);
-  if(autenticado){
-    res.send("Usuario autenticado com sucesso");
-  }else{
-    res.status(400).send("Usuario ou senha invalido");
-  }
-});
-
 app.use('/', express.static('public'));
+
+app.use(rotaUsuarios);
 
 app.listen(3000, function(){
   console.log("Example app listening on port 3000!");
