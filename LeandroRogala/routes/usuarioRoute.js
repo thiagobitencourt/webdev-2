@@ -55,3 +55,5 @@ router.post('/login', function(req, res){
     res.status(400).send("Usuario ou senha invalido");
   }
 });
+
+module.exports = router;
