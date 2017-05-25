@@ -2,14 +2,23 @@
 <html ng-app="webdev-2">
   <head>
     <meta charset="utf-8">
-    <title>Usuario</title>
+    <title>Usuários</title>
 
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+      .sobre-linha {
+        cursor: pointer;
+      }
+      .selecionado {
+        background-color: #ccc;
+      }
+    </style>
+
   </head>
   <body class="container">
-    <div ng-controller="mainController">
+  <div ng-controller="mainController">
 
-      <h1> {{ titulo }} </h1>
+    <h1>{{ titulo }}</h1>
 
       <table class="table">
         <thead>
@@ -18,62 +27,69 @@
             <th>Usuário</th>
             <th>Senha</th>
             <th>Idade</th>
-            <th>E-mail</th>
+            <th>Email</th>
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="user in usuarios">
-            <th>{{ user.id }}</th>
-            <th>{{ user.username }}</th>
-            <th>{{ user.password }}</th>
-            <th>{{ user.age }}</th>
-            <th>{{ user.email }}</th>
+          <tr ng-repeat="user in usuarios track by $index"
+            class="sobre-linha"
+            ng-class="{'selecionado': user.selecionado }"
+            ng-click="selecionaUsuario(user)"
+          >
+            <td>{{ user.id }}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.password }}</td>
+            <td>{{ user.age }}</td>
+            <td>{{ user.email }}</td>
           </tr>
         </tbody>
       </table>
 
-      <button class="btn btn-primary" type="button" ng-click="adicionarUsuario()">Adicionar</button>
-      <button class="btn btn-danger" type="button" ng-click="excluirUsuario()">Excluir</button>
-      <button class="btn btn-warning" type="button" ng-click="editarUsuario()">Editar</button>
+    <button type="button" class="btn btn-primary" ng-click="adicionarUsuario()">Adicionar</button>
+    <button type="button" class="btn btn-danger" ng-click="excluirUsuario()">Excluir</button>
+    <button type="button" class="btn btn-warning" ng-click="editarUsuario()">Editar</button>
 
-      <div class="row" ng-show="adicinandoUsuario">
-        <hr/>
+    <div ng-show="adicionandoUsuario">
+      <hr/>
+      <h3>Cadastrar novo usuário</h3>
 
-        <h3>Cadastrar novo usuário</h3>
+      <div class="row">
 
         <div class="col-md-12">
-        <label>Nome de usuário</label>
-          <input type="text" class="form-control" ng-model="novoUsuario.usuario">
+          <label>Nome de usuário</label>
+          <input type="text" class="form-control" ng-model="novoUsuario.username">
         </div>
 
         <div class="col-md-12">
-        <label>Password</label>
+          <label>Senha do usuário</label>
           <input type="text" class="form-control" ng-model="novoUsuario.password">
         </div>
 
         <div class="col-md-12">
-        <label>Idade</label>
+          <label>Idade do usuário</label>
           <input type="text" class="form-control" ng-model="novoUsuario.age">
         </div>
 
         <div class="col-md-12">
-        <label>E-mail</label>
-        <input type="text" class="form-control" ng-model="novoUsuario.email">
+          <label>Email do usuário</label>
+          <input type="text" class="form-control" ng-model="novoUsuario.email">
         </div>
 
-        <br>
-        <button style="margin-top" class="btn btn-primary" type="button" ng-click="salvarNovoUsuario(novoUsuario)">Salvar </button>
+      </div>
 
-        <br>
+      <button style="margin-top: 15px" type="button" ng-click="salvarNovoUsuario(novoUsuario)" class="btn btn-primary">Salvar usuário</button>
 
-        <pre>
-          {{ novoUsuario | json }}
-        </pre>
-
+      <br />
+      <pre>
+        {{ novoUsuario | json }}
+      </pre>
     </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-    <script src="webdev2.js" type="text/javascript"></script>
+
+  </div>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src="webdev2.js" type="text/javascript"></script>
+<script src="servicoUsuarios.js" type="text/javascript"></script>
 
   </body>
 </html>
