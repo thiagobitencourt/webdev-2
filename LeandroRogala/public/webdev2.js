@@ -1,7 +1,10 @@
 'use strict';
 
 var app = angular.module('webdev-2', []);
-app.controller('mainController', function($scope){
+app.controller('mainController', function($scope, servicoUsuarios){
+
+  servicoUsuarios.teste();
+
   var incrementaId = 1;
   $scope.usuarios = [
     {
@@ -42,20 +45,31 @@ app.controller('mainController', function($scope){
 
   $scope.editarusuario = function(usuario){
     console.log("Entro aqui");
+    $scope.novoUsuario = $scope.usuarios.find(function(user, index){
+      return user.selecionado;
+    });
+    $scope.adicionandoUsuario = true;
   }
 
-  $scope.selecionaUsuario = function(usuario){
-    $scope.usuarios.forEach(function(user){
-      user.selecionado = false;
-    });
-    usuario.selecionado = !usuario.selecionado;
-  }
+  $scope.selecionaUsuario = function(usuario) {
+   $scope.usuarios.forEach(function(user) {
+     if(user.id === usuario.id) {
+       usuario.selecionado = !usuario.selecionado;
+     } else {
+       user.selecionado = false;
+     }
+   })
+ }
 
   $scope.salvarNovoUsuario = function(usuario){
     console.log(usuario);
-    usuario.id = incrementaId++;
-    $scope.usuarios.push(usuario);
-    $scope.novoUsuario = null;
-    $scope.adicionandoUsuario = false;
+    if(!usuario.id){
+      usuario.id = incrementaId++;
+      $scope.usuarios.push(usuario);
+      $scope.adicionandoUsuario = false;
+    }else{
+      $scope.novoUsuario = null;
+      $scope.adicionandoUsuario = false;
+    }
   }
 });
