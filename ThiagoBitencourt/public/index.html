@@ -29,11 +29,10 @@
             <th>Senha</th>
             <th>Idade</th>
             <th>Email</th>
-            <th>Selecionado</th>
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="user in usuarios"
+          <tr ng-repeat="user in usuarios track by $index"
             class="sobre-linha"
             ng-class="{'selecionado': user.selecionado }"
             ng-click="selecionaUsuario(user)"
@@ -43,7 +42,6 @@
             <td>{{ user.password }}</td>
             <td>{{ user.age }}</td>
             <td>{{ user.email }}</td>
-            <td>{{ user.selecionado }}</td>
           </tr>
         </tbody>
       </table>

@@ -34,27 +34,43 @@ app.controller('mainController', function($scope) {
     $scope.adicionandoUsuario = true;
   }
 
-  $scope.excluirUsuario = function() {
+  $scope.excluirUsuario = function(usuario) {
     console.log("Excluir usuario");
+    var usuarioSelecionado = $scope.usuarios.find(function(user, index) {
+      return user.selecionado;
+    });
+    var usuarioIndex = $scope.usuarios.indexOf(usuarioSelecionado);
+    if(usuarioIndex > -1) {
+      $scope.usuarios.splice(usuarioIndex, 1);
+    }
   }
 
   $scope.editarUsuario = function() {
     console.log("Editar usuario");
+    $scope.novoUsuario = $scope.usuarios.find(function(user, index) {
+      return user.selecionado;
+    });
+    $scope.adicionandoUsuario = true;
   }
 
   $scope.salvarNovoUsuario = function(usuario) {
     console.log(usuario);
-    usuario.id = incrementaId++;
-    $scope.usuarios.push(usuario);
+    if(!usuario.id) {
+      usuario.id = incrementaId++;
+      $scope.usuarios.push(usuario);
+    }
     $scope.novoUsuario = undefined;
     $scope.adicionandoUsuario = false;
   }
 
   $scope.selecionaUsuario = function(usuario) {
     $scope.usuarios.forEach(function(user) {
-      user.selecionado = false;
+      if(user.id === usuario.id) {
+        usuario.selecionado = !usuario.selecionado;
+      } else {
+        user.selecionado = false;
+      }
     })
-    usuario.selecionado = !usuario.selecionado;
   }
 
 })
