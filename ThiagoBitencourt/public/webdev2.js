@@ -1,8 +1,10 @@
 'use strict';
 
 var app = angular.module('webdev-2', []);
-app.controller('mainController', function($scope) {
+app.controller('mainController', function($scope, servicoUsuarios) {
   var incrementaId = 1;
+  // servicoUsuarios.teste();
+
 
   $scope.titulo = "Usuários";
   $scope.usuarios = [
