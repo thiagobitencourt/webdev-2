@@ -1,7 +1,9 @@
 'use strict';
 
 app = angular.module('webdev-2')
-  .service('servicoUsuarios', function servico() {
+  .service('servicoUsuarios', function servico($http) {
+
+
     var incrementaId = 1;
     var usuarios = [
       {
@@ -19,15 +21,25 @@ app = angular.module('webdev-2')
         email: "joelma@ximbinha"
       }
     ];
+
     return {
       obterUsuarios: function() {
-        return usuarios;
+        return $http.get('http://localhost:3000/usuario');
       },
       salvarUsuario: function(usuario){
-        if(!usuario.id){
-          usuario.id = incrementaId++;
-          usuarios.push(usuario);
-        }
+
+        // if(!usuario.id){
+        //   usuario.id = incrementaId++;
+        //   usuarios.push(usuario);
+        // }else{
+        //   var UsuarioAtualizar = usuarios.find(function(user){
+        //     return user.id === usuario.id;
+        //   });
+        //   var usuarioIndex = usuarios.indexOf(UsuarioAtualizar);
+        //   if(usuarioIndex > -1){
+        //     usuarios.splice(usuarioIndex, 1, usuario);
+        //   }
+        // }
       },
       excluirUsuario(usuario){
         var usuarioIndex = usuarios.indexOf(usuario);

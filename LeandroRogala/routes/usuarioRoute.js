@@ -1,9 +1,11 @@
 'use strict';
 
 const express = require('express');
+const mongoose = require('mongoose');
 const router = express.Router();
 const usuario = require('../models/usuario');
 const usuarioRepo = new usuario();
+mongoose.connect('mongodb://localhost/apiUsuario');
 
 router.get('/usuario', function(req, res){
   var arrayDeUsuarios = usuarioRepo.obterTodosOsUsuarios();

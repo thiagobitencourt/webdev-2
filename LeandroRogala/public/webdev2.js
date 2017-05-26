@@ -2,8 +2,15 @@
 
 var app = angular.module('webdev-2', []);
 app.controller('mainController', function($scope, servicoUsuarios){
+  $scope.usuarios;
 
-  $scope.usuarios = servicoUsuarios.obterUsuarios();
+  function carregaUsuarios(){
+    servicoUsuarios.obterUsuarios().then(function(resultado){
+        $scope.usuarios = resultado.data;
+    });
+  }
+
+  carregaUsuarios();
 
   $scope.titulo = "Usuários";
 
@@ -20,10 +27,10 @@ app.controller('mainController', function($scope, servicoUsuarios){
   }
 
   $scope.editarusuario = function(usuario){
-    console.log("Entro aqui");
-    $scope.novoUsuario = $scope.usuarios.find(function(user, index){
+    var usuarioEditavel = $scope.usuarios.find(function(user, index){
       return user.selecionado;
     });
+    $scope.novoUsuario = angular.copy(usuarioEditavel);
     $scope.adicionandoUsuario = true;
   }
 
@@ -38,7 +45,9 @@ app.controller('mainController', function($scope, servicoUsuarios){
  }
 
   $scope.salvarNovoUsuario = function(usuario){
-    servicoUsuarios.salvarUsuario(usuario);
+    servicoUsuarios.salvarUsuario(usuario).then(function(result){
+
+    });
     $scope.novoUsuario = null;
     $scope.adicionandoUsuario = false;
     }
