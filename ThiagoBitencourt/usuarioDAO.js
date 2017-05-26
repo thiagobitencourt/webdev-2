@@ -1,5 +1,6 @@
 'use strict';
 var arrayUsuarios = [];
+var idIncrementer = 1;
 
 function Usuario() {
   this.autenticarUsuario = function(username, password) {
@@ -15,6 +16,7 @@ function Usuario() {
   }
 
   this.criarUsuario = function(user) {
+    user._id = idIncrementer++;
     arrayUsuarios.push(user);
   }
 
