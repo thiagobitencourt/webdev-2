@@ -8,10 +8,11 @@ const usuarioRepo = new UsuarioDAO();
 
 router.get('/usuario', function(req, res) {
   const todosUsuarios = usuarioRepo.obterTodosOsUsuarios();
-  if(todosUsuarios.length) {
-    return res.send(todosUsuarios);
-  }
-  res.send("Nenhum usuário cadastrado!");
+  res.send(todosUsuarios);
+  // if(todosUsuarios.length) {
+  //   return res.send(todosUsuarios);
+  // }
+  // res.send("Nenhum usuário cadastrado!");
 });
 
 router.get('/usuario/:username', function(req, res) {
@@ -56,5 +57,3 @@ router.post('/login', function(req, res) {
 });
 
 module.exports = router;
-
-
