@@ -3,7 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:27017/webdev2', function(error) {
+mongoose.connect('mongodb://192.168.56.101:27017/webdev2', function(error) {
   /*
     Se houver algum erro na conexão com o banco
     lança uma exceção e finaliza a execução da aplicação
