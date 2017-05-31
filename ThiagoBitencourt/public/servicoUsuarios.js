@@ -49,10 +49,11 @@ app = angular.module('webdev-2')
         }
       },
       excluirUsuario: function(usuario) {
-        var usuarioIndex = usuarios.indexOf(usuario);
-        if(usuarioIndex > -1) {
-          usuarios.splice(usuarioIndex, 1);
-        }
+        return $http.delete('http://localhost:3000/usuario/' + usuario._id);
+        // var usuarioIndex = usuarios.indexOf(usuario);
+        // if(usuarioIndex > -1) {
+        //   usuarios.splice(usuarioIndex, 1);
+        // }
       }
     }
   });
