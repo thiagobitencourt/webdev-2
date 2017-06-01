@@ -1,32 +1,65 @@
 'use strict';
+const express = require('express');
+const bodyParser = require('body-parser');
 
-console.log("Olá Mundo!");
+const UsuarioDAO = require('./usuarioDAO');
+const app = express();
+// parser para json
+app.use(bodyParser.json());
 
-var x = 10;
-var y = "algumNome"
+const usuarioRepo = new UsuarioDAO();
 
-//let z = 22;
-//let k = "e nozes"
+app.use('/', express.static('public'));
 
-const c = 10;
+app.post('/login', function(req, res) {
+  var sucesso = usuarioRepo.autenticarUsuario(req.body.username, req.body.password);
+  if(sucesso) {
+    res.send("Usuário autenticado com sucesso!");
+  } else {
+    res.status(400).send("Nome de usuário ou senha estão incorretos");
+  }
+});
 
-console.log(c);
+app.get('/usuario', function(req, res) {
+  const todosUsuarios = usuarioRepo.obterTodosOsUsuarios();
+  if(todosUsuarios.length) {
+    return res.send(todosUsuarios);
+  }
+  res.send("Nenhum usuário cadastrado!");
+});
 
-//função
+app.get('/usuario/:username', function(req, res) {
+  var usuario = usuarioRepo.obterUsuario(req.params.username);
+  if(usuario) {
+    res.send(usuario);
+  } else {
+    res.status(404).send("Não encontramos o usuário " + req.params.username);
+  }
+});
 
-function liberarOsAlunosDaAula() {
-  console.log(y);
-  return 20;
-}
+app.post('/usuario', function(req, res) {
+  usuarioRepo.criarUsuario(req.body);
+  res.send(req.body);
+});
 
-var resposta = liberarOsAlunosDaAula(50);
-//console.log(resposta);
+app.delete('/usuario/:username', function(req, res) {
+  var sucesso = usuarioRepo.removerUsuario(req.params.username);
+  if(sucesso) {
+    res.send("Usuário removido com sucesso!");
+  } else {
+    res.send("Usuário não foi encontrado");
+  }
+});
 
-var func2 = function(a){
-  console.log(a);
-}
+app.put('/usuario/:username', function(req, res) {
+  var alterou = usuarioRepo.alterarUsuario(req.params.username, req.body);
+  if(alterou) {
+    res.send("Usuário alterado com sucesso!");
+  } else {
+    res.send("Usuário não foi encontrado");
+  }
+});
 
-func2("oi");
-
-var minhaFuncao = liberarOsAlunosDaAula;
-minhaFuncao("Não");
+app.listen(3000, function() {
+  console.log("Servidor ouvindo na porta 3000");
+});
