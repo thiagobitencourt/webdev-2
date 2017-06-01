@@ -1,28 +1,27 @@
 'use strict';
 
-var a = 42;
-var b = "72";
+
+var a =42;
+var b ="72";
+
 
 //Equality
-a == b; // faz Coercion
-a === b; // não deixa fazer Coercion
-
+a == b; //coercion
+a === b;
 //not-Equality
-a !=b;
-a !== b;
+a !=a;
+a!==b;
 
-//Inequality. não é not - Equality
-var ehMaior = a > b; //Boolean
-var ehMenor = a < b; //Boolean
+//Inequality. não é not-Equality
+var ehMaior = a>b;//boolean
+var ehMenor = a<b;//boolean
 
 var str1 = "casa";
 var str2 = "abacaxi";
 
-str1 > str2; //true ou false
+str1>str2;//true ou false
+str1<str2;//true ou false
 
-//Usado para números
-//Usado para String
-//Coercion / Coerção
-
-
-// Condicionais - if, while, for ... 
+//usado para numeros
+//usado para string
+//coercion / coerção

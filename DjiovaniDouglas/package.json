@@ -1,23 +1,18 @@
 {
   "name": "webdev-2",
   "version": "1.0.0",
-  "description": "Estive presente na aula do dia 30/03/2017\r teste de alteracao",
+  "description": "",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/djiovani-douglas/webdev-2.git"
-  },
-  "author": "djiovani-douglas",
+  "author": "Mateus Zabote da Silva",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/djiovani-douglas/webdev-2/issues"
-  },
-  "homepage": "https://github.com/djiovani-douglas/webdev-2#readme",
   "dependencies": {
     "body-parser": "^1.17.1",
     "express": "^4.15.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
   }
 }

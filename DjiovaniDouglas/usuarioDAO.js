@@ -1,18 +1,20 @@
 'use strict';
-
 var arrayUsuarios = [];
 
 function Usuario() {
-  this.autenticarUsuario = function(user) {
-    console.log("autenticar usuario");
-    return (
-      user.username === usuario.username &&
-      user.password === usuario.password
-    )
+  this.autenticarUsuario = function(username, password) {
+    var usu = arrayUsuarios.find(function(usuario) {
+      return usuario.username === username
+    });
+
+    if(usu) {
+      return usu.password === password;
+    } else {
+      return false;
+    }
   }
 
   this.criarUsuario = function(user) {
-    console.log("criar usuario ", user);
     arrayUsuarios.push(user);
   }
 
@@ -21,7 +23,6 @@ function Usuario() {
   };
 
   this.obterUsuario = function(username) {
-    console.log("obter usuario");
     var usuarioRetorno;
     arrayUsuarios.forEach(function(usuario) {
       if(usuario.username === username) {
@@ -29,6 +30,36 @@ function Usuario() {
       }
     });
     return usuarioRetorno;
+  }
+
+  this.removerUsuario = function(username) {
+    var usuarioIndex;
+    arrayUsuarios.forEach(function(usuario, index) {
+      if(usuario.username === username) {
+        usuarioIndex = index;
+      }
+    });
+    if(typeof usuarioIndex !== 'undefined') {
+      arrayUsuarios.splice(usuarioIndex, 1);
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  this.alterarUsuario = function(username, newUser) {
+    // achar o usuario, alterar o usuario
+    var alterou = false;
+    arrayUsuarios.forEach(function(usuario) {
+      if(usuario.username === username) {
+        usuario.username = newUser.username;
+        usuario.password = newUser.password;
+        usuario.email = newUser.email;
+        usuario.age = newUser.age;
+        alterou = true;
+      }
+    });
+    return alterou;
   }
 }
 

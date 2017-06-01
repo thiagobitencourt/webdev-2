@@ -1,89 +1,84 @@
-'use strict'
+'use strict';
 
 var valorInteiro = 42;
 var valorString = "42";
 //tem valor igual e tipos diferentes
 
-console.log(typeof valorInteiro); //vai imprimir number
-console.log(typeof valorString); //string
+console.log(typeof valorInteiro); //number
+console.log(typeof valorString);//string
 
-var comparacao = valorInteiro == valorString; //boolean
-console.log(comparacao); // true
 
-var compara2 = valorInteiro === valorString;
-console.log(compara2); // false. tipos diferentes
+var comparacao = valorInteiro==valorString;// boolean
+console.log(comparacao);//true
 
-var valorA = "24"; //string
-var valorB = 11; //number
+var compara2 = valorInteiro === valorString; //=== não deixa transformar os tipos
+console.log(compara2);//false. tipos diferentes
 
-var valorDaSoma = valorA + valorB;
-console.log("valor de valorDaSoma: ", valorDaSoma);//2411
-console.log("Tipo do valor: ", typeof valorDaSoma);
+var valorA = "24";//string
+var valorB = 11;//number
 
-var multiplica = valorA * valorB;
-console.log("valor da SomaMultiplica: ", multiplica);
+var valorDaSoma= valorA+valorB;
+console.log("valor de valorDaSoma: ",valorDaSoma);//2411
+console.log("tipo do valor: ",typeof valorDaSoma);//string
 
-var divide = valorA / valorB;
-console.log("valor da SomaDivide: ", divide);
+var somaDenovo = valorA+valorB;//
+console.log("valor do somaDenovo: ", somaDenovo);//35
+
+var multiplica = valorA *valorB;//
+console.log("valor do multiplica: ", multiplica);
 
 var valorInt = 16;
-var valorStr = "a";
-
-//NaN - not A Number - não é um numero
-console.log("valorStr * valorInt: ", valorStr * valorInt); //NaN
+var valorStr="a";
+//Nan - not A Number - não é um numero.
+console.log("valorStr * valorInt: ",valorStr*valorInt);
 
 /*
 == -> Permite que o JS faça coerção (coercion) dos valores
-=== -> Não permite a coerção (coercion). "Verifica também os tipos"
-com "!"  na frente testa se é diferente
+=== ->Não permite a coerção(coercion)."verifica tambem os tipos"
+com "!" na frente testa se é diferente
 ===, ==, !=, !==
+
 */
 
-var compara = valorInt === valorStr; //Boolean
-var valorBoleano = true; //Boolean
+// truthy e falsy
 
-var valorObjeto = { attr: "atributo string" };
+var compara = valorInt === valorStr;//booblean
+var valorBooleano= true;// boolean
 
-if(valorObjeto){ // Coercion
+var valorObjeto = {attr:"atributo string"};
+
+if(valorObjeto){//coercion
   console.log("passou no if");
-} else {
+}else{
   console.log("passou no else");
 }
 
 var valorStrDenovo = "";
-
 if(valorStrDenovo){
   console.log("esta no if");
-} else {
+}else{
   console.log("esta no else");
 }
 
-var valorIntDeNovo = 0;
-if(valorIntDeNovo){
-  console.log("esta no if do int")
-} else {
+var valorIntDenovo = 0;
+if(valorIntDenovo){
+  console.log("esta no if do int");
+}else{
   console.log("esta no else do int");
 }
 
-var numeroDoLucas = 24;
-if(numeroDoLucas){
-  console.log("O Lucas é ...");
-} else {
-  console.log("O Lucas não é ...")
-}
-
-/* valores que terão coerção para true (truthy):
-String com valor
-Número diferente diferente de 0 (zero);
+/*
+-Valores que terão coerção para true:
+string com valor
+numero diferente de 0 (zero);
 Objeto
 Array
 Function
 
-- valores que terão coerção para false (falsy):
-"" - String vazia
+-valores que terão coerção para false:
+"" -string vazia
 0, zero
 NaN
 null
 undefined
-
 */
