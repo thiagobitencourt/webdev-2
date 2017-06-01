@@ -6,7 +6,9 @@ app.controller('mainController', function($scope, servicoUsuarios) {
   //servicoUsuarios.teste();
 
   $scope.titulo = "Usuários";
-  $scope.usuarios = servicoUsuarios.obterUsuarios();
+  servicoUsuarios.obterUsuarios().then(function(resultado){
+    console.log("resultado");
+  })
 
   $scope.adicionarUsuario = function() {
     console.log("Adicionar usuario");
@@ -23,9 +25,10 @@ app.controller('mainController', function($scope, servicoUsuarios) {
 
   $scope.editarUsuario = function() {
     console.log("Editar usuario");
-    $scope.novoUsuario = $scope.usuarios.find(function(user, index) {
+    var usuarioSel = $scope.usuarios.find(function(user, index) {
       return user.selecionado;
     });
+    $scope.novoUsuario = angular.copy(usuarioSel);
     $scope.adicionandoUsuario = true;
   }
 

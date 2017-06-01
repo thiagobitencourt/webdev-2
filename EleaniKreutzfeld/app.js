@@ -1,65 +1,29 @@
 'use strict';
-
-const usuarioDAO = require('./usuario');
 const express = require('express');
-const bodyParser = require("body-parser");
-const app = express();
-const usuarioRepo = new usuarioDAO();
-app.use(bodyParser.json());
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
-app.get('/usuario', function(req, res){
-  var arrayDeUsuarios = usuarioRepo.obterTodosOsUsuarios();
-  if(arrayDeUsuarios[0]){
-    res.send(usuarioRepo.obterTodosOsUsuarios());
-  }else{
-    res.status(404).send("Nenhum usuario encontrado !");
-  }
-});
+mongoose.connect('mongodb://localhost:27017/webdev2', function(error) {
+  /*
+    Se houver algum erro na conexão com o banco
+    lança uma exceção e finaliza a execução da aplicação
+  */
+  if(error) throw new Error(error);
 
-app.post('/usuario', function(req, res){
-  usuarioRepo.criarUsuario(req.body);
-  res.send(req.body);
-});
+  const app = express();
 
-app.get('/usuario/:username', function(req, res){
-  var usuario = usuarioRepo.obterUsuario(req.params.username);
-  if(usuario){
-    res.send(usuario);
-  } else {
-    res.status(404).send("Não encontramos o usuario: "+req.params.username);
-  }
-  // res.send(req.params.username);
-});
+  const rotaUsuarios = require('./routes/usuariosRoute');
+  const rotaProdutos = require('./routes/produtosRoute');
 
-app.put('/usuario/:username', function(req, res){
-  var alterou = usuarioRepo.alterarUsuario(req.params.username, req.body);
-  if(alterou){
-      res.send("Funcionou");
-  }else{
-      res.send("Usuario não foi encontrado");
-  }
-});
+  console.log("Connectado ao banco com sucesso!");
+  // parser para json
+  app.use(bodyParser.json());
 
-app.delete('/usuario/:username', function(req, res){
-  var sucesso = usuarioRepo.removerUsuario(req.params.username);
-  if(sucesso){
-    res.send("O usuario foi removido com sucesso");
-  }else{
-    res.send("O usuário não foi encontrado");
-  }
-});
+  app.use('/', express.static('public'));
+  app.use(rotaUsuarios);
+  app.use(rotaProdutos);
 
-app.post('/login', function(req, res){
-  var autenticado = usuarioRepo.autenticarUsuario(req.body.username, req.body.password);
-  if(autenticado){
-    res.send("Usuario autenticado com sucesso");
-  }else{
-    res.status(400).send("Usuario ou senha invalido");
-  }
-});
-
-app.use('/', express.static('public'));
-
-app.listen(3000, function(){
-  console.log("Example app listening on port 3000!");
+  app.listen(3000, function() {
+    console.log("Servidor ouvindo na porta 3000");
+  });
 });
