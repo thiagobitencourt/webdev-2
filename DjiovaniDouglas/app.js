@@ -1,65 +1,34 @@
 'use strict';
+
 const express = require('express');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
-const UsuarioDAO = require('./usuarioDAO');
 const app = express();
-// parser para json
 app.use(bodyParser.json());
-
-const usuarioRepo = new UsuarioDAO();
-
 app.use('/', express.static('public'));
 
-app.post('/login', function(req, res) {
-  var sucesso = usuarioRepo.autenticarUsuario(req.body.username, req.body.password);
-  if(sucesso) {
-    res.send("Usuário autenticado com sucesso!");
-  } else {
-    res.status(400).send("Nome de usuário ou senha estão incorretos");
-  }
-});
+const usuarioApi = require('./routes/usuarios');
+const productApi = require('./routes/produtos');
 
-app.get('/usuario', function(req, res) {
-  const todosUsuarios = usuarioRepo.obterTodosOsUsuarios();
-  if(todosUsuarios.length) {
-    return res.send(todosUsuarios);
-  }
-  res.send("Nenhum usuário cadastrado!");
-});
+mongoose.connect('mongodb://djiovani:teste@ts159880.mlab.com:59880/product-api');
 
-app.get('/usuario/:username', function(req, res) {
-  var usuario = usuarioRepo.obterUsuario(req.params.username);
-  if(usuario) {
-    res.send(usuario);
-  } else {
-    res.status(404).send("Não encontramos o usuário " + req.params.username);
-  }
-});
+mongoose.connection.once('open', () => {
+  console.log('Connected succesfully!');
 
-app.post('/usuario', function(req, res) {
-  usuarioRepo.criarUsuario(req.body);
-  res.send(req.body);
-});
+  app.post('/login', usuarioApi.autenticarUsuario);
 
-app.delete('/usuario/:username', function(req, res) {
-  var sucesso = usuarioRepo.removerUsuario(req.params.username);
-  if(sucesso) {
-    res.send("Usuário removido com sucesso!");
-  } else {
-    res.send("Usuário não foi encontrado");
-  }
-});
+  app.get('/usuarios', usuarioApi.obterUsuarios);
+  app.get('/usuarios/:username', usuarioApi.obterUsuario);
+  app.post('/usuarios', usuarioApi.criarUsuario);
+  app.put('/usuarios/:username', usuarioApi.atualizarUsuario);
+  app.delete('/usuarios/:username', usuarioApi.removerUsuario);
 
-app.put('/usuario/:username', function(req, res) {
-  var alterou = usuarioRepo.alterarUsuario(req.params.username, req.body);
-  if(alterou) {
-    res.send("Usuário alterado com sucesso!");
-  } else {
-    res.send("Usuário não foi encontrado");
-  }
-});
+  app.post('/produtos', productApi.criarProduto);
+  app.get('/produtos', productApi.obterProdutos);
+  app.get('/produtos/:id', productApi.obterProduto);
+  app.put('/produtos/:id', productApi.atualizarProduto);
+  app.delete('/produtos/:id', productApi.removerProduto);
 
-app.listen(3000, function() {
-  console.log("Servidor ouvindo na porta 3000");
+  app.listen(3000, () => console.log('Servidor ouvindo na porta 3000.'));
 });

@@ -1,16 +1,19 @@
 {
-  "name": "webdev-2",
+  "name": "DjiovaniDouglas",
   "version": "1.0.0",
-  "description": "",
+  "description": "A repository for academic purposes.",
   "main": "app.js",
   "scripts": {
+    "start": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Mateus Zabote da Silva",
+  "author": "",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.17.1",
-    "express": "^4.15.2"
+    "express": "^4.15.2",
+    "mongodb": "^2.2.26",
+    "mongoose": "^4.10.0"
   },
   "devDependencies": {
     "nodemon": "^1.11.0"
