@@ -1,0 +1,58 @@
+<html ng-app="webdev-2">
+  <head>
+    <meta charset="utf-8">
+    <title>Usuários</title>
+    <link 
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+      rel="stylesheet" 
+      crossorigin="anonymous">
+    <link 
+      href="css/style.css" 
+      rel="stylesheet">
+  </head>
+  <body>
+    <div ng-controller="usuarioController">
+      <h1> {{ title }} </h1>
+      <!-- Table -->
+      <table class="table">
+        <tr>
+          <th>ID</th>
+          <th>Usuários</th>
+          <th>Senha</th>
+          <th>Idade</th>
+          <th>Email</th>
+        </tr>
+        <tr ng-repeat="user in usuarios">
+          <td>{{ user.id }}</td>
+          <td>{{ user.username }}</td>
+          <td>{{ user.password }}</td>
+          <td>{{ user.age }}</td>
+          <td>{{ user.email }}</td>
+        </tr>
+      </table>
+  
+      <input
+        type="button"
+        class="btn btn-primary"
+        value="Adicionar"
+        ng-click="adicionarUsuario()" />
+      
+      <input
+        type="button"
+        class="btn btn-warning"
+        value="Editar"
+        ng-click="clickButton()" />
+      
+      <input
+        type="button"
+        class="btn btn-danger"
+        value="Excluir"
+        ng-click="clickButton()" />
+
+    </div>
+    <script 
+      src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script 
+      src="js/webdev2.js"></script>
+  </body>
+</html>

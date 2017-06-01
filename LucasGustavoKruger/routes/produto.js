@@ -1,13 +1,15 @@
 'use strict';
 
-const mongoose = require('mongoose');
+const express = require('express');
 const ObjectID = require('mongodb').ObjectID;
+
+const routes = express.Router();
 
 const getCollection = (req => {
   return req.db.get('produtos');  
 });
 
-module.exports = {
+const produto = {
   save: ((req, res) => { 
     const collection = getCollection(req);
     collection.insert({
@@ -52,9 +54,18 @@ module.exports = {
     });
   }),
   getAll: ((req, res) => {
+    console.log('Passing here');
     const collection = getCollection(req);
     collection.find({}, (err, doc) => {
       res.status(200).send(doc);
     });
   })
 };
+
+routes.get('/produto', produto.getAll); 
+routes.get('/produto/:id', produto.get);
+routes.post('/produto', produto.save);
+routes.put('/produto/:id', produto.update);
+routes.delete('/produto/:id', produto.delete);
+
+module.exports = routes;
