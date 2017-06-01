@@ -102,7 +102,7 @@ Your branch is up-to-date with 'origin/master'.
 $ git merge iss53
 Updating ccfc35b..292dab0
 Fast-forward
- matheuseduardo/Atividade01/README.md | 77 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ DjiovaniDouglas/Atividade01/README.md | 77 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  1 file changed, 77 insertions(+)
 
 $ git push origin master
@@ -111,7 +111,7 @@ Delta compression using up to 4 threads.
 Compressing objects: 100% (4/4), done.
 Writing objects: 100% (5/5), 1.48 KiB | 0 bytes/s, done.
 Total 5 (delta 0), reused 0 (delta 0)
-To https://github.com/eduardosmatheus/webdev-2.git
+To https://github.com/Djiovani-Douglas/webdev-2.git
 ccfc35b..292dab0 master -> master
 ```
 
@@ -140,7 +140,7 @@ You have unmerged paths.
 Unmerged paths:
   (use "git add <file>..." to mark resolution)
 
-        both modified:   matheuseduardo/Atividade01/README.md
+        both modified:   DjiovaniDouglas/Atividade01/README.md
 
 no changes added to commit (use "git add" and/or "git commit -a")
 ```
