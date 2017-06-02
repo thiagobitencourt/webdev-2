@@ -1,30 +1,62 @@
-'use strict'
+'use strict';
 
 var app = angular.module('webdev-2', []);
+app.controller('mainController', function($scope, productService) {
+  $scope.titulo = "Produtos";
 
-app.controller('usuarioController', function($scope) {
-  
-  $scope.title = "Usuários";
-  
-  $scope.usuarios = [
-    {
-      id: 1,
-      username: "Lucas Krüger",
-      password: "1234",
-      age: 18,
-      email: "lucas.kr1996@gmail.com"
-    }
-  ];
+  function carregarProdutos() {
+    productService.fetchProducts()
+    .then(function(resp) {
+      $scope.produtos = resp.data;
+    })
+    .catch(function(err) {
+      window.open('http://localhost:3000/erro404.html');
+    });
+  }
+  carregarProdutos();
 
-  $scope.adicionarUsuario = function() {
-    console.log('Adicionar');
+  $scope.saveProduct = function() {
+    $scope.adicionandoProduto = true;
   }
 
-  $scope.editarUsuario = function() {
-    console.log('Editar');
+  $scope.removeProduct = function() {
+    var produtoSelecionado = $scope.produtos.find(function(produto, index) {
+      return produto.selecionado;
+    });
+    productService.removeProduct(produtoSelecionado)
+      .then(function(resultado) {
+        carregarProdutos();
+      });
   }
 
-  $scope.excluirUsuario = function() {
-    console.log('Excluir');
+  $scope.editProduct = function() {
+    var produtoEditavel = $scope.produtos.find(function(produto, index) {
+      return produto.selecionado;
+    });
+    $scope.produto = angular.copy(produtoEditavel);
+    $scope.adicionandoProduto = true;
   }
+
+  $scope.postProduct = function(produto) {
+    productService
+      .saveProduct(produto)
+      .then(function(resultado) {
+        carregarProdutos();
+        $scope.novoUsuario = undefined;
+        $scope.adicionandoUsuario = false;
+      });
+  }
+
+  $scope.selecionaProduto = function(prod) {
+    console.log(prod);
+    $scope.produtos.forEach(function(produto) {
+      console.log(produto);
+      if(produto._id === prod._id) {
+        produto.selecionado = !prod.selecionado;
+      } else {
+        produto.selecionado = false;
+      }
+    })
+  }
+
 });

@@ -54,7 +54,6 @@ const produto = {
     });
   }),
   getAll: ((req, res) => {
-    console.log('Passing here');
     const collection = getCollection(req);
     collection.find({}, (err, doc) => {
       res.status(200).send(doc);
