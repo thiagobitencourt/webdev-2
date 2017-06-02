@@ -35,5 +35,4 @@ function usuarioDAO() {
     return false;
   }
 }
-
 module.exports = usuarioDAO;

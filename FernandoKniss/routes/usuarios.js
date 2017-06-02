@@ -6,6 +6,7 @@ const usuarioRepo = new Usuario();
 
 module.exports = {
 
+  
   autenticarUsuario: ((req, res) => {
     const sucesso = usuarioRepo.autenticarUsuario(req.body.username, req.body.password);
     if (sucesso) {
@@ -15,14 +16,17 @@ module.exports = {
     }
   }),
 
+  
   criarUsuario: ((req, res) => {
     const updatedUserList = usuarioRepo.criarUsuario(req.body);
     res.send(updatedUserList);
   }),
 
+  
   obterUsuarios: ((req, res) => {
     res.send(usuarioRepo.obterUsuarios());
   }),
+
 
   obterUsuario: ((req, res) => {
     const usuario = usuarioRepo.obterUsuario(req.params.username);
@@ -33,6 +37,7 @@ module.exports = {
     }
   }),
 
+  
   atualizarUsuario: ((req, res) => {
     const updatedUser = usuarioRepo.updateUsuario(req.params.username, req.body);
     if(updatedUser) {
@@ -42,6 +47,7 @@ module.exports = {
     }
   }),
 
+  
   removerUsuario: ((req, res) => {
     const hasRemovedSuccesfully = usuarioRepo.removerUsuario(req.params.username);
     if(hasRemovedSuccesfully) {

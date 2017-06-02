@@ -3,6 +3,7 @@ const ObjectId = require('mongoose').Types.ObjectId;
 
 module.exports = {
 
+ 
   criarProduto: ((req, res) => {
     const produto = new Produto({
       _id: new ObjectId(),
@@ -17,6 +18,7 @@ module.exports = {
     });
   }),
 
+  
   obterProdutos: ((req, res) => {
     Produto.find((err, produtos) => {
       if (err) throw err;
@@ -24,6 +26,7 @@ module.exports = {
     });
   }),
 
+  
   obterProduto: ((req, res) => {
     Produto.findOne({ _id: new ObjectId(req.params.id) }, (err, produto) => {
       if(!produto) {
@@ -34,6 +37,7 @@ module.exports = {
     });
   }),
 
+ 
   atualizarProduto: ((req, res) => {
 
 
@@ -46,7 +50,6 @@ module.exports = {
     });
 
 
-
     Produto.findByIdAndUpdate(new ObjectId(req.params.id), produto, (err, updatedProduto) => {
       if (err) throw err;
       console.log(`Produto ${req.params.id} atualizado com sucesso!`);
@@ -54,6 +57,7 @@ module.exports = {
     });
   }),
 
+ 
   removerProduto: ((req, res) => {
     Produto.findByIdAndRemove(new ObjectId(req.params.id), (err) => {
       if (err) throw err;
