@@ -11,13 +11,11 @@ app.use('/', express.static('public'));
 const usuarioApi = require('./routes/usuarios');
 const productApi = require('./routes/produtos');
 
-mongoose.connect('mongodb://matheus:baguvix@ds159880.mlab.com:59880/product-api');
+mongoose.connect('mongodb://localhost:27017/product-api');
 
 mongoose.connection.once('open', () => {
   console.log('Connected succesfully!');
 
-  app.post('/login', usuarioApi.autenticarUsuario);
-  
   app.get('/usuarios', usuarioApi.obterUsuarios);
   app.get('/usuarios/:username', usuarioApi.obterUsuario);
   app.post('/usuarios', usuarioApi.criarUsuario);
