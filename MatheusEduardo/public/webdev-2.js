@@ -45,8 +45,8 @@ app.controller('mainController', ($scope) => {
     $scope.adicionandoUsuario = true;
   }
 
-  $scope.removerUsuario = (id) => {
-    const currentUser = $scope.usuarios.find(user => user._id === id);
+  $scope.removerUsuario = () => {
+    const currentUser = $scope.usuarios.find(user => user.selecionado);
     if(currentUser) {
       $scope.usuarios.splice($scope.usuarios.indexOf(currentUser), 1);
       return true;
@@ -93,8 +93,8 @@ app.controller('productsController', ($scope) => {
     $scope.adicionandoProduto = true;
   }
 
-  $scope.removerProduto = (id) => {
-    const currentProduto = $scope.produtos.find(produto => produto._id === id);
+  $scope.removerProduto = () => {
+    const currentProduto = $scope.produtos.find(produto => produto.selecionado);
     if(currentProduto) {
       $scope.produtos.splice($scope.produtos.indexOf(currentProduto), 1);
       return true;

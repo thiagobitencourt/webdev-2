@@ -40,6 +40,7 @@
         
         <button class="btn btn-primary" type="button" ng-show="!adicionandoUsuario" ng-click="adicionarUsuario()">Adicionar</button>
         <button class="btn btn-default" type="button" ng-show="!adicionandoUsuario" ng-click="editarUsuario()">Editar</button>
+        <button class="btn btn-danger" type="button" ng-show="!adicionandoUsuario" ng-click="removerUsuario()">Excluir</button>
 
         <table class="table" ng-show="!adicionandoUsuario">
           <thead>
@@ -64,11 +65,6 @@
               <td>{{ usuario.password }}</td>
               <td>{{ usuario.age }}</td>
               <td>{{ usuario.email }}</td>
-              <td>
-                <button class="btn btn-danger" aria-label="left-align" ng-click="removerUsuario(usuario.id)">
-                  <span class="glyphicon glyphicon-trash" aria-hidden="true"/>
-                </button>
-              </td>
             </tr>
           </tbody>
         </table>
@@ -109,6 +105,7 @@
 
         <button class="btn btn-primary" type="button" ng-show="!adicionandoProduto" ng-click="adicionarProduto()">Adicionar</button>
         <button class="btn btn-default" type="button" ng-show="!adicionandoProduto" ng-click="editarProduto()">Editar</button>
+        <button class="btn btn-danger" type="button" ng-show="!adicionandoUsuario" ng-click="removerProduto()">Excluir</button>
 
         <table class="table" ng-show="!adicionandoProduto">
           <thead>
@@ -133,11 +130,7 @@
               <td>{{ produto.nome }}</td>
               <td>{{ produto.quantidade }}</td>
               <td>{{ produto.disponivel }}</td>
-              <td>
-                <button class="btn btn-danger" aria-label="left-align" ng-click="removerProduto(produto.id)">
-                  <span class="glyphicon glyphicon-trash" aria-hidden="true"/>
-                </button>
-              </td>
+              
             </tr>
           </tbody>
         </table>
