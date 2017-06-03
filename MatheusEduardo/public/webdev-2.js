@@ -1,11 +1,17 @@
 'use strict';
 
-const app = angular.module('webdev-2', []);
+var app = angular.module('webdev-2', []);
   
-app.controller('mainController', ($scope) => {
+app.controller('mainController', ($scope, usuarioService) => {
 
-  $scope.usuarios = [];
+  function carregarUsuarios() {
+    usuarioService.obterUsuarios().then(response => {
+      $scope.usuarios = response.data;
+    });
+  }
   
+  carregarUsuarios();
+
   $scope.selecionarUsuario = (usuario) => {
     $scope.usuarios.forEach(user => {
       if(user._id === usuario._id) {
@@ -17,18 +23,11 @@ app.controller('mainController', ($scope) => {
   }
 
   $scope.salvarNovoUsuario = (novoUsuario) => {
-    if(!novoUsuario._id) {
-      novoUsuario._id = $scope.usuarios.length + 1;
-      $scope.usuarios.push($scope.novoUsuario);
-      $scope.adicionandoUsuario = false;
+    usuarioService.salvarUsuario(novoUsuario).then(response => {
       $scope.novoUsuario = undefined;
-    } else {
-      $scope.usuarios = $scope.usuarios.map(u => {
-        return u._id === novoUsuario._id ? Object.assign({}, u, novoUsuario) : u;
-      });
       $scope.adicionandoUsuario = false;
-      $scope.novoUsuario = undefined;
-    }
+      carregarUsuarios();
+    }).catch(err => console.log(err));
   }
 
   $scope.adicionarUsuario = () => {
@@ -37,26 +36,32 @@ app.controller('mainController', ($scope) => {
 
   $scope.cancelarCriacao = () => {
     $scope.adicionandoUsuario = false;
+    $scope.novoUsuario = undefined;
   }
 
   $scope.editarUsuario = () => {
     const usuarioEditavel = $scope.usuarios.find(user => user.selecionado);
-    $scope.novoUsuario = angular.copy(usuarioEditavel);
-    $scope.adicionandoUsuario = true;
+    $scope.novoUsuario = usuarioEditavel ? angular.copy(usuarioEditavel) : undefined;
+    $scope.adicionandoUsuario = !!usuarioEditavel;
   }
 
   $scope.removerUsuario = () => {
     const currentUser = $scope.usuarios.find(user => user.selecionado);
-    if(currentUser) {
-      $scope.usuarios.splice($scope.usuarios.indexOf(currentUser), 1);
-      return true;
-    }
-    return false;
+    usuarioService.removerUsuario(currentUser).then(() => {
+      carregarUsuarios();
+    });
   }
 });
 
-app.controller('productsController', ($scope) => {
-  $scope.produtos = [];
+app.controller('productsController', ($scope, productService) => {
+
+  function carregarProdutos() {
+    productService.obterProdutos().then(response => {
+      $scope.produtos = response.data;
+    });
+  }
+
+  carregarProdutos();
 
   $scope.selecionarProduto = (produto) => {
     $scope.produtos.forEach(prod => {
@@ -69,36 +74,30 @@ app.controller('productsController', ($scope) => {
   }
 
   $scope.salvarNovoProduto = (novoProduto) => {
-    if(!novoProduto._id) {
-      novoProduto._id = $scope.produtos.length + 1;
-      $scope.produtos.push(novoProduto);
+    productService.salvarProduto(novoProduto).then(response => {
       $scope.adicionandoProduto = false;
       $scope.novoProduto = undefined;
-    } else {
-      $scope.produtos = $scope.produtos.map(produto => {
-        return produto._id === novoProduto._id ? Object.assign({}, produto, novoProduto) : produto;
-      });
-      $scope.adicionandoProduto = false;
-      $scope.novoProduto = undefined;
-    }
+      carregarProdutos();
+    });
   }
 
   $scope.adicionarProduto = () => $scope.adicionandoProduto = true;
 
-  $scope.cancelarCriacao = () => $scope.adicionandoProduto = false;
+  $scope.cancelarCriacao = () => {
+    $scope.adicionandoProduto = false;
+    $scope.novoProduto = undefined;
+  }
 
   $scope.editarProduto = () => {
     const produtoEditavel = $scope.produtos.find(produto => produto.selecionado);
-    $scope.novoProduto = angular.copy(produtoEditavel);
-    $scope.adicionandoProduto = true;
+    $scope.novoProduto = produtoEditavel ? angular.copy(produtoEditavel) : undefined;
+    $scope.adicionandoProduto = !!produtoEditavel;
   }
 
   $scope.removerProduto = () => {
     const currentProduto = $scope.produtos.find(produto => produto.selecionado);
-    if(currentProduto) {
-      $scope.produtos.splice($scope.produtos.indexOf(currentProduto), 1);
-      return true;
-    }
-    return false;
+    productService.excluirProduto(currentProduto).then(response => {
+      carregarProdutos();
+    });
   }
 });

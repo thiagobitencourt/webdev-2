@@ -16,6 +16,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 
     <script src="webdev-2.js"></script>
+    <script src="services/usuarioService.js"></script>
+    <script src="services/produtoService.js"></script>
     <style>
       .sobre-linha {
         cursor: pointer;
@@ -105,7 +107,7 @@
 
         <button class="btn btn-primary" type="button" ng-show="!adicionandoProduto" ng-click="adicionarProduto()">Adicionar</button>
         <button class="btn btn-default" type="button" ng-show="!adicionandoProduto" ng-click="editarProduto()">Editar</button>
-        <button class="btn btn-danger" type="button" ng-show="!adicionandoUsuario" ng-click="removerProduto()">Excluir</button>
+        <button class="btn btn-danger" type="button" ng-show="!adicionandoProduto" ng-click="removerProduto()">Excluir</button>
 
         <table class="table" ng-show="!adicionandoProduto">
           <thead>
