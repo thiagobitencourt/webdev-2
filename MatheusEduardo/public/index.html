@@ -7,11 +7,6 @@
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
       integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" 
       crossorigin="anonymous"/>
-    <link 
-      rel="stylesheet" 
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" 
-      integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" 
-      crossorigin="anonymous"/>
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 
@@ -105,9 +100,15 @@
 
       <div ng-controller="productsController">
 
-        <button class="btn btn-primary" type="button" ng-show="!adicionandoProduto" ng-click="adicionarProduto()">Adicionar</button>
-        <button class="btn btn-default" type="button" ng-show="!adicionandoProduto" ng-click="editarProduto()">Editar</button>
-        <button class="btn btn-danger" type="button" ng-show="!adicionandoProduto" ng-click="removerProduto()">Excluir</button>
+        <div class="row">
+          <input type="text" ng-model="searchTerm" class="form-control" placeholder="Informe qualquer coisa para filtrar um produto...."/>
+        </div>
+        <br/>
+        <div class="row">
+          <button class="btn btn-primary" type="button" ng-show="!adicionandoProduto" ng-click="adicionarProduto()">Adicionar</button>
+          <button class="btn btn-default" type="button" ng-show="!adicionandoProduto" ng-click="editarProduto()">Editar</button>
+          <button class="btn btn-danger" type="button" ng-show="!adicionandoProduto" ng-click="removerProduto()">Excluir</button>
+        </div>
 
         <table class="table" ng-show="!adicionandoProduto">
           <thead>
@@ -122,7 +123,7 @@
 
           <tbody>
             <tr 
-              ng-repeat="produto in produtos track by $index"
+              ng-repeat="produto in produtos | filter:searchTerm"
               class="sobre-linha"
               ng-class="{'selecionado': produto.selecionado }"
               ng-click="selecionarProduto(produto)"
