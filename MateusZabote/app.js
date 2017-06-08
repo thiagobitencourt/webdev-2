@@ -1,138 +1,65 @@
-'Use strict';
-//tipos e valores
-//tipo de um valor é a sua forma de representação
-//var, let, const
-const valorConstante = 10;
-//valorConstante =20;
-//console.log(valorConstante);//imprime valor no terminal
+'use strict';
+const express = require('express');
+const bodyParser = require('body-parser');
 
-//tipos
-var valorInt = 10; //inteiro,number (numero)
-console.log(typeof valorInt);//imprime tipo do valor
+const UsuarioDAO = require('./usuarioDAO');
+const app = express();
+// parser para json
+app.use(bodyParser.json());
 
-var valorStr = "Hello"; //cadeia de caracteres
-var valorBooleanTrue = true; //true or false
-var valorBooleanFalse = false; //true or false
+const usuarioRepo = new UsuarioDAO();
 
-var valorNulo = null; // nulo, vaziu, sem valor
-var valorIndefinido = undefined; //não definido
+app.use('/', express.static('public'));
 
-var valorObjeto = { }; //objeto
-
-var str = "world";
-str = new String(""); //forma não literal de criar uma string
-var num = new Object();
-
-var valorArray = []; //Array é um tipo especial de object
-
-function funcaoQualquer(){ // function
-
-}
-//Aspas
-//"StringQualquer" 'StringQualquer';//não tem difereça as Aspas
-
-//Objetos
-
-var pessoa = {
-  nome: "Lucas",
-  idade: 24 ,
-  graduado: false,
-  "numero cpf" : "indigente"
-};
-
-console.log(pessoa.nome);//imprime o nome
-console.log(pessoa.idade);// imprime a idade
-
-console.log(pessoa['nome']);//imprime o nome
-console.log(pessoa['idade']);// imprime a idade
-
-pessoa['2'] = 40;
-var atributo = "numero cpf";
-console.log(pessoa[atributo]); //['numero cpf']);
-
-
-//Array
-var umaVariavel = 55;
-
-var arrayDoThalles = [
-  "sóescrever",
-  umaVariavel,
-  true,
-  pessoa
-];
-
-
-
-console.log(arrayDoThalles["0"]);
-console.log(pessoa["nome"]);
-
-
-//Função
-
-function Calcula() {
-console.log("Estou dentro da função");
-
-//  var a;
-//  var obj ={};
-//  var arr = {};
-//
-//  function x(){
-//
-//  }
-}
-
-Calcula();
-
-var chamada = function calculaDenovo(){
-  console.log("função calcula denovo");
-};
-
-chamada();
-
-var objeto = {
-  bar: "asda",
-  foo: chamada
-};
-
-objeto.bar;//
-console.log(objeto.foo);// diz que é uma functione mostra o nome
-objeto.foo();// chama oque esta dentro da fução
-
-var calculaOutrVez = function(valor1){
-  console.log(valor1);
-  var variavel1 ={
-    attr: 69
-  };
-
-  var variavelArray =[
-    "qualquer",
-    variavel1
-  ];
-
-  var variavelFunc = function(){
-    console.log("variavelFunc...");
+app.post('/login', function(req, res) {
+  var sucesso = usuarioRepo.autenticarUsuario(req.body.username, req.body.password);
+  if(sucesso) {
+    res.send("Usuário autenticado com sucesso!");
+  } else {
+    res.status(400).send("Nome de usuário ou senha estão incorretos");
   }
+});
 
-return variavelFunc;
-//  return variavelArray;
-  //return " Retorno da função";
-}
+app.get('/usuario', function(req, res) {
+  const todosUsuarios = usuarioRepo.obterTodosOsUsuarios();
+  if(todosUsuarios.length) {
+    return res.send(todosUsuarios);
+  }
+  res.send("Nenhum usuário cadastrado!");
+});
 
-calculaOutrVez();//sem valor
-calculaOutrVez("Com valor");
-var funcRetorno = calculaOutrVez("deve ter um retorno");//com retorno
+app.get('/usuario/:username', function(req, res) {
+  var usuario = usuarioRepo.obterUsuario(req.params.username);
+  if(usuario) {
+    res.send(usuario);
+  } else {
+    res.status(404).send("Não encontramos o usuário " + req.params.username);
+  }
+});
 
-console.log(funcRetorno);
-console.log(funcRetorno.attr);
-//console.log( funcRetorno[1].attr);
-console.log(funcRetorno());
+app.post('/usuario', function(req, res) {
+  usuarioRepo.criarUsuario(req.body);
+  res.send(req.body);
+});
 
-function recebeFuncao(funcaoRecebida){
-  console.log(funcaoRecebida);
-  funcaoRecebida();
-}
+app.delete('/usuario/:username', function(req, res) {
+  var sucesso = usuarioRepo.removerUsuario(req.params.username);
+  if(sucesso) {
+    res.send("Usuário removido com sucesso!");
+  } else {
+    res.send("Usuário não foi encontrado");
+  }
+});
 
-var funcParametro = function(){
-  console.log("Função que eu passei por parametro");
-}
-recebeFuncao(funcParametro);
+app.put('/usuario/:username', function(req, res) {
+  var alterou = usuarioRepo.alterarUsuario(req.params.username, req.body);
+  if(alterou) {
+    res.send("Usuário alterado com sucesso!");
+  } else {
+    res.send("Usuário não foi encontrado");
+  }
+});
+
+app.listen(3000, function() {
+  console.log("Servidor ouvindo na porta 3000");
+});
