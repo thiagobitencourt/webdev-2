@@ -12,7 +12,62 @@
       class="container"
       ng-controller="mainController"
     >
-      <h1>{{ hello }}</h1>
+      <h1>{{ title }}</h1>
+
+      <div class="menu"> 
+        <div class="menu-item">Ver contas </div>
+        <div class="menu-item">Realizar saque</div> 
+        <div class="menu-item">Realizar deposito</div> 
+        <div class="menu-item">Realizar trasnferencia</div>
+      </div>
+
+      <div ng-show="isViewing"> 
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Nome Titular</th>
+              <th>Cpf Titular</th>
+              <th>Email</th>
+              <th>Numero da conta</th>
+              <th>Saldo atual</th>            
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="conta in contas" class="conta-row">
+              <td>{{ conta.nomeTitular }}</td>
+              <td>{{ conta.cpfTitular }}</td> 
+              <td>{{ conta.email }}</td> 
+              <td>{{ conta.nrConta }}</td> 
+              <td>{{ conta.saldoAtual }}</td>
+            </tr>
+          </tbody>
+        </table>
+        <hr/>
+        <h3>Conta</h3>
+        <div class="row">
+          <div class="col-md-12">
+            <label>Nome do titular</label>
+            <input type="text" class="form-control" ng-model="conta.nomeTitular">
+          </div>
+          <div class="col-md-12">
+            <label>Cpf do titular</label>
+            <input type="text" class="form-control" ng-model="conta.cpfTitular">
+          </div>
+          <div class="col-md-12">
+            <label>Email do titular</label>
+            <input type="email" class="form-control" ng-model="conta.email">
+          </div>
+          <div class="col-md-12">
+            <label>Numero da conta</label>
+            <input type="text" class="checkbox" ng-model="conta.nrConta">
+          </div>
+          <div class="col-md-12" ng-show="isAdicionando">
+            <label>Saldo da conta</label>
+            <input type="text" class="checkbox" ng-model="conta.saldoAtual">
+          </div>
+        </div>
+        <button style="margin-top: 15px" type="button" ng-click="saveConta(conta)" class="btn btn-primary">Salvar Conta</button>
+      </div>
     </div>
     
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>

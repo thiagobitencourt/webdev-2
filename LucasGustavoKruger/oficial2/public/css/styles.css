@@ -1,3 +1,14 @@
 body { 
-  margin: 0 auto;
+  margin: 0 auto;  
+}
+
+.container {
+  padding: 100px;
+  margin-top: 10%;
+  box-shadow: 0px 0px 10px 2px #ccc;
+  border-radius: 10px;
+}
+
+.conta-row { 
+  cursor: pointer;
 }

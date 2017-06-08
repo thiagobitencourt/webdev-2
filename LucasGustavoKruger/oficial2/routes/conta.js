@@ -31,6 +31,7 @@ const contaHandlers = {
       data.nomeTitular = req.body.nomeTitular;
       data.cpfTitular = req.body.cpfTitular;
       data.nrConta = req.body.nrConta;
+      data.email = req.body.email;
       data.save(function (err, newData) {
         if (err) throw err;
         res.json(newData);

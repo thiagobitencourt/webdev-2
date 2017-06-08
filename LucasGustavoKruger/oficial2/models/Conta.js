@@ -11,6 +11,7 @@ var Schema = mongoose.Schema;
 var contaSchema = new Schema({
   nomeTitular: String,
   cpfTitular: String,
+  email: String,
   nrConta: String,
   saldoAtual: Number
 });
