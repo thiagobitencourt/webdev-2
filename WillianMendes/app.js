@@ -1,9 +1,13 @@
 'use strict';
-
+/*
 const Express = require('express');
-const Usuario = require('./usuario');
+const bodyparser=require('body-parser');
+const usuarioDAO = require('./usuarioDAO');
+
+const usuario = new usuarioDAO();
 
 const app = Express();
+app.use(bodyparser.json());
 
 app.get('/',function(){
 	console.log("alguem chamou /")
@@ -13,12 +17,28 @@ app.get('/',function(){
 
 app.get('/usuario',function(req, res){
 	console.log("alguem chamou /usurio")
-
-	const usuario = {
+/*	const usuario = {
 		username: "nome",
 		password: "senha"
 		}
 		res.send(usuario);
+*//*
+res.send(usuario.obterTodosUsuarios());
+});
+
+app.post('/usuario',function(req,res){
+	//console.log(req.body);
+	usuario.criarUsuario(req.body);
+	res.send("voce chamou em metodod post") 
+});
+
+app.get('/usuario/:username', function(req,res){
+	var ususario= usuario.obterUsusario(req.params.username);
+	if(usuario){res.send(req.params);
+
+	}else{
+		res.status(404).send();
+	}
 });
 
 app.listen(3000,function(){
@@ -29,7 +49,7 @@ app.listen(3000,function(){
 
 
 
-var usu=new Usuario();
+var usu=new usuarioDAO();
 
 console.log(usu);
 
@@ -46,4 +66,45 @@ if (usuarioValido){
 } else {
 	console.log("usuario ou senha invalido");
 }
+*/
+const express = require('express');
+const bodyParser = require('body-parser');
 
+const UsuarioDAO = require('./usuarioDAO');
+const app = express();
+// parser para json
+//app.use(bodyParser.json());
+
+const usuarioRepo = new UsuarioDAO();
+app.use ('/', express.static('public'));
+
+app.get('/', function(req, res) {
+  console.log("Alguém chamou /");
+  res.send("você acessou a rota /");
+});
+
+
+
+app.get('/usuario', function(req, res) {
+  console.log("alguém chamou /usuario");
+  res.send(usuarioRepo.obterTodosOsUsuarios());
+});
+
+app.post('/usuario', function(req, res) {
+  // console.log(req.body);
+  usuarioRepo.criarUsuario(req.body);
+  res.send(req.body);
+});
+
+app.get('/usuario/:username', function(req, res) {
+  var usuario = usuarioRepo.obterUsuario(req.params.username);
+  if(usuario) {
+    res.send(usuario);
+  } else {
+    res.status(404).send("Não encontramos o usuário " + req.params.username);
+  }
+});
+
+app.listen(3000, function() {
+  console.log("Servidor ouvindo na porta 3000");
+});

@@ -17,9 +17,13 @@
   },
   "homepage": "https://github.com/willink01/webdev-2#readme",
   "dependencies": {
+    "body-parser": "^1.17.1",
     "express": "^4.15.2"
   },
-  "devDepedencies":{
-    "mocha":"1.0.0"
+  "devDepedencies": {
+    "mocha": "1.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
   }
 }
