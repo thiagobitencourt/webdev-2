@@ -37,11 +37,7 @@ router.post('/conta/saque', function(req, res){
   conta.findById(req.body._id, function(error, conta) {
       if(error)
           res.send(error);
-      conta.nomeTitular = req.body.nomeTitular;
-      conta.cpfTitular = req.body.cpfTitular;
-      conta.emailTitular = req.body.emailTitular;
-      conta.numeroDaConta = req.body.numeroDaConta;
-      conta.saldo = req.body.saldo - req.body.saque;
+      conta.saldo = conta.saldo - req.body.saque;
       conta.save(function(error) {
           if(error)
               res.send(error);
@@ -54,17 +50,33 @@ router.post('/conta/deposito', function(req, res){
   conta.findById(req.body._id, function(error, conta) {
       if(error)
           res.send(error);
-      conta.nomeTitular = req.body.nomeTitular;
-      conta.cpfTitular = req.body.cpfTitular;
-      conta.emailTitular = req.body.emailTitular;
-      conta.numeroDaConta = req.body.numeroDaConta;
-      conta.saldo = req.body.saldo + req.body.deposito;
+      conta.saldo = conta.saldo + req.body.deposito;
       conta.save(function(error) {
           if(error)
               res.send(error);
           res.json({ message: 'Deposito Realizado!' });
       });
   });
+});
+
+router.post('/conta/transferencia', function(req, res){
+  conta.findById(req.body._id, function(error, conta) {
+      if(error)
+          res.send(error);
+      conta.saldo = conta.saldo - req.body.transferencia;
+      conta.save(function(error) {
+      });
+  });
+  conta.findById(req.body._idDestino, function(error, conta){
+    if(error)
+        res.send(error);
+    conta.saldo = conta.saldo + req.body.transferencia;
+    conta.save(function(error) {
+        if(error)
+            res.send(error);
+        res.json({ message: 'Transferencia Realizado!' });
+    });
+  })
 });
 
 router.get('/conta/:id', function(req, res){
