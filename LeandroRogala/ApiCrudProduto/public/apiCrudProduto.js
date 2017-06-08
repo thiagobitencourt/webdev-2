@@ -11,7 +11,7 @@ app.controller('mainController', function($scope, servicoProdutos){
       $scope.produtos = resultado.data;
     })
   };
-
+  //
   loading();
 
   $scope.addProdutos = function(){
