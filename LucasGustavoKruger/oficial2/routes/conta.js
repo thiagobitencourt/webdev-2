@@ -28,7 +28,9 @@ const contaHandlers = {
   update: ((req, res) => { 
     Conta.findOne({_id : req.params.id}, function (err, data) {
       if (err) throw err;
-      //TODO: parse body to new data. data = req.body.
+      data.nomeTitular = req.body.nomeTitular;
+      data.cpfTitular = req.body.cpfTitular;
+      data.nrConta = req.body.nrConta;
       data.save(function (err, newData) {
         if (err) throw err;
         res.json(newData);
