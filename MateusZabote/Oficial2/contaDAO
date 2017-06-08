@@ -1,0 +1,55 @@
+'use strict';
+
+var arrayContas = [];
+function Conta() {
+  this.autenticarConta = function(username, cpf) {
+    var con = arrayContas.find(function(conta) {
+      return conta.username === username});
+
+    if(con) {return con.cpf === cpf;}
+    else {return false;}
+  }
+
+  this.criarConta = function(cont) { arrayContas.push(cont);}
+
+  this.obterTodosAsContas = function() { return arrayContas;};
+
+  this.obterContas = function(username) {
+  var contaRetorno;
+    arrayContas.forEach(function(conta) {
+      if(conta.username === username) {
+        contaRetorno = usuario;}
+    });
+    return contaRetorno;
+  }
+
+  this.removerConta = function(username) {
+    var contaIndex;
+    arrayContas.forEach(function(conta, index) {
+      if(conta.username === username) {
+        contaIndex = index;}
+    });
+    if(typeof contaIndex !== 'undefined') {
+      arrayContas.splice(contaIndex, 1);
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  this.alterarConta = function(username, newUser) {
+        var alterou = false;
+    arrayContas.forEach(function(conta) {
+      if(conta.username === username) {
+        conta.username = newCont.username;
+        conta.cpf = newCont.cpf;
+        conta.email = newCont.email;
+        conta.saldo = newCont.saldo;
+        alterou = true;
+      }
+    });
+    return alterou;
+  }
+}
+
+module.exports = Conta;

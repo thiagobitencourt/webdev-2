@@ -16,7 +16,7 @@ var port = process.env.PORT || 8000;
 var router  = express.Router();
 
 router.use(function(req, res, next) {
-    console.log('Algo está acontecendo aqui........');
+    console.log('Algo está acontecendo aqui!');
     next();
 });
 
