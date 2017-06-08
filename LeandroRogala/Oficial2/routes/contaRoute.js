@@ -21,7 +21,7 @@ router.post('/conta', function(req, res){
   newconta.nomeTitular = req.body.nomeTitular;
   newconta.cpfTitular = req.body.cpfTitular;
   newconta.emailTitular = req.body.emailTitular;
-  newconta.numeroDaConta = req.body.numeroDaConta;
+  newconta.numeroDaConta = getRandom();
   newconta.saldo = req.body.saldo;
 
   newconta.save(function(error) {
@@ -50,7 +50,7 @@ router.put('/conta/:id', function(req, res){
       conta.nomeTitular = req.body.nomeTitular;
       conta.cpfTitular = req.body.cpfTitular;
       conta.emailTitular = req.body.emailTitular;
-      conta.numeroDaConta = req.body.numeroDaConta;
+      conta.numeroDaConta = getRandom();
       conta.saldo = req.body.saldo;
       conta.save(function(error) {
           if(error)
@@ -59,6 +59,10 @@ router.put('/conta/:id', function(req, res){
       });
   });
 });
+
+function getRandom(){
+  return Math.floor(Math.random() * 65536);
+}
 
 router.delete('/conta/:id', function(req, res){
   conta.remove({_id: req.params.id}, function(error){
