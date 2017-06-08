@@ -1,4 +1,4 @@
-# Programação WEBII webdev-2
+# Programação WEBII
 
 Repositório criado para participação dos alunos da faculdade Uniasselvi na aula de Programação WEB II. Cada aluno da disciplica cria uma pasta com seu nome e dentro executam as atividades passadas em sala de aula.  
 

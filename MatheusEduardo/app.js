@@ -2,64 +2,22 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
-const UsuarioDAO = require('./usuarioDAO');
-
-const usuarioRepo = new UsuarioDAO();
+const mongoose = require('mongoose');
+const usuarioApi = require('./routes/usuarios');
+const productApi = require('./routes/produtos');
 
 const app = express();
-
 app.use(bodyParser.json());
+app.use('/', express.static('public'));
 
-app.get('/', (req, res) => {
-  res.send('Eu acessei a url no caminho /');
+mongoose.connect('mongodb://localhost:27017/product-api');
+
+mongoose.connection.once('open', () => {
+  console.log('Connected succesfully!');
+
+  app.use('/usuario', usuarioApi);
+  app.use('/produto', productApi);
+
+  app.listen(3000, () => console.log('Servidor ouvindo na porta 3000.'));
 });
 
-app.post('/login', (req, res) => {
-  const sucesso = usuarioRepo.autenticarUsuario(req.body.username, req.body.password);
-  if(sucesso) {
-    res.send('Usuário autenticado com sucesso!');
-  } else {
-    res.status(400).send('Nome de usuário ou senha estão incorretos');
-  }
-});
-
-app.get('/usuario', (req, res) => {
-  console.log('Alguém chamou um usuário.');
-  res.send(usuarioRepo.obterUsuarios());
-});
-
-app.get('/usuario/:username', (req, res) => {
-  const usuario = usuarioRepo.obterUsuario(req.params.username);
-  if(usuario) {
-    res.send(usuario);
-  } else {
-    res.status(404).send(`Usuário ${req.params.username} não encontrado.`);
-  }
-});
-
-app.post('/usuario', (req, res) => {
-  const updatedUserList = usuarioRepo.criarUsuario(req.body);
-  res.send(updatedUserList);
-});
-
-app.put('/usuario/:username', (req, res) => {
-  const updatedUser = usuarioRepo.updateUsuario(req.params.username, req.body);
-  if(updatedUser) {
-    res.send(updatedUser);
-  } else {
-    res.send('Não foi possível alterar o usuário.');
-  }
-});
-
-app.delete('/usuario/:username', (req, res) => {
-  const hasRemovedSuccesfully = usuarioRepo.removerUsuario(req.params.username);
-  if(hasRemovedSuccesfully) {
-    res.send('Usuário removido com sucesso!');
-  } else {
-    res.send(`Não consegui remover o usuário ${req.params.username}`);
-  }
-});
-
-app.listen(3000, () => {
-  console.log('Servidor ouvindo na porta 3000.');
-});

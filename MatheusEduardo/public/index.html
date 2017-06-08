@@ -1,0 +1,172 @@
+<html ng-app="webdev-2">
+  <head>
+    <title>Aula de WEB 2</title>
+
+    <link 
+      rel="stylesheet" 
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" 
+      crossorigin="anonymous"/>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
+    <script src="webdev-2.js"></script>
+    <script src="services/usuarioService.js"></script>
+    <script src="services/produtoService.js"></script>
+    <style>
+      .sobre-linha {
+        cursor: pointer;
+      }
+      .selecionado {
+        background-color: #ccc;
+      }
+    </style>
+  </head>
+  <title>
+
+  </title>
+  
+  <body style="background-color: #f7f7f7;">
+
+    <div class="container">
+      <div class="page-header">
+        <h1>Usuários</h1>
+      </div>
+      
+      <div ng-controller="mainController">
+        
+        <button class="btn btn-primary" type="button" ng-show="!adicionandoUsuario" ng-click="adicionarUsuario()">Adicionar</button>
+        <button class="btn btn-default" type="button" ng-show="!adicionandoUsuario" ng-click="editarUsuario()">Editar</button>
+        <button class="btn btn-danger" type="button" ng-show="!adicionandoUsuario" ng-click="removerUsuario()">Excluir</button>
+
+        <table class="table" ng-show="!adicionandoUsuario">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Usuário</th>
+              <th>Senha</th>
+              <th>Idade</th>
+              <th>E-mail</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr 
+              ng-repeat="usuario in usuarios track by $index"
+              ng-class="{'selecionado': usuario.selecionado }"
+              class="sobre-linha"
+              ng-click="selecionarUsuario(usuario)"
+            >
+              <td>{{ usuario._id }}</td>
+              <td>{{ usuario.username }}</td>
+              <td>{{ usuario.password }}</td>
+              <td>{{ usuario.age }}</td>
+              <td>{{ usuario.email }}</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div ng-show="adicionandoUsuario" class="form-horizontal">
+          <div class="col-md-12">
+            <label >Usuário</label>
+            <input class="form-control" type="text" ng-model="novoUsuario.username"/>
+          </div>
+          
+          <div class="col-md-12">
+            <label>Senha</label>
+            <input class="form-control" type="password" ng-model="novoUsuario.password"/>
+          </div>
+
+          <div class="col-md-12">
+            <label>Idade</label>
+            <input class="form-control" type="text" ng-model="novoUsuario.age"/>
+          </div>
+
+          <div class="col-md-12">
+            <label >E-mail</label>
+            <input class="form-control" type="text" ng-model="novoUsuario.email"/>
+          </div>
+
+          <div class="col-md-12" style="margin-top: 15px;">
+            <button class="btn btn-primary" ng-click="salvarNovoUsuario(novoUsuario)">Salvar</button>
+            <button class="btn btn-danger" ng-click="cancelarCriacao()">Cancelar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="page-header">
+        <h1>Produtos</h1>
+      </div>
+
+      <div ng-controller="productsController">
+
+        <div class="row">
+          <input type="text" ng-model="searchTerm" class="form-control" placeholder="Informe qualquer coisa para filtrar um produto...."/>
+        </div>
+        <br/>
+        <div class="row">
+          <button class="btn btn-primary" type="button" ng-show="!adicionandoProduto" ng-click="adicionarProduto()">Adicionar</button>
+          <button class="btn btn-default" type="button" ng-show="!adicionandoProduto" ng-click="editarProduto()">Editar</button>
+          <button class="btn btn-danger" type="button" ng-show="!adicionandoProduto" ng-click="removerProduto()">Excluir</button>
+        </div>
+
+        <table class="table" ng-show="!adicionandoProduto">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Código</th>
+              <th>Nome</th>
+              <th>Quantidade</th>
+              <th>Disponível</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr 
+              ng-repeat="produto in produtos | filter:searchTerm"
+              class="sobre-linha"
+              ng-class="{'selecionado': produto.selecionado }"
+              ng-click="selecionarProduto(produto)"
+            >
+              <td>{{ produto._id }}</td>
+              <td>{{ produto.codigo }}</td>
+              <td>{{ produto.nome }}</td>
+              <td>{{ produto.quantidade }}</td>
+              <td>{{ produto.disponivel }}</td>
+              
+            </tr>
+          </tbody>
+        </table>
+
+        <div ng-show="adicionandoProduto" class="form-horizontal">
+          
+          <div class="col-md-12">
+            <label>Código</label>
+            <input class="form-control" type="text" ng-model="novoProduto.codigo"/>
+          </div>
+          
+          <div class="col-md-12">
+            <label>Nome</label>
+            <input class="form-control" type="text" ng-model="novoProduto.nome"/>
+          </div>
+
+          <div class="col-md-12">
+            <label>Quantidade</label>
+            <input class="form-control" type="text" ng-model="novoProduto.quantidade"/>
+          </div>
+          
+          <div class="col-md-12">
+            <label>Disponível</label><br/>
+            <input type="checkbox" ng-model="novoProduto.disponivel"/>
+          </div>
+
+          <div class="col-md-12" style="margin-top: 15px;">
+            <button class="btn btn-primary" ng-click="salvarNovoProduto(novoProduto)">Salvar</button>
+            <button class="btn btn-danger" ng-click="cancelarCriacao()">Cancelar</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

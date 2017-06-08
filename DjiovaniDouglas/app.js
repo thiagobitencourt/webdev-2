@@ -1,32 +1,34 @@
 'use strict';
 
-console.log("Olá Mundo!");
+const express = require('express');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
-var x = 10;
-var y = "algumNome"
+const app = express();
+app.use(bodyParser.json());
+app.use('/', express.static('public'));
 
-//let z = 22;
-//let k = "e nozes"
+const usuarioApi = require('./routes/usuarios');
+const productApi = require('./routes/produtos');
 
-const c = 10;
+mongoose.connect('mongodb://djiovani:teste@ts159880.mlab.com:59880/product-api');
 
-console.log(c);
+mongoose.connection.once('open', () => {
+  console.log('Connected succesfully!');
 
-//função
+  app.post('/login', usuarioApi.autenticarUsuario);
 
-function liberarOsAlunosDaAula() {
-  console.log(y);
-  return 20;
-}
+  app.get('/usuarios', usuarioApi.obterUsuarios);
+  app.get('/usuarios/:username', usuarioApi.obterUsuario);
+  app.post('/usuarios', usuarioApi.criarUsuario);
+  app.put('/usuarios/:username', usuarioApi.atualizarUsuario);
+  app.delete('/usuarios/:username', usuarioApi.removerUsuario);
 
-var resposta = liberarOsAlunosDaAula(50);
-//console.log(resposta);
+  app.post('/produtos', productApi.criarProduto);
+  app.get('/produtos', productApi.obterProdutos);
+  app.get('/produtos/:id', productApi.obterProduto);
+  app.put('/produtos/:id', productApi.atualizarProduto);
+  app.delete('/produtos/:id', productApi.removerProduto);
 
-var func2 = function(a){
-  console.log(a);
-}
-
-func2("oi");
-
-var minhaFuncao = liberarOsAlunosDaAula;
-minhaFuncao("Não");
+  app.listen(3000, () => console.log('Servidor ouvindo na porta 3000.'));
+});
