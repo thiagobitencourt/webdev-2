@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html ng-app="webdev-2">
+  <head>
+    <meta charset="utf-8">
+    <title>Produtos</title>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+      .sobre-linha {
+        cursor: pointer;
+      }
+      .selecionado {
+        background-color: #ccc;
+      }
+    </style>
+
+  </head>
+  <body class="container">
+  <div ng-controller="mainController1">
+
+    <h1>Tela errada, deve acessar o index da pasta CRUDProduto</h1>
+    <h1>{{ titulo }}</h1>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Codigo</th>
+            <th>Quantidade</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="produto in produtos track by $index"
+            class="sobre-linha"
+            ng-class="{'selecionado': produto.selecionado }"
+            ng-click="selecionaProduto(produto)"
+          >
+            <td>{{ produto._id }}</td>
+            <td>{{ produto.nome }}</td>
+            <td>{{ produto.codigo }}</td>
+            <td>{{ produto.quantidade }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+    <button type="button" class="btn btn-primary" ng-click="adicionarProduto()">Adicionar</button>
+    <button type="button" class="btn btn-danger" ng-click="excluirProduto()">Excluir</button>
+    <button type="button" class="btn btn-warning" ng-click="editarProduto()">Editar</button>
+
+    <div ng-show="adicionandoProduto">
+      <hr/>
+      <h3>Cadastrar novo produto</h3>
+
+      <div class="row">
+
+        <div class="col-md-12">
+          <label>Nome</label>
+          <input type="text" class="form-control" ng-model="novoProduto.nome">
+        </div>
+
+        <div class="col-md-12">
+          <label>Codigo</label>
+          <input type="text" class="form-control" ng-model="novoProduto.codigo">
+        </div>
+
+        <div class="col-md-12">
+          <label>Quantidade</label>
+          <input type="text" class="form-control" ng-model="novoProduto.quantidade">
+        </div>
+
+      </div>
+
+      <button style="margin-top: 15px" type="button" ng-click="salvarNovoProduto(novoProduto)" class="btn btn-primary">Salvar produto</button>
+
+      <br />
+      <pre>
+        {{ novoProduto | json }}
+      </pre>
+    </div>
+
+
+  </div>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
+<script src="webdev2pro.js" type="text/javascript"></script>
+<script src="servicoProdutos.js" type="text/javascript"></script>
+
+  </body>
+</html>
