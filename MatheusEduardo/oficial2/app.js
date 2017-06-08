@@ -18,5 +18,9 @@ mongoose.connection.once('open', () => {
   app.use('/public', express.static(path.join(__dirname, 'public')));
   app.use('/contaBancaria', contaBancaria);
 
+  app.get('/', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
+  });
+
   app.listen(8080, () => console.log('Listening on port 8080'));
 });

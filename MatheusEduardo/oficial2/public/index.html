@@ -1,0 +1,81 @@
+<html ng-app="prova">
+  <head>
+    <link rel="stylesheet" href="assets/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="public/css/style.css">
+  </head>
+  <body>
+    <script src="assets/angular/angular.js"></script>
+    <script src="public/js/prova.js"></script>
+    
+    <div class="page-header">
+      <h1>Contas Bancárias</h1>
+    </div>
+
+    <div class="container" ng-controller="bancoController">
+      
+      <div class="row">
+        <button class="btn btn-primary" type="button" ng-show="!adicionandoContaBancaria" ng-click="adicionarContaBancaria()">Adicionar</button>
+        <button class="btn btn-default" type="button" ng-show="!adicionandoContaBancaria" ng-click="editarContaBancaria()">Editar</button>
+        <button class="btn btn-danger" type="button" ng-show="!adicionandoContaBancaria" ng-click="removerContaBancaria()">Excluir</button>
+      </div>
+
+      <table class="table" ng-show="!adicionandoContaBancaria">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nº da conta</th>
+            <th>Titular</th>
+            <th>CPF</th>
+            <th>E-mail</th>
+            <th>Saldo atual (R$)</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr 
+            ng-repeat="conta in contas | track by $index"
+            class="sobre-linha"
+            ng-class="{'selecionado': conta.selecionado }"
+            ng-click="selecionarContaBancaria(conta)"
+          >
+            <td>{{ conta._id }}</td>
+            <td>{{ conta.numero }}</td>
+            <td>{{ conta.titular }}</td>
+            <td>{{ conta.cpf }}</td>
+            <td>{{ conta.email }}</td>
+            <td>{{ conta.saldoAtual }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div ng-show="adicionandoContaBancaria" class="form-horizontal">
+        
+        <div class="col-md-12">
+          <label>Nº da conta</label>
+          <input class="form-control" type="text" ng-model="novaContaBancaria.numero"/>
+        </div>
+
+        <div class="col-md-12">
+          <label>Nome do Titular</label>
+          <input class="form-control" type="text" ng-model="novaContaBancaria.titular"/>
+        </div>
+
+        <div class="col-md-12">
+          <label>CPF</label>
+          <input class="form-control" type="text" ng-model="novaContaBancaria.cpf"/>
+        </div>
+        
+        <div class="col-md-12">
+          <label>E-mail</label><br/>
+          <input class="form-control" type="email" ng-model="novaContaBancaria.email"/>
+        </div>
+
+        <div class="col-md-12" style="margin-top: 15px;">
+          <button class="btn btn-primary" ng-click="salvarNovaContaBancaria(novaContaBancaria)">Salvar</button>
+          <button class="btn btn-danger" ng-click="cancelarCriacao()">Cancelar</button>
+        </div>
+
+      </div>
+    </div>
+  </body>
+</html>
