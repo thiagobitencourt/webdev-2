@@ -27,28 +27,28 @@ router.post('/', (req, res) => {
   });
 });
 
-router.get('/:numeroConta', (req, res) => {
-  ContaBancaria.findOne({ numero: req.params.numeroConta }, (err, result) => {
+router.get('/:id', (req, res) => {
+  ContaBancaria.findById(req.params.id, (err, result) => {
     if(err) throw err;
     res.send(result);
   });
 });
 
-router.put('/:numeroConta', (req, res) => {
-  ContaBancaria.findOneAndUpdate({ numero: req.params.numeroConta }, req.body, (err, result) => {
+router.put('/:id', (req, res) => {
+  ContaBancaria.findByIdAndUpdate(req.params.id, req.body, (err, result) => {
     if(err) throw err;
     res.send(result);
   });
 });
 
-router.delete('/:numeroConta', (req, res) => {
-  ContaBancaria.findOneAndRemove({ numero: req.params.numeroConta }, (err, res) => {
+router.delete('/:id', (req, res) => {
+  ContaBancaria.findByIdAndRemove(req.params.id, (err, res) => {
     if(err) throw err;
-    res.send(`Conta ${req.params.numeroConta} removida com sucesso!`);
+    res.send(`Conta removida com sucesso!`);
   });
 });
 
-router.post('/:numeroConta/deposito', (req, res) => {
+router.post('/:id/deposito', (req, res) => {
   const deposito = {
     valor: req.body.valor,
     contaDeOrigem: req.body.contaOrigem
@@ -64,7 +64,7 @@ router.post('/:numeroConta/deposito', (req, res) => {
   });
 });
 
-router.post('/:numeroConta/saque', (req, res) => {
+router.post('/:id/saque', (req, res) => {
   const saque = {
     valor: req.body.valor,
     contaDeOrigem: req.body.contaOrigem
@@ -80,7 +80,7 @@ router.post('/:numeroConta/saque', (req, res) => {
   });
 });
 
-router.post('/:numeroConta/transferencia', (req, res) => {
+router.post('/:id/transferencia', (req, res) => {
   const transferencia = {
     valor: req.body.valor,
     contaDeOrigem: req.body.contaOrigem,
@@ -96,10 +96,7 @@ router.post('/:numeroConta/transferencia', (req, res) => {
     }, { $inc: { saldoAtual: transferencia.valor } }, 
     (e, resultado) => {
       if(e) throw e;
-      res.write(`A conta ${transferencia.contaDeDestino} recebeu R$ ${transferencia.valor} com sucesso!`);
-      res.write(`Saldo atual: ${resultado.saldoAtual}`);
-      res.end();
-      // res.send(`A conta ${transferencia.contaDeDestino} recebeu R$ ${transferencia.valor} com sucesso!`);
+      res.send(`Transferência realizada com sucesso!`);
     });
   });  
 });
