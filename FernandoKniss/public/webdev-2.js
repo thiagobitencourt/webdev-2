@@ -29,7 +29,12 @@ app.controller('mainController', function($scope, servicoUsuarios) {
     var usuarioSelecionado = $scope.usuarios.find(function(user, index) {
       return user.selecionado;
     });
-    servicoUsuarios.excluirUsuario(usuarioSelecionado);
+    servicoUsuarios.excluirUsuario(usuarioSelecionado)
+    .then(function(resultado) {
+       console.log('Usuário removido');
+       console.log(resultado.data);
+       carregarUsuarios();
+     });
   }
 
   $scope.editarUsuario = function() {
