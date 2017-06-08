@@ -33,6 +33,40 @@ router.post('/conta', function(req, res){
   });
 });
 
+router.post('/conta/saque', function(req, res){
+  conta.findById(req.body._id, function(error, conta) {
+      if(error)
+          res.send(error);
+      conta.nomeTitular = req.body.nomeTitular;
+      conta.cpfTitular = req.body.cpfTitular;
+      conta.emailTitular = req.body.emailTitular;
+      conta.numeroDaConta = req.body.numeroDaConta;
+      conta.saldo = req.body.saldo - req.body.saque;
+      conta.save(function(error) {
+          if(error)
+              res.send(error);
+          res.json({ message: 'Saque Realizado!' });
+      });
+  });
+});
+
+router.post('/conta/deposito', function(req, res){
+  conta.findById(req.body._id, function(error, conta) {
+      if(error)
+          res.send(error);
+      conta.nomeTitular = req.body.nomeTitular;
+      conta.cpfTitular = req.body.cpfTitular;
+      conta.emailTitular = req.body.emailTitular;
+      conta.numeroDaConta = req.body.numeroDaConta;
+      conta.saldo = req.body.saldo + req.body.deposito;
+      conta.save(function(error) {
+          if(error)
+              res.send(error);
+          res.json({ message: 'Deposito Realizado!' });
+      });
+  });
+});
+
 router.get('/conta/:id', function(req, res){
   conta.findById(req.params.id, function(error, conta) {
       if(error){
@@ -50,7 +84,7 @@ router.put('/conta/:id', function(req, res){
       conta.nomeTitular = req.body.nomeTitular;
       conta.cpfTitular = req.body.cpfTitular;
       conta.emailTitular = req.body.emailTitular;
-      conta.numeroDaConta = getRandom();
+      conta.numeroDaConta = req.body.numeroDaConta;
       conta.saldo = req.body.saldo;
       conta.save(function(error) {
           if(error)
