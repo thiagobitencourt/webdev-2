@@ -22,7 +22,7 @@ router.post('/conta', function(req, res){
   newconta.cpfTitular = req.body.cpfTitular;
   newconta.emailTitular = req.body.emailTitular;
   newconta.numeroDaConta = getRandom();
-  newconta.saldo = req.body.saldo;
+  newconta.saldo = 0;
 
   newconta.save(function(error) {
       if(error){
