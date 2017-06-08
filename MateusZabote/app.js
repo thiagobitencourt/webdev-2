@@ -1,13 +1,46 @@
 'use strict';
+var mongoose = require('mongoose')
+  , uri = 'mongodb://localhost:27017/teste'
+  ;
+mongoose.connect(uri);
+
+mongoose.connection.on('connected', function () {
+  console.log('Conectado com sucesso');
+});
+
+// mongoose.connection.on('error',function (err) {
+//   console.log('erro ao conectar com banco ' + err);
+// });
+
 const express = require('express');
 const bodyParser = require('body-parser');
 
 const UsuarioDAO = require('./usuarioDAO');
+const Produto = require('./models/produto')
 const app = express();
 // parser para json
 app.use(bodyParser.json());
 
 const usuarioRepo = new UsuarioDAO();
+
+
+app.post('/produto', function(req, res){
+  var newUser = Produto({
+    name: 'Peter Quill',
+    username: 'starlord55',
+    password: 'password',
+    admin: true
+  });
+
+  // save the user
+  newUser.save(function(err) {
+    if (err) throw err;
+
+    console.log('User created!');
+  });
+  res.send("mensagem");
+});
+
 
 app.use('/', express.static('public'));
 
