@@ -8,7 +8,7 @@ const contaSchema = new mongoose.Schema({
   cpf: Types.String,
   email: Types.String,
   numero: Types.Number,
-  saldoAtual: Types.Decimal128
+  saldoAtual: Types.Number
 });
 
 module.exports = mongoose.model('Conta', contaSchema);
