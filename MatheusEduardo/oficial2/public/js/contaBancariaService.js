@@ -1,30 +1,28 @@
 
-app.module('prova').service('contaBancariaService', ($http) => {
+app = angular.module('prova').service('contaBancariaService', ($http) => {
 
-  const baseUrl = 'localhost:8080/';
+  const baseUrl = 'localhost:8080/contaBancaria';
 
   return {
 
     obterContasBancarias: function() {
-      return $http.get(baseUrl + 'contaBancaria');
+      return $http.get(baseUrl);
     },
 
     obterContaBancaria: function(numeroDaConta) {
-
+      return $http.get(baseUrl + '/' + numeroDaConta._id);
     },
 
     criarContaBancaria: function(contaBancaria) {
       if(!contaBancaria._id) {
-        return $http.post(baseUrl + 'contaBancaria', contaBancaria);
+        return $http.post(baseUrl, contaBancaria);
       } else {
-        return $http.put(baseUrl + '/contaBancaria' + contaBancaria._id, contaBancaria);
+        return $http.put(baseUrl + '/' + contaBancaria._id, contaBancaria);
       }
     },
 
     removerContaBancaria: function(id) {
-
+      return $http.delete(baseUrl + '/' + id);
     },
-
-
   }
 });
