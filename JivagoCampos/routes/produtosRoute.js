@@ -1,10 +1,9 @@
 'use strict';
 
 const express = require('express');
-const mongoose = require('mongoose');
+
 const produto = require('../models/produtos');
 const router = express.Router();
-mongoose.connect('mongodb://localhost/CrudProduto');
 
 router.get('/produto', function(req, res){
   produto.find(function(err, produtos) {
