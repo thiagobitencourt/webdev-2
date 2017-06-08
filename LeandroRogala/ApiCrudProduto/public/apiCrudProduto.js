@@ -1,75 +1,56 @@
 'use strict';
 
 var app = angular.module('apiCrudProduto', []);
-
-app.controller('mainController',['$scope', '$http',function($scope, $http){
+app.controller('mainController', function($scope, servicoProdutos){
 
   $scope.produtos;
+  $scope.addProduto;
 
-  $scope.adicionarProduto = function(){
-    $scope.adicionandoProduto = true;
-  }
+  function loading(){
+    servicoProdutos.getAll().then(function(resultado){
+      $scope.produtos = resultado.data;
+    })
+  };
 
-  $scope.selecionaProduto = function(product){
-    $scope.produtos.forEach(function(prod){
-      prod.selecionado = false;
+  loading();
+
+  $scope.addProdutos = function(){
+    $scope.addProduto = true;
+  };
+
+  $scope.selectProduto = function(produto){
+    $scope.produtos.forEach(function(product){
+      if(product._id === produto._id){
+        produto.selecionado = !produto.selecionado;
+      }else{
+        product.selecionado = false;
+      }
+    })
+  };
+
+  $scope.saveNewProduto= function(produto){
+    servicoProdutos.saveProduto(produto).then(function(resultado){
+      loading();
+      $scope.newProduto = undefined;
+      $scope.addProduto = false;
+    })
+  };
+
+  $scope.editProduto = function(){
+    var produtoEditavel = $scope.produtos.find(function(product, index){
+      return product.selecionado;
     });
-    product.selecionado = !product.selecionado;
-  }
+    $scope.newProduto = angular.copy(produtoEditavel);
+    $scope.addProduto = true;
+  };
 
-  $scope.excluirProduto = function(){
-    var input =[];
-    var id;
-    $scope.produtos.forEach(function(product, index){
-      if(product.selecionado === true){
-        id = product._id;
-      }
+  $scope.deleteProduct = function(){
+    var produtoSelecionado = $scope.produtos.find(function(product, index){
+      return product.selecionado;
     });
-    var urlDelete = '/produto/' + id;
-    console.log(urlDelete);
-    $http.delete(urlDelete, input)
-    .then(
-      function(response){
-      },
-      function(response){
-      }
-    );
-    $scope.atualizaLista();
-  }
-
-  $scope.salvarNovoProduto = function(produto){
-    var urlPostAdd = '/produto';
-    var dataObj = {
-      nome : produto.nome,
-      codigo : produto.codigo,
-      quantidade : produto.quantidade,
-      disponivel : produto.disponivel
-    };
-    $http.post(urlPostAdd, dataObj)
-    .then(
-      function(response){
-      },
-      function(response){
-      }
-    );
-    $scope.atualizaLista();
-    $scope.novoProduto = null;
-    $scope.adicionandoProduto = false;
-  }
-
-  $scope.atualizaLista = function(){
-    var urlGetAll = '/produto';
-    $http.get(urlGetAll).then(function(response) {
-      $scope.produtos = response.data;
-    }, function(err) {
-      console.log(err);
+    servicoProdutos.deleteProduto(produtoSelecionado).then(function(resultado){
+      loading();
     });
   }
 
-  var urlGetAll = '/produto';
-  $http.get(urlGetAll).then(function(response) {
-    $scope.produtos = response.data;
-  }, function(err) {
-    console.log(err);
-  });
-}]);
+})

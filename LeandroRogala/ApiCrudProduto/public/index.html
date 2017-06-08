@@ -17,6 +17,9 @@
 <body>
   <div ng-controller="mainController">
     <h1>Produtos</h1>
+    <div class="well">
+      <label>Pesquise:<input type="text" ng-model="criteria"></label>
+    </div>
     <table class="table">
       <thead>
         <tr>
@@ -29,7 +32,7 @@
         </tr>
       </thread>
       <tbody>
-        <tr ng-repeat="product in produtos" class="sobre-linha" class="sobre-linha" ng-click="selecionaProduto(product)" ng-class="{'selecionado': product.selecionado}">
+        <tr ng-repeat="product in produtos | filter:{nome:criteria}" class="sobre-linha" ng-click="selectProduto(product)" ng-class="{'selecionado': product.selecionado}">
           <td>{{product._id}}</td>
           <td>{{product.nome}}</td>
           <td>{{product.codigo}}</td>
@@ -39,34 +42,35 @@
         </tr>
       </tbody>
     </table>
-    <button type="button" ng-click="adicionarProduto()" class="btn btn primary">Adicionar</button>
-    <button type="button" ng-click="excluirProduto()" class="btn btn-danger">Excluir</button>
-    <button type="button" ng-click="" class="btn btn-warning">Editar</button>
+    <button type="button" ng-click="addProdutos()" class="btn btn primary">Adicionar</button>
+    <button type="button" ng-click="deleteProduct()" class="btn btn-danger">Excluir</button>
+    <button type="button" ng-click="editProduto()" class="btn btn-warning">Editar</button>
     <br/>
-    <div class="row" ng-show="adicionandoProduto">
+    <div class="row" ng-show="addProduto">
       <hr/>
       <h3>Cadastrar novo Produto</h3>
       <div class="col-md-12">
         <label>Nome do Produto</label>
-        <input type="text" class="form-control" ng-model="novoProduto.nome">
+        <input type="text" class="form-control" ng-model="newProduto.nome">
       </div>
       <div class="col-md-12">
         <label>Codigo do produto</label>
-        <input type="text" class="form-control" ng-model="novoProduto.codigo">
+        <input type="text" class="form-control" ng-model="newProduto.codigo">
       </div>
       <div class="col-md-12">
         <label>Quantidade do Produto</label>
-        <input type="text" class="form-control" ng-model="novoProduto.quantidade">
+        <input type="text" class="form-control" ng-model="newProduto.quantidade">
       </div>
       <div class="col-md-12">
         <label>Produto disponivel</label>
-        <input type="text" class="form-control" ng-model="novoProduto.disponivel">
+        <input type="text" class="form-control" ng-model="newProduto.disponivel">
       </div>
       <br/>
-      <button type"button" ng-click="salvarNovoProduto(novoProduto)" class="btn btn-primary">Salvar</button>
+      <button type"button" ng-click="saveNewProduto(newProduto)" class="btn btn-primary">Salvar</button>
     </div>
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
   <script src="apiCrudProduto.js" type="text/javascript"></script>
+  <script src="servicoProdutos.js" type="text/javascript"></script>
 </body>
 </html>
