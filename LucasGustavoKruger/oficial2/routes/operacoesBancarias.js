@@ -9,7 +9,7 @@ const operacoesHandler = {
     Conta.findOne({_id : req.body._id}, function (err, data) {
       if (err) throw err;
       let saldoAtual = data.saldoAtual;
-      saldoAtual = saldoAtual - req.body.montante;
+      saldoAtual -= req.body.montante;
       if(req.body.montante < 0) {
         res.json({ error: "Não é possivel realizar saques negativos!"})
       } else if(saldoAtual < 0) {
@@ -23,9 +23,27 @@ const operacoesHandler = {
       }
     });
     return res;
+  }),
+  deposito: ((req, res) => {
+    Conta.findOne({_id : req.body._id}, function (err, data) {
+      if (err) throw err;
+      let saldoAtual = data.saldoAtual;
+      saldoAtual += (req.body.montante * 1);
+      if(req.body.montante < 0) {
+        res.json({ error: "Não é possivel realizar deposito negativos!"})
+      } else {
+        data.saldoAtual = saldoAtual;
+        data.save(function (err, newData) {
+          if (err) throw err;
+          res.json(newData);
+        });
+      }
+    });
+    return res;
   })
 };
 
 routes.post('/saque', operacoesHandler.saque);
+routes.post('/deposito', operacoesHandler.deposito);
 
 module.exports = routes;
