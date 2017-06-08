@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Contas Ativas</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+    .sobre-linha {
+      cursor: pointer;
+    }
+
+    .selecionado {
+      background-color: blue;
+    }
+    </style>
+  </head>
+  <body>
+    <div ng-controller="mainController">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>nomeTitular</th>
+            <th>cpfTitular</th>
+            <th>emailTitular</th>
+            <th>numeroDaConta</th>
+            <th>saldo</th>
+          </tr>
+        </thread>
+        <tbody>
+          <tr ng-repeat="conta in contas" class="sobre-linha" ng-click="selectConta(conta)" ng-class="{'selecionado': conta.selecionado}">
+            <td>{{conta.nomeTitular}}</td>
+            <td>{{conta.cpfTitular}}</td>
+            <td>{{conta.emailTitular}}</td>
+            <td>{{conta.numeroDaConta}}</td>
+            <td>{{conta.saldo}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
