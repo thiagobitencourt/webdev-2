@@ -12,5 +12,5 @@ a {
   cursor: pointer;
 }
 .selecionado {
-  background-color: gray;
+  background-color: #ccc;
 }

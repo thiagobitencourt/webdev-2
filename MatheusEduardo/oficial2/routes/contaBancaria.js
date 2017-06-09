@@ -6,7 +6,6 @@ const ObjectId = require('mongoose').Types.ObjectId;
 router.get('/', (req, res) => {
   ContaBancaria.find((err, results) => {
     if(err) throw err;
-    console.log(results);
     res.send(results);
   });
 });
@@ -18,7 +17,7 @@ router.post('/', (req, res) => {
     cpf: req.body.cpf,
     email: req.body.email,
     numero: req.body.numero,
-    saldoAtual: req.body.saldoAtual
+    saldoAtual: 0
   });
   
   newContaBancaria.save((err, result) => {
@@ -45,7 +44,7 @@ router.put('/:id', (req, res) => {
 });
 
 router.delete('/:id', (req, res) => {
-  ContaBancaria.findByIdAndRemove(req.params.id, (err, res) => {
+  ContaBancaria.remove({ _id: req.params.id }, (err, result) => {
     if(err) throw err;
     res.send(`Conta removida com sucesso!`);
   });

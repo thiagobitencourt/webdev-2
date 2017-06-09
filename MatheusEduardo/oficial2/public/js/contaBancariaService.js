@@ -24,5 +24,17 @@ app = angular.module('prova').service('contaBancariaService', function($http) {
     removerContaBancaria: function(id) {
       return $http.delete(baseUrl + '/' + id);
     },
+
+    sacar: function(id, operacao) {
+      return $http.post(baseUrl + '/'+ id + '/saque', operacao);
+    },
+
+    depositar: function(id, operacao) {
+      return $http.post(baseUrl + '/'+ id + '/deposito', operacao);
+    },
+
+    transferir: function(id, operacao) {
+      return $http.post(baseUrl + '/'+ id + '/transferencia', operacao);
+    }
   }
 });

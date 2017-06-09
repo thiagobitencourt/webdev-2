@@ -3,9 +3,11 @@
     <link rel="stylesheet" href="assets/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="public/css/style.css">
   </head>
+  
   <body>
     <script src="assets/angular/angular.js"></script>
     <script src="public/js/prova.js"></script>
+    <script src="public/js/contaBancariaService.js"></script>
     
     <div class="page-header">
       <h1>Contas Bancárias</h1>
@@ -17,12 +19,14 @@
         <button class="btn btn-primary" type="button" ng-show="!adicionandoContaBancaria" ng-click="adicionarContaBancaria()">Adicionar</button>
         <button class="btn btn-default" type="button" ng-show="!adicionandoContaBancaria" ng-click="editarContaBancaria()">Editar</button>
         <button class="btn btn-danger" type="button" ng-show="!adicionandoContaBancaria" ng-click="removerContaBancaria()">Excluir</button>
+        <button class="btn btn-default btn-primary" ng-click="abrirDeposito()">Depositar</button>
+        <button class="btn btn-default btn-info" ng-click="abrirSaque()">Sacar</button>
+        <button class="btn btn-default btn-success" ng-click="abrirTransferencia()">Transferir</button>
       </div>
 
       <table class="table" ng-show="!adicionandoContaBancaria">
         <thead>
           <tr>
-            <th>ID</th>
             <th>Nº da conta</th>
             <th>Titular</th>
             <th>CPF</th>
@@ -33,17 +37,20 @@
 
         <tbody>
           <tr 
-            ng-repeat="conta in contas | track by $index"
+            ng-repeat="conta in contasBancarias"
             class="sobre-linha"
-            ng-class="{'selecionado': conta.selecionado }"
+            ng-class="{'selecionado': conta.selecionada }"
             ng-click="selecionarContaBancaria(conta)"
           >
-            <td>{{ conta._id }}</td>
+            <td ng-show="conta.selecionada"
             <td>{{ conta.numero }}</td>
             <td>{{ conta.titular }}</td>
             <td>{{ conta.cpf }}</td>
             <td>{{ conta.email }}</td>
             <td>{{ conta.saldoAtual }}</td>
+            <td></td>
+            <td></td>
+            <td></td>
           </tr>
         </tbody>
       </table>
@@ -75,6 +82,47 @@
           <button class="btn btn-danger" ng-click="cancelarCriacao()">Cancelar</button>
         </div>
 
+      </div>
+
+      <div ng-show="sacando || depositando" class="form-horizontal">
+        
+        <div class="col-md-12">
+          <label>Valor (R$)</label>
+          <input class="form-control" type="text" ng-model="operacao.valor"/>
+        </div>
+
+        <div class="col-md-12">
+          <label>Conta Origem</label>
+          <input class="form-control" type="text" ng-model="operacao.contaOrigem"/>
+        </div>
+
+        <div class="col-md-12" style="margin-top: 15px;">
+          <button class="btn btn-primary" ng-click="sacando ? sacar(operacao) : depositar(operacao)">Salvar</button>
+          <button class="btn btn-danger" ng-click="cancelarOperacao()">Cancelar</button>
+        </div>
+      </div>
+
+      <div ng-show="transferindo" class="form-horizontal">
+        
+        <div class="col-md-12">
+          <label>Valor (R$)</label>
+          <input class="form-control" type="text" ng-model="transferencia.valor"/>
+        </div>
+
+        <div class="col-md-12">
+          <label>Conta Origem</label>
+          <input class="form-control" type="text" ng-model="transferencia.contaOrigem"/>
+        </div>
+
+        <div class="col-md-12">
+          <label>Conta Destino</label>
+          <input class="form-control" type="text" ng-model="transferencia.contaDestino"/>
+        </div>
+
+        <div class="col-md-12" style="margin-top: 15px;">
+          <button class="btn btn-primary" ng-click="transferir(transferencia)">Salvar</button>
+          <button class="btn btn-danger" ng-click="cancelarOperacao()">Cancelar</button>
+        </div>
       </div>
     </div>
   </body>

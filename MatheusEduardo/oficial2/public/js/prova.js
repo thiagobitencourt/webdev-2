@@ -40,16 +40,63 @@ app.controller('bancoController', (contaBancariaService, $scope) => {
   }
 
   $scope.editarContaBancaria = () => {
-    const contaEditavel = $scope.contasBancarias.find(user => user.selecionada);
+    const contaEditavel = $scope.contasBancarias.find(conta => conta.selecionada);
     $scope.novaContaBancaria = contaEditavel ? angular.copy(contaEditavel) : undefined;
     $scope.adicionandoContaBancaria = !!contaEditavel;
   }
 
   $scope.removerContaBancaria = () => {
     const currentConta = $scope.contasBancarias.find(c => c.selecionada);
-    contaBancariaService.removerContaBancaria(currentConta).then(() => {
+    contaBancariaService.removerContaBancaria(currentConta._id).then(() => {
       carregarContasBancarias();
     }).catch(err => console.log(err));
   }
+
+  $scope.cancelarOperacao = () => {
+    $scope.sacando = false;
+    $scope.transferindo = false;
+    $scope.depositando = false;
+  }
+
+  $scope.abrirSaque = () => {
+    const contaEditavel = $scope.contasBancarias.find(conta => conta.selecionada);
+    $scope.sacando = !!contaEditavel;
+  }
   
+  $scope.abrirDeposito = () => {
+    const contaEditavel = $scope.contasBancarias.find(conta => conta.selecionada);
+    $scope.depositando = !!contaEditavel;
+  }
+
+  $scope.abrirTransferencia = () => {
+    const contaEditavel = $scope.contasBancarias.find(conta => conta.selecionada);
+    $scope.transferindo = !!contaEditavel;
+  }
+
+  $scope.sacar = (operacao) => {
+    const currentConta = $scope.contasBancarias.find(c => c.selecionada);
+    contaBancariaService.sacar(currentConta._id, operacao)
+    .then(response => {
+      $scope.sacando = false;
+      obterContasBancarias();
+    });
+  }
+
+  $scope.depositar = (operacao) => {
+    const currentConta = $scope.contasBancarias.find(c => c.selecionada);
+    contaBancariaService.depositar(currentConta._id, operacao)
+    .then(response => {
+      $scope.depositando = false;
+      obterContasBancarias();
+    });
+  }
+
+  $scope.transferir = (transferencia) => {
+    const currentConta = $scope.contasBancarias.find(c => c.selecionada);
+    contaBancariaService.transferir(currentConta._id, transferencia)
+    .then(response => {
+      $scope.transferindo = false;
+      obterContasBancarias();
+    });
+  }
 });
