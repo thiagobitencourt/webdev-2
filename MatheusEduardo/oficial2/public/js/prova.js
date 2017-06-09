@@ -1,12 +1,12 @@
 
 var app = angular.module('prova', []);
 
-app.controller('bancoController', (contaBancariaService) => {
+app.controller('bancoController', (contaBancariaService, $scope) => {
 
   function carregarContasBancarias() {
     contaBancariaService.obterContasBancarias().then(response => {
       $scope.contasBancarias = response.data;
-    });
+    }).catch(err => console.log(err));
   }
   
   carregarContasBancarias();
@@ -15,6 +15,7 @@ app.controller('bancoController', (contaBancariaService) => {
     $scope.contasBancarias.forEach(conta => {
       if(conta._id === contaBancaria._id) {
         contaBancaria.selecionada = !contaBancaria.selecionada;
+        console.log(contaBancaria);
       } else {
         conta.selecionada = false;
       }
@@ -48,7 +49,7 @@ app.controller('bancoController', (contaBancariaService) => {
     const currentConta = $scope.contasBancarias.find(c => c.selecionada);
     contaBancariaService.removerContaBancaria(currentConta).then(() => {
       carregarContasBancarias();
-    });
+    }).catch(err => console.log(err));
   }
   
 });

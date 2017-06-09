@@ -1,7 +1,7 @@
 
-app = angular.module('prova').service('contaBancariaService', ($http) => {
+app = angular.module('prova').service('contaBancariaService', function($http) {
 
-  const baseUrl = 'localhost:8080/contaBancaria';
+  const baseUrl = 'http://localhost:8080/contaBancaria';
 
   return {
 

@@ -7,3 +7,10 @@ body {
 a {
   color: #00B7FF;
 }
+
+.sobre-linha {
+  cursor: pointer;
+}
+.selecionado {
+  background-color: gray;
+}
