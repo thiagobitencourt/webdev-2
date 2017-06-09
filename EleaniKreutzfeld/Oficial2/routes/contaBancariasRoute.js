@@ -43,13 +43,26 @@ router.get('/contaBancaria/:id', function(req, res){
   });
 });
 
+router.get('/contaBancaria/:conta', function(req, res){
+  contaBancaria.findById(req.params.conta, function(error, contaBancaria) {
+      if(error){
+        res.send(error);
+      }else{
+        res.json(contaBancaria);
+      }
+  });
+});
+
 router.put('/contaBancaria/:id', function(req, res){
   contaBancaria.findById(req.params.id, function(error, contaBancaria) {
       if(error)
           res.send(error);
       contaBancaria.nome = req.body.nome;
-      contaBancaria.codigo = req.body.codigo;
-      contaBancaria.quantidade = req.body.quantidade;
+      contaBancaria.cpf = req.body.cpf;
+      contaBancaria.email = req.body.email;
+      contaBancaria.conta = req.body.conta;
+      contaBancaria.saldo = req.body.saldo;
+
       contaBancaria.save(function(error) {
           if(error)
               res.send(error);
