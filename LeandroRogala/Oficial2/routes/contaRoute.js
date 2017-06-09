@@ -23,7 +23,6 @@ router.post('/conta', function(req, res){
   newconta.emailTitular = req.body.emailTitular;
   newconta.numeroDaConta = getRandom();
   newconta.saldo = 0;
-
   newconta.save(function(error) {
       if(error){
         res.send(error);
@@ -32,6 +31,7 @@ router.post('/conta', function(req, res){
       }
   });
 });
+
 
 router.post('/conta/saque', function(req, res){
   conta.findById(req.body._id, function(error, conta) {
