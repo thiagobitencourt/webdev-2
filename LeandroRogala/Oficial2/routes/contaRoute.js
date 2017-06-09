@@ -67,7 +67,7 @@ router.post('/conta/transferencia', function(req, res){
       conta.save(function(error) {
       });
   });
-  conta.findById(req.body._idDestino, function(error, conta){
+  conta.findOne({numeroDaConta:req.body._idDestino}, function(error, conta){
     if(error)
         res.send(error);
     conta.saldo = conta.saldo + req.body.transferencia;
