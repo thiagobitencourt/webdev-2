@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html ng-app="oficial-ii">
+  <head>
+    <meta charset="utf-8">
+    <title>Oficial 2 - Bank</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="./css/styles.css" rel="stylesheet" /> 
+  </head>
+  <body>
+    <div
+      class="container"
+      ng-controller="mainController"
+    >
+      <h1>{{ title }}</h1>
+      <div> Erros que vem do server: {{ erro }}</div>
+      <div class="menu"> 
+         <button type="button" class="btn btn-default menu-item" ng-click="goContas()">Ver contas </button> 
+         <button type="button" class="btn btn-default menu-item" ng-click="gotSaque()">Realizar saque </button> 
+         <button type="button" class="btn btn-default menu-item" ng-click="goDeposito()">Realizar deposito </button> 
+         <button type="button" class="btn btn-default menu-item" ng-click="goTransferencia()">Realizar trasnferencia </button> 
+      </div>
+
+      <div ng-show="isViewing"> 
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Nome Titular</th>
+              <th>Cpf Titular</th>
+              <th>Email</th>
+              <th>Numero da conta</th>
+              <th>Saldo atual</th>            
+              <th></th>            
+              <th></th>            
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="conta in contas" class="conta-row">
+              <td>{{ conta.nomeTitular }}</td>
+              <td>{{ conta.cpfTitular }}</td> 
+              <td>{{ conta.email }}</td> 
+              <td>{{ conta.nrConta }}</td> 
+              <td>{{ conta.saldoAtual }}</td>
+              <td class="clickAble" ng-click="editar(conta)">
+                <i class="fa fa-pencil" aria-hidden="true" />
+              </td>
+              <td class="clickAble" ng-click="deletar(conta)">
+                <i class="fa fa-times" aria-hidden="true" />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <hr/>
+        <h3>Conta</h3>
+        <button type="button" class="btn btn-primary" ng-click="novaConta()">
+          Nova conta
+        </button>
+        <div class="row">
+          <div class="col-md-12">
+            <label>Nome do titular</label>
+            <input type="text" class="form-control" ng-model="newConta.nomeTitular">
+          </div>
+          <div class="col-md-12">
+            <label>Cpf do titular</label>
+            <input type="text" class="form-control" ng-model="newConta.cpfTitular">
+          </div>
+          <div class="col-md-12">
+            <label>Email do titular</label>
+            <input type="email" class="form-control" ng-model="newConta.email">
+          </div>
+          <div class="col-md-12">
+            <label>Numero da conta</label>
+            <input type="text" class="form-control" ng-model="newConta.nrConta">
+          </div>
+          <div class="col-md-12" ng-show="isAdicionando">
+            <label>Saldo da conta</label>
+            <input type="text" class="form-control" ng-model="newConta.saldoAtual">
+          </div>
+        </div>
+        <button style="margin-top: 15px" type="button" ng-click="saveConta(newConta)" class="btn btn-primary">Salvar Conta</button>
+      </div>
+      <div ng-show="isSacando">
+        Sacar!
+        <div class="col-md-12">
+          <label>Conta:
+            <select ng-model="contaParaSacar" ng-options="conta.nrConta for conta in contas">
+            </select>
+          </label>
+        </div>
+        <div class="col-md-12">
+          <label>Montante: </label>
+          <input type="number" class="form-control" ng-model="montanteSaque">
+        </div>
+        <div class="col-md-12">
+          <button type="button" class="btn btn-default menu-item" ng-click="saque(contaParaSacar._id, montanteSaque)">Sacar </button> 
+        </div>
+      </div>
+      <div ng-show="isDeposiando">
+        Depositar!
+
+        <div class="col-md-12">
+          <label>Conta:
+            <select ng-model="contaParaDepositar" ng-options="conta.nrConta for conta in contas">
+            </select>
+          </label>
+        </div>
+        <div class="col-md-12">
+          <label>Montante: </label>
+          <input type="number" class="form-control" ng-model="montanteDeposito">
+        </div>
+        <div class="col-md-12">
+          <button type="button" class="btn btn-default menu-item" ng-click="depositar(contaParaDepositar._id, montanteDeposito)">Depositar </button> 
+        </div>
+      </div>
+      <div ng-show="isTransferindo">
+        Transferir!
+        <div class="col-md-12">
+        <label>Conta origem:
+          <select ng-model="contaParaRetirar" ng-options="conta.nrConta for conta in contas">
+          </select>
+        </label>  
+        </div>
+        <div class="col-md-12">
+        <label>Conta destino:
+          <select ng-model="contaParaDepositar" ng-options="conta.nrConta for conta in contas">
+          </select>
+        </label>
+        </div>
+        <div class="col-md-12">
+          <label>Montante: </label>
+          <input type="number" class="form-control" ng-model="montanteTransferencia">
+        </div>
+        <div class="col-md-12">
+          <button type="button" class="btn btn-default menu-item" ng-click="transferir(contaParaRetirar._id, contaParaDepositar._id, montanteTransferencia)">Transferir </button> 
+        </div>
+      </div>
+    </div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="./js/oficialii.js" type="text/javascript"></script>
+    <script src="./js/service.js" type="text/javascript"></script>
+  </body>
+</html>
