@@ -81,43 +81,58 @@
       </div>
       <div ng-show="isSacando">
         Sacar!
-        <label>Conta:
-          <select ng-model="contaParaSacar" ng-options="conta.nrConta for conta in contas">
-          </select>
-        </label>
+        <div class="col-md-12">
+          <label>Conta:
+            <select ng-model="contaParaSacar" ng-options="conta.nrConta for conta in contas">
+            </select>
+          </label>
+        </div>
         <div class="col-md-12">
           <label>Montante: </label>
           <input type="number" class="form-control" ng-model="montanteSaque">
         </div>
-        <button type="button" class="btn btn-default menu-item" ng-click="saque(contaParaSacar._id, montanteSaque)">Sacar </button> 
+        <div class="col-md-12">
+          <button type="button" class="btn btn-default menu-item" ng-click="saque(contaParaSacar._id, montanteSaque)">Sacar </button> 
+        </div>
       </div>
       <div ng-show="isDeposiando">
         Depositar!
-        <label>Conta:
-          <select ng-model="contaParaDepositar" ng-options="conta.nrConta for conta in contas">
-          </select>
-        </label>
+
+        <div class="col-md-12">
+          <label>Conta:
+            <select ng-model="contaParaDepositar" ng-options="conta.nrConta for conta in contas">
+            </select>
+          </label>
+        </div>
         <div class="col-md-12">
           <label>Montante: </label>
           <input type="number" class="form-control" ng-model="montanteDeposito">
         </div>
-        <button type="button" class="btn btn-default menu-item" ng-click="depositar(contaParaDepositar._id, montanteDeposito)">Depositar </button> 
+        <div class="col-md-12">
+          <button type="button" class="btn btn-default menu-item" ng-click="depositar(contaParaDepositar._id, montanteDeposito)">Depositar </button> 
+        </div>
       </div>
       <div ng-show="isTransferindo">
         Transferir!
+        <div class="col-md-12">
         <label>Conta origem:
           <select ng-model="contaParaRetirar" ng-options="conta.nrConta for conta in contas">
           </select>
         </label>  
+        </div>
+        <div class="col-md-12">
         <label>Conta destino:
           <select ng-model="contaParaDepositar" ng-options="conta.nrConta for conta in contas">
           </select>
         </label>
+        </div>
         <div class="col-md-12">
           <label>Montante: </label>
           <input type="number" class="form-control" ng-model="montanteTransferencia">
         </div>
-        <button type="button" class="btn btn-default menu-item" ng-click="transferir(contaParaRetirar._id, contaParaDepositar._id, montanteTransferencia)">Transferir </button> 
+        <div class="col-md-12">
+          <button type="button" class="btn btn-default menu-item" ng-click="transferir(contaParaRetirar._id, contaParaDepositar._id, montanteTransferencia)">Transferir </button> 
+        </div>
       </div>
     </div>
     

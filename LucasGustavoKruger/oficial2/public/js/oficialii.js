@@ -19,6 +19,7 @@ app.controller('mainController', function($scope, service) {
     $scope.isDeposiando = false;
     $scope.isTransferindo = false;
     $scope.fetchAccounts();
+    $scope.erro = "";
   }
   
   $scope.gotSaque = () => {
