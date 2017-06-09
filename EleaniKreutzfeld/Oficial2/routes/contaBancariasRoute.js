@@ -55,8 +55,11 @@ router.get('/contaBancaria/:conta', function(req, res){
 
 router.put('/contaBancaria/:id', function(req, res){
   contaBancaria.findById(req.params.id, function(error, contaBancaria) {
-      if(error)
+      if(error){
           res.send(error);
+          return;
+        }
+        console.log("testando "+req.body.nome+" saldo "+req.body.saldo+" id "+req.body._id);
       contaBancaria.nome = req.body.nome;
       contaBancaria.cpf = req.body.cpf;
       contaBancaria.email = req.body.email;
@@ -64,8 +67,10 @@ router.put('/contaBancaria/:id', function(req, res){
       contaBancaria.saldo = req.body.saldo;
 
       contaBancaria.save(function(error) {
-          if(error)
+          if(error){
               res.send(error);
+              return;
+            }
           res.json({ message: 'Conta Bancaria atualizado com sucesso!' });
       });
   });

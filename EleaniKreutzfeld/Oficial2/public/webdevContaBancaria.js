@@ -78,6 +78,16 @@ app.controller('mainController',['$scope', '$http',function($scope, $http){
       $http.post('http://localhost:3000/contaBancaria', contaBancaria);
     } else {
       $http.put('http://localhost:3000/contaBancaria/' + contaBancaria._id, contaBancaria)
+        .then(
+        function(response){
+          $scope.atualizaLista();
+          $scope.novoContaBancaria = null;
+          $scope.adicionandoContaBancaria = false;
+          console.log(response);
+        }).catch(function(response){
+          console.log("erooo"+response);
+        });
+      return;
     }
     $scope.atualizaLista();
     $scope.novoContaBancaria = null;
@@ -87,14 +97,16 @@ app.controller('mainController',['$scope', '$http',function($scope, $http){
   $scope.sacarDaContaBancaria = function(contaBancaria, valor){
 
     contaBancaria.saldo = contaBancaria.saldo - valor;
-    console.log("teste "+ contaBancaria.saldo + " - valor - "+valor+" id "+contaBancaria._id);
-
-    console.log("teste nome "+ contaBancaria.nome);
 
     $http.put('http://localhost:3000/contaBancaria/' + contaBancaria._id, contaBancaria)
-
-    $scope.atualizaLista();
-    $scope.sacandoContaBancaria = false;
+      .then(
+      function(response){
+        $scope.atualizaLista();
+        $scope.sacandoContaBancaria = false;
+        console.log(response);
+      }).catch(function(response){
+        console.log("erooo"+response);
+      });
   }
 
   $scope.depositarNaContaBancaria = function(contaBancaria, valor){
@@ -104,14 +116,21 @@ app.controller('mainController',['$scope', '$http',function($scope, $http){
     console.log("teste deposito "+ contaBancaria.saldo + " - valor - "+valor+" id "+contaBancaria._id);
 
     $http.put('http://localhost:3000/contaBancaria/' + contaBancaria._id, contaBancaria)
+      .then(
+      function(response){
+        $scope.atualizaLista();
+        $scope.depositandoContaBancaria = false;
+        console.log(response);
+      }).catch(function(response){
+        console.log("erooo"+response);
+      });
 
-    $scope.atualizaLista();
-    $scope.depositandoContaBancaria = false;
   }
 
   $scope.transferirDaContaBancaria = function(contaBancariaOrigem, contaDestino, valor){
     var urlGetConta = '/contaBancaria/contaDestino';
 
+    var contaBancariaDestino = new contaBancaria();
     console.log("origem "+contaBancariaOrigem.conta);
     console.log("destinos "+contaDestino);
     $http.get('http://localhost:3000/contaBancaria/'+contaDestino).then(function(response) {
