@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({'extended':'true'}));
 app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 app.use(methodOverride());
 
-var index = require('./routes/index');
+var index = require('./routes/indexRoutes');
 app.use('/', index);
 
 app.listen(3000);

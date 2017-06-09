@@ -103,6 +103,14 @@
                     <label for="Valor">Valor</label>
                     <input type="text" class="form-control" id="Valor" placeholder="0000,00" ng-model="formTitular.valor">
                 </div>
+                <div class="form-group col-md-3">
+                    <label for="Valor">Numero de Conta</label>
+                    <input type="text" class="form-control" id="Numero" placeholder="000.000-0" ng-model="formTitular.numero">
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="nomeTitular">Saldo Atual</label>
+                    <input type="text" class="form-control" id="saldoAtualTitular" placeholder="0000,00" ng-model="formTitular.saldoAtual">
+                </div>
                     <button type="submit" class="btn btn-primary" ng-click="depositarValor()">Depositar</button>
                     <button type="submit" class="btn btn-primary" ng-click="sacarValor()">Sacar</button>
                     <button type="submit" class="btn btn-primary" ng-click="transferirValor()">Transferir</button>
