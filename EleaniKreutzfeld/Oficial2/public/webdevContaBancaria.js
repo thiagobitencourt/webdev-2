@@ -130,12 +130,19 @@ app.controller('mainController',['$scope', '$http',function($scope, $http){
   $scope.transferirDaContaBancaria = function(contaBancariaOrigem, contaDestino, valor){
     var urlGetConta = '/contaBancaria/contaDestino';
 
-    var contaBancariaDestino = new contaBancaria();
+    var dataObj = {
+      nome : contaBancariaOrigem.nome,
+      cpf : contaBancariaOrigem.cpf,
+      email : contaBancariaOrigem.email,
+      conta : contaBancariaOrigem.conta,
+      saldo: contaBancariaOrigem.saldo
+    };
+
     console.log("origem "+contaBancariaOrigem.conta);
     console.log("destinos "+contaDestino);
     $http.get('http://localhost:3000/contaBancaria/'+contaDestino).then(function(response) {
-      contaBancariaDestino = response.data;
-      console.log("dentro da conta");
+      dataObj = response.data;
+      console.log("dentro da conta "+dataObj.nome);
     }, function(err) {
       console.log(err);
     });
