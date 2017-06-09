@@ -91,9 +91,10 @@ app.get('/usuario', function(req, res) {
 });
 
 app.post('/usuario', function(req, res) {
-  // console.log(req.body);
+  // 
   usuarioRepo.criarUsuario(req.body);
   res.send(req.body);
+  console.log(req.body);
 });
 
 app.get('/usuario/:username', function(req, res) {
