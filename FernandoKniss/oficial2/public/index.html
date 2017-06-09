@@ -1,0 +1,104 @@
+<!doctype html>
+
+<!-- ESPECIFICANDO NOSSO MÓDULO ANGULAR listaTitulares -->
+<html ng-app="listaTitulares">
+<head>
+    <!-- META -->
+    <meta charset="utf-8">
+    <!-- Otimizar a exibição em dispositivos móveis -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Lista de Titulares</title>
+
+    <!-- CSS -->
+    <!-- Carregando o bootstrap-->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    <style>
+        html                    { overflow-y:scroll; }
+        body                    { padding-top:50px; }
+        #lista-titulares        { margin-bottom:30px; }
+        form button             { margin-top: 25px; }
+        form .form-group:first-child { padding-left: 0; }
+    </style>
+
+    <!-- JS -->
+    <!-- Carregando a biblioteca jQuery -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <!-- Carregando a biblioteca AngularJS -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+    <script src="angularApp.js"></script>
+
+</head>
+<!-- DEFINE O CONTROLLER E BUSCA TODOS OS CONTATOS -->
+<body ng-controller="mainController">
+    <div class="container">
+
+        <!-- CABEÇALHO E TOTAL DE CONTATOS -->
+        <div class="jumbotron text-center">
+            <h1>Lista de Titulares <span class="label label-info">{{ titular.length }}</span></h1>
+        </div>
+
+        <!-- LISTA NOSSOS CONTATOS -->
+        <div id="lista-titulares">
+            <table class="table table-striped">
+
+                <tr>
+                    <th>Nome</th>
+                    <th>CPF</th>
+                    <th>E-mail</th>
+                    <th>Numero</th>
+                    <th>Saldo Atual</th>
+                </tr>
+
+                <!-- LOOP PARA CARREGAR TODOS OS CONTATOS EM $scope.contatos -->
+                <tr ng-repeat="titular in titular">
+                    <td>{{ titular.nome }}</td>
+                    <td>{{ titular.cpf }}</td>
+                    <td>{{ titular.email }}</td>
+                    <td>{{ titular.numero }}</td>
+                    <td>{{ titular.saldoAtual }}</td>
+                    <td>
+                        <button type="button" class="btn btn-warning" ng-click="editarTitular(titular._id)">Editar</button>
+                        <button type="button" class="btn btn-danger" ng-click="deletarTitular(titular._id)">Remover</button>
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+
+        <!-- FORMULÁRIO PARA CRIARMOS UM NOVO CONTATO -->
+        <div id="titular-form">
+            <hr>
+            <form>
+                <div class="form-group col-md-3">
+                    <label for="nomeTitular">Nome</label>
+                    <input type="text" class="form-control" id="nomeTitular" placeholder="Nome Sobrenome" ng-model="formTitular.nome">
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="cpfTitular">CPF</label>
+                    <input type="text" class="form-control" id="cpfTitular" placeholder="000.000.000-00" ng-model="formTitular.cpf">
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="emailTitular">E-mail</label>
+                    <input type="text" class="form-control" id="emailTitular" placeholder="exemplo@exemplo.com" ng-model="formTitular.email">
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="telefoneTitular">Numero</label>
+                    <input type="text" class="form-control" id="numeroTitular" placeholder="000.000-0" ng-model="formTitular.numero">
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="nomeTitular">Saldo Atual</label>
+                    <input type="text" class="form-control" id="saldoAtualTitular" placeholder="0000,00" ng-model="formTitular.saldoAtual">
+                </div>
+                <div class="form-group col-md-3">
+                    <!-- createToDo() WILL CREATE NEW TODOS -->
+                    <button type="submit" class="btn btn-primary" ng-click="criarTitular()">Criar</button>
+                    <button type="submit" class="btn btn-info" ng-click="atualizarTitular()">Atualizar</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+</body>
+</html>
