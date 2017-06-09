@@ -15,10 +15,10 @@
       <h1>{{ title }}</h1>
 
       <div class="menu"> 
-        <div class="menu-item">Ver contas </div>
-        <div class="menu-item">Realizar saque</div> 
-        <div class="menu-item">Realizar deposito</div> 
-        <div class="menu-item">Realizar trasnferencia</div>
+         <button type="button" class="btn btn-default menu-item" ng-click="goContas()">Ver contas </button> 
+         <button type="button" class="btn btn-default menu-item" ng-click="gotSaque()">Realizar saque </button> 
+         <button type="button" class="btn btn-default menu-item" ng-click="goDeposito()">Realizar deposito </button> 
+         <button type="button" class="btn btn-default menu-item" ng-click="goTransferencia()">Realizar trasnferencia </button> 
       </div>
 
       <div ng-show="isViewing"> 
@@ -30,6 +30,8 @@
               <th>Email</th>
               <th>Numero da conta</th>
               <th>Saldo atual</th>            
+              <th></th>            
+              <th></th>            
             </tr>
           </thead>
           <tbody>
@@ -39,34 +41,43 @@
               <td>{{ conta.email }}</td> 
               <td>{{ conta.nrConta }}</td> 
               <td>{{ conta.saldoAtual }}</td>
+              <td class="clickAble" ng-click="editar(conta)">
+                <i class="fa fa-pencil" aria-hidden="true" />
+              </td>
+              <td class="clickAble" ng-click="deletar(conta)">
+                <i class="fa fa-times" aria-hidden="true" />
+              </td>
             </tr>
           </tbody>
         </table>
         <hr/>
         <h3>Conta</h3>
+        <button type="button" class="btn btn-primary" ng-click="novaConta()">
+          Nova conta
+        </button>
         <div class="row">
           <div class="col-md-12">
             <label>Nome do titular</label>
-            <input type="text" class="form-control" ng-model="conta.nomeTitular">
+            <input type="text" class="form-control" ng-model="newConta.nomeTitular">
           </div>
           <div class="col-md-12">
             <label>Cpf do titular</label>
-            <input type="text" class="form-control" ng-model="conta.cpfTitular">
+            <input type="text" class="form-control" ng-model="newConta.cpfTitular">
           </div>
           <div class="col-md-12">
             <label>Email do titular</label>
-            <input type="email" class="form-control" ng-model="conta.email">
+            <input type="email" class="form-control" ng-model="newConta.email">
           </div>
           <div class="col-md-12">
             <label>Numero da conta</label>
-            <input type="text" class="checkbox" ng-model="conta.nrConta">
+            <input type="text" class="form-control" ng-model="newConta.nrConta">
           </div>
           <div class="col-md-12" ng-show="isAdicionando">
             <label>Saldo da conta</label>
-            <input type="text" class="checkbox" ng-model="conta.saldoAtual">
+            <input type="text" class="form-control" ng-model="newConta.saldoAtual">
           </div>
         </div>
-        <button style="margin-top: 15px" type="button" ng-click="saveConta(conta)" class="btn btn-primary">Salvar Conta</button>
+        <button style="margin-top: 15px" type="button" ng-click="saveConta(newConta)" class="btn btn-primary">Salvar Conta</button>
       </div>
     </div>
     

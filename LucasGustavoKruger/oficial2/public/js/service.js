@@ -13,6 +13,9 @@ app = angular.module('oficial-ii')
       } else {
         return $http.put('http://localhost:3000/conta/' + conta._id, conta);
       }
+    },
+    removerConta: (conta) => {
+      return $http.delete('http://localhost:3000/conta/' + conta._id);
     }
   }
 });

@@ -9,6 +9,15 @@ body {
   border-radius: 10px;
 }
 
-.conta-row { 
+.clickAble { 
   cursor: pointer;
+}
+
+.menu {
+  width: 100%;
+  display: flex;
+}
+
+.menu-item {
+  margin: 10px;
 }
