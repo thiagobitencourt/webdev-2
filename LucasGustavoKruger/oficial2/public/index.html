@@ -2,7 +2,7 @@
 <html ng-app="oficial-ii">
   <head>
     <meta charset="utf-8">
-    <title>LUCAS K Boiler Plate</title>
+    <title>Oficial 2 - Bank</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="./css/styles.css" rel="stylesheet" /> 
@@ -13,7 +13,7 @@
       ng-controller="mainController"
     >
       <h1>{{ title }}</h1>
-
+      <div> Erros que vem do server: {{ erro }}</div>
       <div class="menu"> 
          <button type="button" class="btn btn-default menu-item" ng-click="goContas()">Ver contas </button> 
          <button type="button" class="btn btn-default menu-item" ng-click="gotSaque()">Realizar saque </button> 
@@ -79,6 +79,49 @@
         </div>
         <button style="margin-top: 15px" type="button" ng-click="saveConta(newConta)" class="btn btn-primary">Salvar Conta</button>
       </div>
+      <div ng-show="isSacando">
+        Sacar!
+        <label>Conta:
+          <select ng-model="contaParaSacar" ng-options="conta.nrConta for conta in contas">
+          </select>
+        </label>
+        <div class="col-md-12">
+          <label>Montante: </label>
+          <input type="number" class="form-control" ng-model="montanteSaque">
+        </div>
+        <button type="button" class="btn btn-default menu-item" ng-click="saque(contaParaSacar._id, montanteSaque)">Sacar </button> 
+      </div>
+      <div ng-show="isDeposiando">
+        Depositar!
+        <label>Conta:
+          <select ng-model="contaParaDepositar" ng-options="conta.nrConta for conta in contas">
+          </select>
+        </label>
+        <div class="col-md-12">
+          <label>Montante: </label>
+          <input type="number" class="form-control" ng-model="montanteDeposito">
+        </div>
+        <button type="button" class="btn btn-default menu-item" ng-click="depositar(contaParaDepositar._id, montanteDeposito)">Sacar </button> 
+      </div>
+      <div ng-show="isTransferindo">
+        Depositar!
+        <label>Conta origem:
+          <select ng-model="contaParaRetirar" ng-options="conta.nrConta for conta in contas">
+          </select>
+        </label>  
+        <label>Conta destino:
+          <select ng-model="contaParaDepositar" ng-options="conta.nrConta for conta in contas">
+          </select>
+        </label>
+        <div class="col-md-12">
+          <label>Montante: </label>
+          <input type="number" class="form-control" ng-model="montanteTransferencia">
+        </div>
+        <button type="button" class="btn btn-default menu-item" ng-click="transferir(contaParaRetirar._id, contaParaDepositar._id, montanteTransferencia)">Sacar </button> 
+      </div>
+
+
+
     </div>
     
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
