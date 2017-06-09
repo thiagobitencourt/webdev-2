@@ -2,8 +2,11 @@ const express = require('express');
 const router = express.Router();
 const ContaBancaria = require('../model/contaBancaria');
 const ObjectId = require('mongoose').Types.ObjectId;
+
 router.get('/', (req, res) => {
-  ContaBancaria.find().then(results => {
+  ContaBancaria.find((err, results) => {
+    if(err) throw err;
+    console.log(results);
     res.send(results);
   });
 });
