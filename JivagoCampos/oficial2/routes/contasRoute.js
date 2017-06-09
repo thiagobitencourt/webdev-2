@@ -44,16 +44,21 @@ router.get('/conta/:id', function(req, res){
 
 router.put('/conta/:id', function(req, res){
   conta.findById(req.params.id, function(error, conta) {
-      if(error)
+      if(error){
           res.send(error);
+          return;
+        }
+
           newConta.nome = req.body.nome;
           newConta.cpf = req.body.cpf;
           newConta.email = req.body.email;
           newConta.numeroConta = req.body.numeroConta;
           newConta.saldo = req.body.saldo;
       conta.save(function(error) {
-          if(error)
+          if(error){
               res.send(error);
+              return;
+            }
           res.json({ message: 'Conta editada'});
       });
   });
