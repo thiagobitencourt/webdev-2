@@ -1,0 +1,24 @@
+	
+Conta{
+	"id": 0,
+	"nome": "",
+	"email": "t",
+	"numero": 0,
+	"saldo": 0
+}
+
+saque{
+	"contaOrigem": 0,  //(id)
+	"valor":0
+}
+
+deposito{
+	"contaOrigem": 0,  //(id)
+	"valor":0
+}
+
+tranferencia{
+	"contaOrigem": 0,  //(id)
+	"valor":0
+	"contaDestino":    //(id)
+}
