@@ -65,4 +65,25 @@ function mainController($scope, $http) {
         });
     };
 
+    $scope.depositarValor = function() {
+      $http.put('/api/contas/' + $scope.formTitular._id, $scope.formTitular)
+      .success( function(response) {
+        refresh();
+      });
+    };
+
+    $scope.sacarValor = function() {
+      $http.put('/api/contas/' + $scope.formTitular._id, $scope.formTitular)
+      .success( function(response) {
+        refresh();
+      });
+    };
+
+    $scope.transferirValor = function() {
+      $http.put('/api/contas/' + $scope.formTitular._id, $scope.formTitular)
+      .success( function(response) {
+        refresh();
+      });
+    };
+
 }
