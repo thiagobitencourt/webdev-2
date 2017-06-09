@@ -16,53 +16,55 @@ router.get('/conta', function(req, res){
 });
 
 router.post('/conta', function(req, res){
-  var newProduto = new produto();
-  newProduto.nome = req.body.nome;
-  newProduto.codigo = req.body.codigo;
-  newProduto.quantidade = req.body.quantidade;
-  newProduto.disponivel = req.body.disponivel;
+  var newConta = new conta();
+  newConta.nome = req.body.nome;
+  newConta.cpf = req.body.cpf;
+  newConta.email = req.body.email;
+  newConta.numeroConta = req.body.numeroConta;
+  newConta.saldo = req.body.saldo;
 
-  newProduto.save(function(error) {
+  newConta.save(function(error) {
       if(error){
         res.send(error);
       }else{
-        res.json({ message: 'Produto salvo'});
+        res.json({ message: 'Conta salva'});
       }
   });
 });
 
 router.get('/conta/:id', function(req, res){
-  produto.findById(req.params.id, function(error, produto) {
+  conta.findById(req.params.id, function(error, conta) {
       if(error){
         res.send(error);
       }else{
-        res.json(produto);
+        res.json(conta);
       }
   });
 });
 
 router.put('/conta/:id', function(req, res){
-  produto.findById(req.params.id, function(error, produto) {
+  conta.findById(req.params.id, function(error, conta) {
       if(error)
           res.send(error);
-      produto.nome = req.body.nome;
-      produto.codigo = req.body.codigo;
-      produto.quantidade = req.body.quantidade;
-      produto.disponivel = req.body.disponivel;
-      produto.save(function(error) {
+          newConta.nome = req.body.nome;
+          newConta.cpf = req.body.cpf;
+          newConta.email = req.body.email;
+          newConta.numeroConta = req.body.numeroConta;
+          newConta.saldo = req.body.saldo;
+      conta.save(function(error) {
           if(error)
               res.send(error);
-          res.json({ message: 'Produto editado'});
+          res.json({ message: 'Conta editada'});
       });
   });
 });
 
 router.delete('/conta/:id', function(req, res){
-  produto.remove({_id: req.params.id}, function(error){
+  conta.remove({_id: req.params.id}, function(error){
       if(error){
         res.send(error);
       }else{
-        res.json({ message: 'Produto excluido'});
+        res.json({ message: 'Conta excluida'});
       }
   });
 });
