@@ -94,10 +94,26 @@
                     <!-- createToDo() WILL CREATE NEW TODOS -->
                     <button type="submit" class="btn btn-primary" ng-click="criarTitular()">Criar</button>
                     <button type="submit" class="btn btn-info" ng-click="atualizarTitular()">Atualizar</button>
+
                 </div>
+
             </form>
         </div>
 
+        <div id="titular-form">
+          <hr>
+            <form>
+                <div class="form-group col-md-3">
+                    <label for="Valor">Valor</label>
+                    <input type="text" class="form-control" id="Valor" placeholder="0000,00" ng-model="formTitular.valor">
+                </div>
+                    <button type="submit" class="btn btn-primary" ng-click="depositarValor()">Depositar</button>
+                    <button type="submit" class="btn btn-primary" ng-click="sacarValor()">Sacar</button>
+                    <button type="submit" class="btn btn-primary" ng-click="transferirValor()">Transferir</button>
+
+
+           </form>
+         </hr>
     </div>
 
 </body>
