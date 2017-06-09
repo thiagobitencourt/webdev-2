@@ -101,10 +101,10 @@
           <label>Montante: </label>
           <input type="number" class="form-control" ng-model="montanteDeposito">
         </div>
-        <button type="button" class="btn btn-default menu-item" ng-click="depositar(contaParaDepositar._id, montanteDeposito)">Sacar </button> 
+        <button type="button" class="btn btn-default menu-item" ng-click="depositar(contaParaDepositar._id, montanteDeposito)">Depositar </button> 
       </div>
       <div ng-show="isTransferindo">
-        Depositar!
+        Transferir!
         <label>Conta origem:
           <select ng-model="contaParaRetirar" ng-options="conta.nrConta for conta in contas">
           </select>
@@ -117,11 +117,8 @@
           <label>Montante: </label>
           <input type="number" class="form-control" ng-model="montanteTransferencia">
         </div>
-        <button type="button" class="btn btn-default menu-item" ng-click="transferir(contaParaRetirar._id, contaParaDepositar._id, montanteTransferencia)">Sacar </button> 
+        <button type="button" class="btn btn-default menu-item" ng-click="transferir(contaParaRetirar._id, contaParaDepositar._id, montanteTransferencia)">Transferir </button> 
       </div>
-
-
-
     </div>
     
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>

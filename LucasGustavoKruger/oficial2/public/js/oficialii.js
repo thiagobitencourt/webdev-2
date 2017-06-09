@@ -18,7 +18,7 @@ app.controller('mainController', function($scope, service) {
     $scope.isSacando = false;
     $scope.isDeposiando = false;
     $scope.isTransferindo = false;
-
+    $scope.fetchAccounts();
   }
   
   $scope.gotSaque = () => {
@@ -79,7 +79,7 @@ app.controller('mainController', function($scope, service) {
     });
   };
 
-  const errorResponse = (resp) => {
+  const responseHandler = (resp) => {
     if(resp.data.error) {
       $scope.erro = resp.data.error;
     } else {
@@ -92,7 +92,7 @@ app.controller('mainController', function($scope, service) {
       _id: id, 
       montante: montante
     };
-    service.sacar(payload).then(errorResponse);
+    service.sacar(payload).then(responseHandler);
   }
 
   $scope.depositar =(id, montanteDeposito) => {
@@ -100,7 +100,7 @@ app.controller('mainController', function($scope, service) {
       _id: id, 
       montante: montanteDeposito
     };
-    service.depositar(payload).then(errorResponse);
+    service.depositar(payload).then(responseHandler);
   }
 
   $scope.transferir = (_idOrigem, _idDestino, montanteTransferencia) => {
@@ -109,7 +109,7 @@ app.controller('mainController', function($scope, service) {
       idDestino: _idDestino, 
       montante: montanteTransferencia
     };
-    service.transferir(payload).then(errorResponse);
+    service.transferir(payload).then(responseHandler);
   }
 
   $scope.fetchAccounts();
