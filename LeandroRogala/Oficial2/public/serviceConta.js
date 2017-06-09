@@ -15,6 +15,15 @@ app = angular.module('oficial2').service('serviceConta', function($http){
     },
     deleteConta: function(conta){
       return $http.delete('/conta/'+conta._id);
+    },
+    saqueConta: function(conta){
+      return $http.post('/conta/saque', conta);
+    },
+    depositaConta: function(conta){
+      return $http.post('/conta/deposito', conta);
+    },
+    transfereConta: function(conta){
+      return $http.post('/conta/transferencia', conta);
     }
   }
 });

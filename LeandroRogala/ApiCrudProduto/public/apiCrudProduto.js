@@ -52,5 +52,4 @@ app.controller('mainController', function($scope, servicoProdutos){
       loading();
     });
   }
-
 })

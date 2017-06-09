@@ -96,8 +96,6 @@ router.put('/conta/:id', function(req, res){
       conta.nomeTitular = req.body.nomeTitular;
       conta.cpfTitular = req.body.cpfTitular;
       conta.emailTitular = req.body.emailTitular;
-      conta.numeroDaConta = req.body.numeroDaConta;
-      conta.saldo = req.body.saldo;
       conta.save(function(error) {
           if(error)
               res.send(error);

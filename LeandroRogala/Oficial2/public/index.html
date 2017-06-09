@@ -19,6 +19,7 @@
       <table class="table">
         <thead>
           <tr>
+            <th>_id</ht>
             <th>nomeTitular</th>
             <th>cpfTitular</th>
             <th>emailTitular</th>
@@ -28,6 +29,7 @@
         </thread>
         <tbody>
           <tr ng-repeat="conta in contas" class="sobre-linha" ng-click="selectConta(conta)" ng-class="{'selecionado': conta.selecionado}">
+            <td>{{conta._id}}</td>
             <td>{{conta.nomeTitular}}</td>
             <td>{{conta.cpfTitular}}</td>
             <td>{{conta.emailTitular}}</td>
@@ -39,6 +41,9 @@
       <button type="button" ng-click="addContas()" class="btn btn primary">AdicionarCona</button>
       <button type="button" ng-click="deleteConta()" class="btn btn-danger">ExcluirConta</button>
       <button type="button" ng-click="editConta()" class="btn btn-warning">EditarConta</button>
+      <button type="button" ng-click="saqueConta()" class="btn btn-warning">Saque</button>
+      <button type="button" ng-click="depositaConta()" class="btn btn-warning">Depositar</button>
+      <button type="button" ng-click="transfereConta()" class="btn btn-warning">Transferencia</button>
       <br/>
       <div class="row" ng-show="addConta">
         <hr/>
@@ -56,6 +61,37 @@
         </div>
         <br/>
         <button type"button" ng-click="saveNewConta(newConta)" class="btn btn-primary">Salvar</button>
+      </div>
+      <div class="row" ng-show="sacavel">
+        <hr/>
+        <div class="col-md-12">
+          <label>Quanto deseja sacar ?</label>
+          <input type="text" class="form-control" ng-model="newConta.saque">
+        </div>
+        <br/>
+        <button type"button" ng-click="sacar(newConta)" class="btn btn-primary">Sacar</button>
+      </div>
+      <div class="row" ng-show="depositavel">
+        <hr/>
+        <div class="col-md-12">
+          <label>Quanto deseja depositar ?</label>
+          <input type="text" class="form-control" ng-model="newConta.deposito">
+        </div>
+        <br/>
+        <button type"button" ng-click="deposita(newConta)" class="btn btn-primary">Depositar</button>
+      </div>
+      <div class="row" ng-show="transferivel">
+        <hr/>
+        <div class="col-md-12">
+          <label>Quanto deseja transferir ?</label>
+          <input type="text" class="form-control" ng-model="newConta.transferencia">
+        </div>
+        <div class="col-md-12">
+          <label>Insira o Id da conta</label>
+          <input type="text" class="form-control" ng-model="newConta._idDestino">
+        </div>
+        <br/>
+        <button type"button" ng-click="transfere(newConta)" class="btn btn-primary">Transferir</button>
       </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
