@@ -1,0 +1,29 @@
+{
+  "name": "webdev-2",
+  "version": "1.0.0",
+  "description": "Estive presente na aula do dia 10 de março",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "WillianMendes",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/willink01/webdev-2.git"
+  },
+  "bugs": {
+    "url": "https://github.com/willink01/webdev-2/issues"
+  },
+  "homepage": "https://github.com/willink01/webdev-2#readme",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2"
+  },
+  "devDepedencies": {
+    "mocha": "1.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}

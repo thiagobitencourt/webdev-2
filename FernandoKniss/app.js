@@ -1,56 +1,168 @@
 'use strict';
 
-//tipos e valores
-//tipo de um valor é a sua forma de representação
-//var, let, const
+//const fs = require('fs'); // modulo interno do node
 
-const valorConstante = 10;
-//valorConstante = 20;
-//console.log(valorConstante); //imprime valor no terminal...
+const express = require('express');
+const bodyParser = require('body-parser');
 
-//tipos
-var valorInt = 10; //integer, number (numero)
-console.log(typeof valorInt);
-var valorStr = "Hello"; //string, cadeia de caracteres
-console.log(typeof valorStr);
-var valorBooleanTrue = true; //true or false, verdadeiro ou falso
-console.log(typeof valorBooleanTrue);
-var valorBooleanFalse = false;
-console.log(typeof valorBooleanFalse);
-var valorNulo = null; //nulo, vazio, sem valor
-console.log(typeof valorNulo);
-var valorIndefinido = undefined; //não definido
-console.log(typeof valorIndefinido);
-var valorObjeto = {}; //objeto
-console.log(typeof valorObjeto);
-var valorArray = []; //Array
-console.log(typeof valorArray);//objetc
+const UsuarioDAO = require('./usuarioDAO');
+const app = express();
+// parser para json
+app.use(bodyParser.json());
 
-function funcaoQualquer(){
-
-}
-console.log(typeof funcaoQualquer);
-
-var pessoa = {
-  nome: "Lucas",
-  idade: 24,
-  graduado: false
-};
-
-console.log(pessoa.nome);
-console.log(pessoa.idade);
-
-console.log(pessoa['nome']);
-console.log(pessoa['graduado']);
+const usuarioRepo = new UsuarioDAO();
+//const rotaUsuarios = require('./routes/usuariosRoute');
+const rotaProdutos = require('./routes/produtosRoute');
 
 
-var umaVariavel = 20;
+app.use('/', express.static('public'));
+// app.get('/', function (req, res) {
+//   console.log("Alguem chamou /")
+//   res.send('você acessou a rota!');
+// });
 
-var arrayDoThalles = [
-  "sóescrever",
-  umaVariavel,
-  true,
-  pessoa
-];
+app.get('/usuario', function(req, res) {
+  const todosUsuarios = usuarioRepo.obterTodosOsUsuarios();
+  if (todosUsuarios.length) {
+    res.send(usuario);
+  } else {
+     res.status(404).send("Não encontramos o usuário " + req.params.username);
+  }
+});
 
-console.log(arrayDoThalles[0]);
+app.get('/usuario/:username', function(req, res) {
+  var usuario = usuarioRepo.obterUsuario(req.params.username);
+  if (usuario) {
+    res.send(usuario);
+  } else {
+    res.status(404).send("Não encontramos o usuário " + req.params.username);
+  }
+  res.send(req.params);
+});
+
+app.post('/usuario', function(req, res) {
+// console.log(req.body);
+usuarioRepo.criarUsuario(req.body)
+  res.send(req.body);
+});
+
+app.delete('/usuario/:username', function(req, res) {
+  var sucesso = usuarioRepo.removerUsuario(req.params.username);
+  if(sucesso) {
+    res.send("Usuário removido com sucesso!");
+  } else {
+    res.send("Usuário não foi encontrado");
+  }
+});
+
+app.put('/usuario/:username', function(req, res) {
+  var alterou = usuarioRepo.alterarUsuario(req.params.username, req.body);
+  if (alterou) {
+    res.send("Usuário alterado com sucesso!");
+  } else {
+    res.send("Usuário não foi encontrado");
+  }
+});
+
+
+app.listen(3000, function () {
+  console.log('servidor ouvindo a porta 3000!');
+});
+
+
+
+// 'use strict';
+//
+// const fs = require('fs'); // modulo interno do node
+//
+// const express = require('express');
+// const bodyParser = require('body-parser');
+// const UsuarioDAO = require('./usuarioDAO');
+//
+// const dburl = process.env.DB_URL && process.env.DB_URL.trim() || 'localhost';
+// mongoose.connect('mongodb://' + dburl + ':27017/webdev2', function(error) {
+//
+// if (error) throw new Error(error);
+//
+// const app = express();
+//
+// const rotaUsuarios = require('./routes/usuariosRoute');
+// const rotaProdutos = require('./routes/produtosRoute');
+//
+// console.log("Conectado ao banco com sucesso!");
+//
+// // parser para json
+// app.use(bodyParser.json());
+//
+// //const usuarioRepo = new UsuarioDAO();
+//
+// app.use('/', express.static('public'));
+// app.use(rotaUsuarios);
+// app.use(rotaProdutos);
+// // app.get('/', function (req, res) {
+// //   console.log("Alguem chamou /")
+// //   res.send('você acessou a rota!');
+// // });
+//
+// // app.get('/usuario', function(req, res) {
+// //   const todosUsuarios = usuarioRepo.obterTodosOsUsuarios();
+// //   if (todosUsuarios.length) {
+// //     res.send(usuario);
+// //   } else {
+// //      res.status(404).send("Não encontramos o usuário " + req.params.username);
+// //   }
+// // });
+//
+// // app.get('/usuario/:username', function(req, res) {
+// //   var usuario = usuarioRepo.obterUsuario(req.params.username);
+// //   if (usuario) {
+// //     res.send(usuario);
+// //   } else {
+// //     res.status(404).send("Não encontramos o usuário " + req.params.username);
+// //   }
+// //   res.send(req.params);
+// // });
+//
+// // app.post('/usuario', function(req, res) {
+// // // console.log(req.body);
+// // usuarioRepo.criarUsuario(req.body)
+// //   res.send(req.body);
+// // });
+//
+// // app.delete('/usuario/:username', function(req, res) {
+// //   var sucesso = usuarioRepo.removerUsuario(req.params.username);
+// //   if(sucesso) {
+// //     res.send("Usuário removido com sucesso!");
+// //   } else {
+// //     res.send("Usuário não foi encontrado");
+// //   }
+// // });
+// //
+// // app.put('/usuario/:username', function(req, res) {
+// //   var alterou = usuarioRepo.alterarUsuario(req.params.username, req.body);
+// //   if (alterou) {
+// //     res.send("Usuário alterado com sucesso!");
+// //   } else {
+// //     res.send("Usuário não foi encontrado");
+// //   }
+// // });
+//
+//
+// app.listen(3000, function () {
+//   console.log('servidor ouvindo a porta 3000!')
+//     });
+// });
+
+//  var usu = new Usuario();
+//  console.log(usu);
+//
+// var user = {
+//   username: 'fernandokniss',
+//   password: '123123'
+// };
+//
+// var usuarioValido = usu.autenticarUsuario(user);
+// if (usuarioValido) {
+//   console.log("Login efetuado com sucesso");
+// } else {
+//   console.log("Nome de usuario ou senha incorreto");

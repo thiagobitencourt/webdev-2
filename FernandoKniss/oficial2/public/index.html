@@ -1,0 +1,122 @@
+<!doctype html>
+
+
+<html ng-app="listaTitulares">
+<head>
+
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Lista de Titulares</title>
+
+
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    <style>
+        html                    { overflow-y:scroll; }
+        body                    { padding-top:50px; }
+        #lista-titulares        { margin-bottom:30px; }
+        form button             { margin-top: 25px; }
+        form .form-group:first-child { padding-left: 0; }
+    </style>
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+    <script src="angularApp.js"></script>
+
+</head>
+
+<body ng-controller="mainController">
+    <div class="container">
+
+
+        <div class="jumbotron text-center">
+            <h1>Lista de Titulares <span class="label label-info">{{ titular.length }}</span></h1>
+        </div>
+
+        <div id="lista-titulares">
+            <table class="table table-striped">
+
+                <tr>
+                    <th>Nome</th>
+                    <th>CPF</th>
+                    <th>E-mail</th>
+                    <th>Numero</th>
+                    <th>Saldo Atual</th>
+                </tr>
+
+                <tr ng-repeat="titular in titular">
+                    <td>{{ titular.nome }}</td>
+                    <td>{{ titular.cpf }}</td>
+                    <td>{{ titular.email }}</td>
+                    <td>{{ titular.numero }}</td>
+                    <td>{{ titular.saldoAtual }}</td>
+                    <td>
+                        <button type="button" class="btn btn-warning" ng-click="editarTitular(titular._id)">Editar</button>
+                        <button type="button" class="btn btn-danger" ng-click="deletarTitular(titular._id)">Remover</button>
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+
+
+        <div id="titular-form">
+            <hr>
+            <form>
+                <div class="form-group col-md-3">
+                    <label for="nomeTitular">Nome</label>
+                    <input type="text" class="form-control" id="nomeTitular" placeholder="Nome Sobrenome" ng-model="formTitular.nome">
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="cpfTitular">CPF</label>
+                    <input type="text" class="form-control" id="cpfTitular" placeholder="000.000.000-00" ng-model="formTitular.cpf">
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="emailTitular">E-mail</label>
+                    <input type="text" class="form-control" id="emailTitular" placeholder="exemplo@exemplo.com" ng-model="formTitular.email">
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="telefoneTitular">Numero</label>
+                    <input type="text" class="form-control" id="numeroTitular" placeholder="000.000-0" ng-model="formTitular.numero">
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="nomeTitular">Saldo Atual</label>
+                    <input type="text" class="form-control" id="saldoAtualTitular" placeholder="0000,00" ng-model="formTitular.saldoAtual">
+                </div>
+                <div class="form-group col-md-3">
+
+                    <button type="submit" class="btn btn-primary" ng-click="criarTitular()">Criar</button>
+                    <button type="submit" class="btn btn-info" ng-click="atualizarTitular()">Atualizar</button>
+
+                </div>
+
+            </form>
+        </div>
+
+        <div id="titular-form">
+          <hr>
+            <form>
+                <div class="form-group col-md-3">
+                    <label for="Valor">Valor</label>
+                    <input type="text" class="form-control" id="Valor" placeholder="0000,00" ng-model="formTitular.valor">
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="Valor">Numero de Conta</label>
+                    <input type="text" class="form-control" id="Numero" placeholder="000.000-0" ng-model="formTitular.numero">
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="nomeTitular">Saldo Atual</label>
+                    <input type="text" class="form-control" id="saldoAtualTitular" placeholder="0000,00" ng-model="formTitular.saldoAtual">
+                </div>
+                    <button type="submit" class="btn btn-primary" ng-click="depositarValor()">Depositar</button>
+                    <button type="submit" class="btn btn-primary" ng-click="sacarValor()">Sacar</button>
+                    <button type="submit" class="btn btn-primary" ng-click="transferirValor()">Transferir</button>
+           </form>
+         </hr>
+    </div>
+
+</body>
+</html>

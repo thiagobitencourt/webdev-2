@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html ng-app="webdevContaBancaria">
+  <head>
+    <meta charset="utf-8">
+    <title>Conta Bancaria Oficial</title>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+      .sobre-linha {
+        cursor: pointer;
+      }
+      .selecionado {
+        background-color: #ccc;
+      }
+    </style>
+
+  </head>
+  <body class="container">
+    <div ng-controller="mainController">
+
+      <h1>Conta Bancaria</h1>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>CPF</th>
+            <th>Email</th>
+            <th>Conta</th>
+            <th>Saldo</th>
+          </tr>
+        </thread>
+        <tbody>
+          <tr ng-repeat="contaBancaria in contaBancarias" class="sobre-linha" class="sobre-linha" ng-click="selecionaContaBancaria(contaBancaria)" ng-class="{'selecionado': contaBancaria.selecionado}">
+            <td>{{contaBancaria._id}}</td>
+            <td>{{contaBancaria.nome}}</td>
+            <td>{{contaBancaria.cpf}}</td>
+            <td>{{contaBancaria.email}}</td>
+            <td>{{contaBancaria.conta}}</td>
+            <td>{{contaBancaria.saldo}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <br/>
+      <br/>
+      <button type="button" ng-click="adicionarContaBancaria()" class="btn btn primary">Adicionar</button>
+      <button type="button" ng-click="excluirContaBancaria()" class="btn btn-danger">Excluir</button>
+      <button type="button" ng-click="editarContaBancaria()" class="btn btn-warning">Editar</button>
+      <br/>
+
+      <br/>
+      <button type="button" ng-click="sacarContaBancaria()" class="btn btn-danger">Saque</button>
+      <button type="button" ng-click="transferirContaBancaria()" class="btn btn-warning">Transferencia</button>
+      <button type="button" ng-click="depositarContaBancaria()" class="btn btn-success">Deposito</button>
+      <br/>
+
+      <div class="row" ng-show="adicionandoContaBancaria">
+
+        <hr/>
+        <h2>Cadastrar Conta Bancaria</h2>
+
+        <div class="col-md-12">
+          <label>Nome do Correntista</label>
+          <input type="text" class="form-control" ng-model="novoContaBancaria.nome">
+        </div>
+
+        <div class="col-md-12">
+          <label>CPF</label>
+          <input type="text" class="form-control" ng-model="novoContaBancaria.cpf">
+        </div>
+
+        <div class="col-md-12">
+          <label>Email</label>
+          <input type="text" class="form-control" ng-model="novoContaBancaria.email">
+        </div>
+
+        <div class="col-md-12">
+          <label>Saldo</label>
+          <input type="number" class="form-control" ng-model="novoContaBancaria.saldo">
+        </div>
+
+        <br/>
+        <br/>
+        <br/>
+        <button type"button" ng-click="salvarNovoContaBancaria(novoContaBancaria)" class="btn btn-primary">Salvar</button>
+      </div>
+
+      <div class="row" ng-show="sacandoContaBancaria">
+        <hr/>
+        <h2>Sacar Conta Bancaria</h2>
+
+        <div class="col-md-12">
+          <label>Valor</label>
+          <input type="number" class="form-control" ng-model="valor">
+        </div>
+        <br/>
+        <button type"button" ng-click="sacarDaContaBancaria(contaBancariaEdt, valor)" class="btn btn-primary">Sacar</button>
+      </div>
+
+      <div class="row" ng-show="depositandoContaBancaria">
+        <hr/>
+        <h2>Depositar Conta Bancaria</h2>
+
+        <div class="col-md-12">
+          <label>Valor</label>
+          <input type="number" class="form-control" ng-model="valor">
+        </div>
+        <br/>
+        <button type"button" ng-click="depositarNaContaBancaria(contaBancariaEdt, valor)" class="btn btn-primary">Depositar</button>
+      </div>
+
+      <div class="row" ng-show="transferindoContaBancaria">
+        <hr/>
+        <h2>Transferindo da Conta Bancaria</h2>
+
+        <div class="col-md-12">
+          <label>Conta Destino</label>
+          <input type="number" class="form-control" ng-model="contaDestino">
+        </div>
+
+        <div class="col-md-12">
+          <label>Valor</label>
+          <input type="number" class="form-control" ng-model="valor">
+        </div>
+        <br/>
+        <button type"button" ng-click="transferirDaContaBancaria(contaBancariaEdt, contaDestino, valor)" class="btn btn-primary">Depositar</button>
+      </div>
+    </div>
+
+  </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="webdevContaBancaria.js" type="text/javascript"></script>
+
+  </body>
+</html>

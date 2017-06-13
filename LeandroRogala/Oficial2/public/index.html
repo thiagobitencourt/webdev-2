@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html ng-app="oficial2">
+  <head>
+    <meta charset="utf-8">
+    <title>Contas Ativas</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+    .sobre-linha {
+      cursor: pointer;
+    }
+
+    .selecionado {
+      background-color: blue;
+    }
+    </style>
+  </head>
+  <body>
+    <div ng-controller="mainController">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>_id</ht>
+            <th>nomeTitular</th>
+            <th>cpfTitular</th>
+            <th>emailTitular</th>
+            <th>numeroDaConta</th>
+            <th>saldo</th>
+          </tr>
+        </thread>
+        <tbody>
+          <tr ng-repeat="conta in contas" class="sobre-linha" ng-click="selectConta(conta)" ng-class="{'selecionado': conta.selecionado}">
+            <td>{{conta._id}}</td>
+            <td>{{conta.nomeTitular}}</td>
+            <td>{{conta.cpfTitular}}</td>
+            <td>{{conta.emailTitular}}</td>
+            <td>{{conta.numeroDaConta}}</td>
+            <td>{{conta.saldo}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <button type="button" ng-click="addContas()" class="btn btn primary">AdicionarConta</button>
+      <button type="button" ng-click="deleteConta()" class="btn btn-danger">ExcluirConta</button>
+      <button type="button" ng-click="editConta()" class="btn btn-warning">EditarConta</button>
+      <button type="button" ng-click="saqueConta()" class="btn btn-warning">Saque</button>
+      <button type="button" ng-click="depositaConta()" class="btn btn-warning">Depositar</button>
+      <button type="button" ng-click="transfereConta()" class="btn btn-warning">Transferencia</button>
+      <br/>
+      <div class="row" ng-show="addConta">
+        <hr/>
+        <div class="col-md-12">
+          <label>Nome do Titular</label>
+          <input type="text" class="form-control" ng-model="newConta.nomeTitular">
+        </div>
+        <div class="col-md-12">
+          <label>Cpf </label>
+          <input type="text" class="form-control" ng-model="newConta.cpfTitular">
+        </div>
+        <div class="col-md-12">
+          <label>Email</label>
+          <input type="text" class="form-control" ng-model="newConta.emailTitular">
+        </div>
+        <br/>
+        <button type"button" ng-click="saveNewConta(newConta)" class="btn btn-primary">Salvar</button>
+      </div>
+      <div class="row" ng-show="sacavel">
+        <hr/>
+        <div class="col-md-12">
+          <label>Quanto deseja sacar ?</label>
+          <input type="number" class="form-control" ng-model="newConta.saque">
+        </div>
+        <br/>
+        <button type"button" ng-click="sacar(newConta)" class="btn btn-primary">Sacar</button>
+      </div>
+      <div class="row" ng-show="depositavel">
+        <hr/>
+        <div class="col-md-12">
+          <label>Quanto deseja depositar ?</label>
+          <input type="number" class="form-control" ng-model="newConta.deposito">
+        </div>
+        <br/>
+        <button type"button" ng-click="deposita(newConta)" class="btn btn-primary">Depositar</button>
+      </div>
+      <div class="row" ng-show="transferivel">
+        <hr/>
+        <div class="col-md-12">
+          <label>Quanto deseja transferir ?</label>
+          <input type="number" class="form-control" ng-model="newConta.transferencia">
+        </div>
+        <div class="col-md-12">
+          <label>Insira o Numero da conta</label>
+          <input type="text" class="form-control" ng-model="newConta._idDestino">
+        </div>
+        <br/>
+        <button type"button" ng-click="transfere(newConta)" class="btn btn-primary">Transferir</button>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="oficialConta.js" type="text/javascript"></script>
+    <script src="serviceConta.js" type="text/javascript"></script>
+  </body>
+</html>

@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
+    },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/FernandoKniss/webdev-2.git"
@@ -15,5 +15,12 @@
   "bugs": {
     "url": "https://github.com/FernandoKniss/webdev-2/issues"
   },
-  "homepage": "https://github.com/FernandoKniss/webdev-2#readme"
+  "homepage": "https://github.com/FernandoKniss/webdev-2#readme",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
 }
