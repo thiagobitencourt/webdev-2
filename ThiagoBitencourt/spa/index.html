@@ -5,41 +5,12 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
   </head>
   <body>
-
-    <div class="container" ng-controller="mainController">
-
-      <div class="panel panel-default">
-        <div class="panel-heading">{{ titulo }}</div>
-
-        <table class="table">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Usuário</th>
-              <th>Senha</th>
-              <th>Idade</th>
-              <th>Email</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr ng-repeat="user in usuarios track by $index"
-              class="sobre-linha"
-              ng-class="{'selecionado': user.selecionado }"
-              ng-click="selecionaUsuario(user)"
-            >
-              <td>{{ user._id }}</td>
-              <td>{{ user.username }}</td>
-              <td>{{ user.password }}</td>
-              <td>{{ user.age }}</td>
-              <td>{{ user.email }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
+    <div class="container">
+      <ui-view></ui-view>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="//unpkg.com/angular-ui-router/release/angular-ui-router.min.js"> </script>
     <script type="text/javascript" src="angularSPA.js"></script>
   </body>
 </html>
