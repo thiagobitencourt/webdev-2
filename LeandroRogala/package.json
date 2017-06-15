@@ -15,6 +15,7 @@
     "resource": "^0.8.1"
   },
   "devDependencies": {
+    "http-server": "^0.10.0",
     "nodemon": "^1.11.0"
   }
 }
