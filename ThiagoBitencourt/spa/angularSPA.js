@@ -1,24 +1,42 @@
 var app = angular.module('angularSPA', ['ui.router']);
 
-app.controller('mainController',
-  function($scope, $state) {
+app.controller('listaUsuariosController',
+  function($scope, $state, manterUsuariosServico) {
     $scope.titulo = "Usuários";
 
-    $scope.usuarios = [
-      {
-        _id: '123',
-        username: 'fulado',
-        password: 'senha123',
-        age: 18,
-        email: 'fulano@mail.com'
-      }
-    ];
+    // this.$onInit = function() {
+    function carregaListaDeUsuarios() {
+      console.log('on init')
+      // Assincrona, ou seja, retorna uma promessa.
+      manterUsuariosServico.obterUsuarios()
+      .then(function(listaDeUsuarios) {
+        $scope.usuarios = listaDeUsuarios;
+      });
+    }
+    carregaListaDeUsuarios();
 
     $scope.adicionarUsuario = function() {
       console.log("vou adicionar um novo usuário");
       $state.go('novoUsuario');
     }
   })
+
+app.service('manterUsuariosServico', function($q){
+  var listaDeUsuarios = [];
+
+  var servico = {
+    obterUsuarios: obterUsuarios
+  }
+  return servico;
+
+  // É uma função assincrona, ou seja, retorna uma promessa
+  function obterUsuarios() {
+    // return $http.get('/usuarios'); // Também é assincrono, ou seja, retorna uma promessa
+    var deferred = $q.defer();
+    deferred.resolve(listaDeUsuarios);
+    return deferred.promise;
+  }
+});
 
 app.controller('novoUsuarioController',
   function($scope, $state) {
@@ -37,7 +55,6 @@ app.controller('novoUsuarioController',
     $scope.limparCampos = limparCampos;
   })
 
-
 app.config(function($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise('/error');
 
@@ -52,7 +69,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
     name: 'listaUsuarios',
     url: '/',
     templateUrl: 'listaUsuarios.html',
-    controller: 'mainController'
+    controller: 'listaUsuariosController'
   }
 
   let errorState = {
