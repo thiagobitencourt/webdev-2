@@ -20,13 +20,32 @@ app.controller('mainController',
     }
   })
 
+app.controller('novoUsuarioController',
+  function($scope, $state) {
+
+    function salvarNovoUsuario(usuario) {
+      console.log(usuario);
+      // Mecanismo para salvar o novo usuário
+      $state.go('listaUsuarios');
+    }
+
+    function limparCampos() {
+      $scope.novoUsuario = undefined;
+    }
+
+    $scope.salvarNovoUsuario = salvarNovoUsuario;
+    $scope.limparCampos = limparCampos;
+  })
+
+
 app.config(function($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise('/error');
 
   let novoUsuarioState = {
     name: 'novoUsuario',
     url: '/novoUsuario',
-    templateUrl: 'novoUsuario.html'
+    templateUrl: 'novoUsuario.html',
+    controller: 'novoUsuarioController'
   }
 
   let listaUsuariosState = {
