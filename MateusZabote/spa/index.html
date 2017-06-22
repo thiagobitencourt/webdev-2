@@ -1,0 +1,25 @@
+lines (14 sloc)  530 Bytes
+<html ng-app="angularSPA">
+ <head>
+   <title>Angular SPA</title>
+
+   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+ </head>
+ <body>
+   <div class="container">
+     <ui-view></ui-view>
+   </div>
+
+   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+   <script src="//unpkg.com/angular-ui-router/release/angular-ui-router.min.js"> </script>
+   <script type="text/javascript" src="/src/app.module.js"></script>
+
+
+<script type="text/javascript" src="/src/config/app.config.js"></script>
+
+<script type="text/javascript" src="/src/service/manterUsuarios.service.js"></script>
+
+<script type="text/javascript" src="/src/controllers/listaUsuarios.controller.js"></script>
+<script type="text/javascript" src="/src/controllers/novoUsuario.controller.js"></script>
+ </body>
+</html>
