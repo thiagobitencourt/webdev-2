@@ -1,19 +1,13 @@
 angular
   .module('angularSPA')
   .service('manterUsuariosServico', function($q){
-    var listaDeUsuarios = [
-      {
-        username: 'mateus',
-        password: '123',
-        age: 25,
-        email: 'mateus@mm'
-
-      }
-    ];
+    var listaDeUsuarios = [];
+    var incrementadorDeIds = 1;
 
     var servico = {
       obterUsuarios: obterUsuarios,
-      salvarUsuario: salvarUsuario
+      salvarUsuario: salvarUsuario,
+      deletarUsuario:deletarUsuario
     }
     return servico;
 
@@ -27,9 +21,39 @@ angular
 
     function salvarUsuario(usuario){
       var deferred = $q.defer();
+      if(usuario){
+
+      if(usuario._id){
+        //devemos atualiza o objeto
+        var usuarioOriginal = listaDeUsuarios.find(function(user){
+          return user._id === usuario._id;
+        })
+        var index = listaDeUsuarios.indexOf(usuarioOriginal);
+        if(index > -1){
+          listaDeUsuarios.splice(index, 1 , usuario);
+        }
+      }else{
+        //devemos adicionar o objeto
+        usuario._id= incrementadorDeIds++;
         listaDeUsuarios.push(usuario);
-        deferred.resolve();
+      }
+      deferred.resolve();
+    }else{
+      deferred.reject();
+    }
+
         return deferred.promise;
+    }
+
+    function deletarUsuario(usuario){
+      var deferred = $q.defer();
+
+      const index = listaDeUsuarios.indexOf(usuario);
+      if(index >- 1){
+        listaDeUsuarios.splice(index, 1);
+        deferred.resolve();
+      }
+      return deferred.promise;
     }
 
   });

@@ -7,14 +7,23 @@ angular
     name: 'novoUsuario',
     url: '/novoUsuario',
     templateUrl: '/src/view/novoUsuario.html',
-    controller: 'novoUsuarioController'
+    controller: 'novoUsuarioController',
+    params: {
+      usuario: undefined
+    }
   }
 
   let listaUsuariosState = {
     name: 'listaUsuarios',
-    url: '/',
+    url: '/listaUsuarios',
     templateUrl: '/src/view/listaUsuarios.html',
     controller: 'listaUsuariosController'
+  }
+
+  let padraoState = {
+    name: 'padrao',
+    url: '/',
+    templateUrl: '/src/view/padrao.html'
   }
 
   let errorState = {
