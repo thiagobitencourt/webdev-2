@@ -30,10 +30,28 @@ angular.module('angularSPA').config(function($stateProvider, $urlRouterProvider)
     templateUrl: '/src/view/padrao.html'
   }
 
+  let novoProdutoState = {
+    name: 'novoProduto',
+    url: '/novoProduto',
+    templateUrl: '/src/view/novoProduto.html',
+    controller: 'novoProdutoController',
+    params: {
+      produto: undefined
+    }
+  }
+
+  let listaProdutosState = {
+    name: 'listaProdutos',
+    url: '/listaProdutos',
+    controller: 'listaProdutosController',
+    templateUrl: '/src/view/listaProdutos.html'
+  }
+
   $stateProvider.state(novoUsuarioState);
   $stateProvider.state(listaUsuariosState);
   $stateProvider.state(errorState);
   $stateProvider.state(bemVindoState);
-
+  $stateProvider.state(listaProdutosState);
+  $stateProvider.state(novoProdutoState);
 
 });
