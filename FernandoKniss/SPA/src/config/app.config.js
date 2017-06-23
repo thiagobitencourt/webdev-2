@@ -26,15 +26,33 @@ angular
       templateUrl: '/src/view/error.html'
     }
 
-      let padraoState = {
-        name: 'padrao',
-        url: '/',
-        templateUrl: '/src/view/padrao.html'
-      }
+    let padraoState = {
+      name: 'padrao',
+      url: '/',
+      templateUrl: '/src/view/padrao.html'
+    }
 
+    let novoProdutoState = {
+      name: 'novoProduto',
+      url: '/novoProduto',
+      templateUrl: '/src/view/novoProduto.html'
+      controller: 'novoProdutoController',
+      params: {
+        produto: undefined
+    }
 
-    $stateProvider.state(padraoState);
+    let listaProdutosState = {
+      name: 'listaProdutos',
+      url: '/listaProdutos',
+      templateUrl: '/src/view/listaProdutos.html',
+      controller: 'listaProdutosController'
+    }
+
     $stateProvider.state(novoUsuarioState);
     $stateProvider.state(listaUsuariosState);
     $stateProvider.state(errorState);
+    $stateProvider.state(padraoState);
+    $stateProvider.state(novoProdutoState);
+    $stateProvider.state(listaProdutosState);
+
   });
