@@ -1,0 +1,13 @@
+.centro {
+  width:100px;
+  height:100px;
+  position:absolute;
+  top:50%;
+  left:50%;
+  margin-top:-50px;
+  margin-left:-50px;
+  font-size: 50px;
+  font-style: italic;
+  font-family: inherit;
+  font-weight: bolder;
+}
