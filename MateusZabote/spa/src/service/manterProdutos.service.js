@@ -1,15 +1,7 @@
 angular
   .module('angularSPA')
   .service('manterProdutosServico', function($q){
-    var listaDeProdutos = [
-
-      {
-        nome:"chocolate",
-        codigo:"1",
-        quant: "20",
-        dispo:"sim"
-      }
-    ];
+    var listaDeProdutos = [];
     var incrementadorDeIds = 1;
 
     var servico = {

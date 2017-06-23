@@ -10,7 +10,7 @@ angular
     }
 
 
-    function salvarNovoProduto(Produto) {
+    function salvarNovoProduto(produto) {
       console.log(produto);
 
       manterProdutosServico.salvarProduto(produto)
