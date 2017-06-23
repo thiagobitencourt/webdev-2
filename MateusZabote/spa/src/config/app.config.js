@@ -20,20 +20,34 @@ angular
     controller: 'listaUsuariosController'
   }
 
+
+//padrão
   let padraoState = {
     name: 'padrao',
     url: '/',
     templateUrl: '/src/view/padrao.html'
   }
 
+//error
   let errorState = {
     name: 'error',
     url: '/error',
     templateUrl: '/src/view/erro.html'
   }
 
+
+  // Produtos
+  let listaProdutosState = {
+    name: 'listaProdutos',
+    url: '/listaProdutos',
+    templateUrl: '/src/view/listaProdutos.html',
+    controller: 'listaProdutosController'
+  }
+
+
   $stateProvider.state(novoUsuarioState);
   $stateProvider.state(listaUsuariosState);
   $stateProvider.state(errorState);
   $stateProvider.state(padraoState);
+  $stateProvider.state(listaProdutosState);
 });
