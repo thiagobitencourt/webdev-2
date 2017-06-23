@@ -1,4 +1,4 @@
-angular.module('angularSPA').controller('mainController', function($scope, $state, manterUsuariosServico){
+angular.module('angularSPA').controller('listaUsuariosController', function($scope, $state, manterUsuariosServico){
 
   $scope.titulo = "Usuários";
 

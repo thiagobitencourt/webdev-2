@@ -11,10 +11,10 @@ angular.module('angularSPA').config(function($stateProvider, $urlRouterProvider)
     }
   };
 
-  let listausuariosState = {
+  let listaUsuariosState = {
     name: 'listaUsuarios',
-    url: '/',
-    controller: 'mainController',
+    url: '/listaUsuarios',
+    controller: 'listaUsuariosController',
     templateUrl: '/src/view/listaUsuarios.html'
   };
 
@@ -24,9 +24,16 @@ angular.module('angularSPA').config(function($stateProvider, $urlRouterProvider)
     templateUrl: '/src/view/erro.html'
   }
 
+  let bemVindoState = {
+    name: 'bemVindo',
+    url: '/',
+    templateUrl: '/src/view/padrao.html'
+  }
+
   $stateProvider.state(novoUsuarioState);
-  $stateProvider.state(listausuariosState);
+  $stateProvider.state(listaUsuariosState);
   $stateProvider.state(errorState);
+  $stateProvider.state(bemVindoState);
 
 
 });

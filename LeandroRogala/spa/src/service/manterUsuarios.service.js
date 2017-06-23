@@ -1,12 +1,6 @@
 angular.module('angularSPA').service('manterUsuariosServico', function($q, $http){
 
   var listaDeUsuarios = [
-    {
-      username: 'qualquer',
-      password: 'qualquer',
-      age: 22,
-      email: 'aawwd'
-    }
   ];
 
   var incrementadorDeIds = 1;
