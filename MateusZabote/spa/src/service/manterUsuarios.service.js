@@ -1,7 +1,15 @@
 angular
   .module('angularSPA')
   .service('manterUsuariosServico', function($q){
-    var listaDeUsuarios = [];
+    var listaDeUsuarios = [
+      {
+        username:"mateus",
+        password:"1234",
+        age:"12",
+        email:"dfghjk"
+      }
+      
+    ];
     var incrementadorDeIds = 1;
 
     var servico = {

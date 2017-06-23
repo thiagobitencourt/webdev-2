@@ -9,6 +9,7 @@
         <th>Código</th>
         <th>quantidade</th>
         <th>disponivel</th>
+        <th>Ações</th>
       </tr>
     </thead>
     <tbody>
@@ -22,6 +23,15 @@
         <td>{{ pro.codigo }}</td>
         <td>{{ pro.quant }}</td>
         <td>{{ pro.dispo }}</td>
+        <td>
+          <button type="button" class="btn btn-danger" ng-click="deletarProduto(pro)">
+            <i class="glyphicon glyphicon-trash"></i>
+          </button>
+
+          <button type="button" class="btn btn-primary" ng-click="editarProduto(pro)">
+            <i class="glyphicon glyphicon-pencil"></i>
+          </button>
+      </td>
 
       </tr>
     </tbody>

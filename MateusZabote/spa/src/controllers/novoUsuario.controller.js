@@ -1,6 +1,6 @@
 angular
   .module('angularSPA')
-.controller('novoUsuarioController',
+  .controller('novoUsuarioController',
   function($scope, $state, $stateParams, manterUsuariosServico) {
 
     console.log($stateParams);

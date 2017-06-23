@@ -37,6 +37,16 @@ angular
 
 
   // Produtos
+  let novoProdutoState = {
+    name: 'novoProduto',
+    url: '/novoProduto',
+    templateUrl: '/src/view/novoProduto.html',
+    controller: 'novoProdutoController',
+    params: {
+      produto: undefined
+    }
+  }
+
   let listaProdutosState = {
     name: 'listaProdutos',
     url: '/listaProdutos',
@@ -45,9 +55,14 @@ angular
   }
 
 
+
+
   $stateProvider.state(novoUsuarioState);
   $stateProvider.state(listaUsuariosState);
   $stateProvider.state(errorState);
   $stateProvider.state(padraoState);
+  $stateProvider.state(novoProdutoState);
   $stateProvider.state(listaProdutosState);
+
+
 });
