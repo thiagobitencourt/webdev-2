@@ -5,7 +5,10 @@ angular.module('angularSPA').config(function($stateProvider, $urlRouterProvider)
     name: 'novoUsuario',
     url: '/novoUsuario',
     templateUrl: '/src/view/novoUsuario.html',
-    controller: 'novoUsuarioController'
+    controller: 'novoUsuarioController',
+    params: {
+      usuario: undefined
+    }
   };
 
   let listausuariosState = {

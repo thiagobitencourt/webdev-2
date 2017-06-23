@@ -8,18 +8,20 @@ angular.module('angularSPA').controller('mainController', function($scope, $stat
     });
   }
 
-  // $scope.usuarios = [
-  //   {
-  //     _id: '123',
-  //     username: 'fulano',
-  //     password: 'senha123',
-  //     age: 18,
-  //     email: 'fulano@mail.com'
-  //   }
-  // ];
-
   $scope.adicionarUsuario = function(){
     $state.go('novoUsuario');
+  };
+
+  $scope.deletarUsuario = function(user){
+    manterUsuariosServico.deletarUsuario(user).then(function(){
+    });
+  };
+
+  $scope.editarUsuario = function(user){
+    var obj = {
+      usuario: angular.copy(user)
+    }
+    $state.go('novoUsuario', obj);
   };
 
 });
