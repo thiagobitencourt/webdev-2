@@ -1,7 +1,15 @@
 angular
   .module('angularSPA')
   .service('manterProdutosServico', function($q){
-    var listaDeProdutos = [];
+    var listaDeProdutos = [
+      {
+        _id:2,
+        nome:"chocolate",
+        codigo:12,
+        quant:300,
+        dispo:"sim"
+      }
+    ];
     var incrementadorDeIds = 1;
 
     var servico = {
@@ -23,7 +31,7 @@ angular
       if(produto){
 
       if(produto._id){
-          var produtoOriginal = listaDeProdutoss.find(function(pro){
+          var produtoOriginal = listaDeProdutos.find(function(pro){
           return pro._id === produto._id;
         })
         var index = listaDeProdutos.indexOf(produtoOriginal);

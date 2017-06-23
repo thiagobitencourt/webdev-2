@@ -10,7 +10,7 @@ angular
         // Assincrona, ou seja, retorna uma promessa.
         manterProdutosServico.obterProdutos()
         .then(function(listaDeProdutos) {
-          $scope.produto = listaDeProdutos;
+          $scope.produtos = listaDeProdutos;
         });
       }
       carregaListaDeProdutos();

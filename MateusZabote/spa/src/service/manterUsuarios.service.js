@@ -8,7 +8,6 @@ angular
         age:"12",
         email:"dfghjk"
       }
-      
     ];
     var incrementadorDeIds = 1;
 
