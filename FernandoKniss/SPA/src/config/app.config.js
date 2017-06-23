@@ -26,6 +26,14 @@ angular
       templateUrl: '/src/view/error.html'
     }
 
+      let padraoState = {
+        name: 'padrao',
+        url: '/',
+        templateUrl: '/src/view/padrao.html'
+      }
+
+
+    $stateProvider.state(padraoState);
     $stateProvider.state(novoUsuarioState);
     $stateProvider.state(listaUsuariosState);
     $stateProvider.state(errorState);
