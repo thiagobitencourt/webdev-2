@@ -15,7 +15,7 @@ angular
 
     let listaUsuariosState = {
       name: 'listaUsuarios',
-      url: '/',
+      url: '/listaUsuarios',
       templateUrl: '/src/view/listaUsuarios.html',
       controller: 'listaUsuariosController'
     }
