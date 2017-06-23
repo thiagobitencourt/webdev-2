@@ -22,13 +22,13 @@
         <td>{{ prod._id }}</td>
         <td>{{ prod.nome }}</td>
         <td>{{ prod.codigo }}</td>
-        <td>{{ prod._quantidade }}</td>
-        <td>{{ prod._disponivel }}</td>
+        <td>{{ prod.quantidade }}</td>
+        <td>{{ prod.disponivel }}</td>
         <td>
-          <button type="button" class="btn btn-danger" ng-click="deletarUsuario(user)">
+          <button type="button" class="btn btn-danger" ng-click="deletarProduto(prod)">
             <i class="glyphicon glyphicon-trash"></i>
           </button>
-          <button type="button" class="btn btn-primary" ng-click="editarUsuario(user)">
+          <button type="button" class="btn btn-primary" ng-click="editarProduto(prod)">
             <i class="glyphicon glyphicon-pencil"></i>
           </button>
         </td>
@@ -38,8 +38,8 @@
 </div>
 
 <div>
-  <button type="button" class="btn btn-primary" ng-click="adicionarUsuario()">
+  <button type="button" class="btn btn-primary" ng-click="adicionarProduto()">
     <i class="glyphicon glyphicon-thumbs-up"></i>
-     Novo Usuario
+     Novo Produto
    </button>
 </div>

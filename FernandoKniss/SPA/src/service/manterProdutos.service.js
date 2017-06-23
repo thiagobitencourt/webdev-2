@@ -4,7 +4,7 @@ angular
     function($q) {
       var listaDeProdutos = [];
 
-      var incrementadorDeIds = 1;
+      var incrementadorDeIdsProduto = 1;
 
       var servico = {
         obterProdutos: obterProdutos,
@@ -35,7 +35,7 @@ angular
             }
           } else {
             //devemos adcionar o objeto
-            produto._id = incrementadorDeIds++;
+            produto._id = incrementadorDeIdsProduto++;
             listaDeProdutos.push(produto);
           }
             deferred.resolve();

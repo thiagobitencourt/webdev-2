@@ -11,7 +11,7 @@ angular
       function salvarNovoProduto(produto) {
         console.log(produto);
         //Mecanismo para salvar o novo produto
-        manterUsuariosServico.salvarProduto(produto)
+        manterProdutosServico.salvarProduto(produto)
         .then(function () {
           $state.go('listaProdutos');
         })

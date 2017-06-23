@@ -35,10 +35,11 @@ angular
     let novoProdutoState = {
       name: 'novoProduto',
       url: '/novoProduto',
-      templateUrl: '/src/view/novoProduto.html'
+      templateUrl: '/src/view/novoProduto.html',
       controller: 'novoProdutoController',
       params: {
         produto: undefined
+      }
     }
 
     let listaProdutosState = {

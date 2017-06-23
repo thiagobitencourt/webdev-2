@@ -9,7 +9,7 @@ angular
 
       function carregaListaDeProdutos() {
         //Assincrona, ou seja, retorna uma promessa
-        manterProdutosServico.obterProduto()
+        manterProdutosServico.obterProdutos()
         .then(function (listaDeProdutos) {
           $scope.produtos = listaDeProdutos;
         });
@@ -27,7 +27,7 @@ angular
           console.log("Produto removido com sucesso!!")
         })
       }
-      
+
       $scope.editarProduto = function (produto) {
         var param = {
           produto: angular.copy(produto)
