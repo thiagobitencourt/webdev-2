@@ -35,4 +35,5 @@ angular
   $stateProvider.state(novoUsuarioState);
   $stateProvider.state(listaUsuariosState);
   $stateProvider.state(errorState);
+  $stateProvider.state(padraoState);
 });
