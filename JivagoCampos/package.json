@@ -17,6 +17,7 @@
     "mongoose": "^4.10.4"
   },
   "devDependencies": {
+    "http-server": "^0.10.0",
     "nodemon": "^1.11.0"
   }
 }
