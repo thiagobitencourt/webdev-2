@@ -15,7 +15,7 @@ angular
 
   let listaUsuariosState = {
     name: 'listaUsuarios',
-    url: '/',
+    url: '/listaUsuarios',
     templateUrl: '/src/view/listaUsuarios.html',
     controller: 'listaUsuariosController'
   }
@@ -26,7 +26,14 @@ angular
     templateUrl: '/src/view/error.html'
   }
 
+  let padraoState = {
+    name: 'padrao',
+    url: '/',
+    templateUrl: '/src/view/padrao.html'
+  }
+
   $stateProvider.state(novoUsuarioState);
   $stateProvider.state(listaUsuariosState);
   $stateProvider.state(errorState);
+  $stateProvider.state(padraoState);
 });
