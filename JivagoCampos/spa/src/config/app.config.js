@@ -20,6 +20,23 @@ angular
     controller: 'listaUsuariosController'
   }
 
+  let novoProdutoState = {
+    name: 'novoProduto',
+    url: '/novoProduto',
+    templateUrl: '/src/view/novoProduto.html',
+    controller: 'novoProdutoController',
+    params:{
+      produto: undefined
+    }
+  }
+
+  let listaProdutosState = {
+    name: 'listaProdutos',
+    url: '/listaProdutos',
+    templateUrl: '/src/view/listaProdutos.html',
+    controller: 'listaProdutosController'
+  }
+
   let errorState = {
     name: 'error',
     url: '/error',
@@ -34,6 +51,8 @@ angular
 
   $stateProvider.state(novoUsuarioState);
   $stateProvider.state(listaUsuariosState);
+  $stateProvider.state(novoProdutoState);
+  $stateProvider.state(listaProdutosState);
   $stateProvider.state(errorState);
   $stateProvider.state(padraoState);
 });
