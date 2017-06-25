@@ -1,0 +1,46 @@
+<div class="panel panel-default">
+  <div class="panel-heading">{{ titulo }}</div>
+
+  <!-- Table -->
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Usuário</th>
+        <th>Senha</th>
+        <th>Idade</th>
+        <th>Email</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr ng-repeat="user in usuarios track by $index"
+        class="sobre-linha"
+        ng-class="{'selecionado': user.selecionado }"
+        ng-click="selecionaUsuario(user)"
+      >
+        <td>{{ user._id }}</td>
+        <td>{{ user.username }}</td>
+        <td>{{ user.password }}</td>
+        <td>{{ user.age }}</td>
+        <td>{{ user.email }}</td>
+        <td>
+          <button type="button" class="btn btn-danger" ng-click="deletarUsuario(user)">
+            <i class="glyphicon glyphicon-trash"></i>
+          </button>
+          <button type="button" class="btn btn-primary" ng-click="editarUsuario(user)">
+            <i class="glyphicon glyphicon-pencil"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div>
+  <button type="button" class="btn btn-primary" ng-click="adicionarUsuario()">
+    <i class="glyphicon glyphicon-plus"></i>
+     Novo Usuario
+   </button>
+</div>
