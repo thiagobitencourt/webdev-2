@@ -17,13 +17,13 @@
 
     <div class="col-md-12">
       <label>Disponibilidade do produto</label>
-      <input type="text" class="form-control" ng-model="novoProduto.disponivel">
+      <input type="checkbox" class="checkbox" ng-model="novoProduto.disponivel">
     </div>
   </div>
 
   <div style="margin-top: 15px">
-    <button  type="button" ng-click="salvarNovoProduto(novoProduto)" class="btn btn-primary">Salvar produto</button>
-    <button  type="button" ng-click="limparCampos()" class="btn btn-primary">Limpar campos</button>
+    <button  type="button" ng-click="salvarNovoProduto(novoProduto)" class="btn btn-success">Salvar produto</button>
+    <button  type="button" ng-click="limparCampos()" class="btn btn-warning">Limpar campos</button>
     <a ui-sref="listaProdutos" class="btn btn-default">
       <i class="glyphicon glyphicon-hand-left"></i>
       Voltar

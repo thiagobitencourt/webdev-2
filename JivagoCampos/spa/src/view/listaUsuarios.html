@@ -1,6 +1,8 @@
 <div class="panel panel-default">
   <div class="panel-heading">{{ titulo }}</div>
-
+  <div class="col-md-12">
+        <input type="text" class="form-control" placeholder="Busca de Usuários" ng-model="searchText">
+  </div>
   <table class="table">
     <thead>
       <tr>
@@ -14,7 +16,8 @@
     </thead>
 
     <tbody>
-      <tr ng-repeat="user in usuarios track by $index"
+
+      <tr ng-repeat="user in usuarios | filter:searchText track by $index"
         class="sobre-linha"
         ng-class="{'selecionado': user.selecionado }"
         ng-click="selecionaUsuario(user)">
@@ -30,7 +33,6 @@
           <button type="button" class ="btn btn-primary" ng-click="editarUsuario(user)">
             <i class= "glyphicon glyphicon-pencil"></i>
           </button>
-
         </td>
       </tr>
     </tbody>
@@ -40,6 +42,6 @@
 <div>
   <button type="button" class="btn btn-primary" ng-click="adicionarUsuario()" >
     <i class="glyphicon glyphicon-plus"></i>
-    Novo usuário
+    Novo Usuário
   </button>
 </div>
