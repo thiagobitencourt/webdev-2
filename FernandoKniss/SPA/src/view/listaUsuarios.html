@@ -10,6 +10,7 @@
         <th>Senha</th>
         <th>Idade</th>
         <th>Email</th>
+        <th>Ações</th>
       </tr>
     </thead>
 
@@ -24,6 +25,14 @@
         <td>{{ user.password }}</td>
         <td>{{ user.age }}</td>
         <td>{{ user.email }}</td>
+        <td>
+          <button type="button" class="btn btn-danger" ng-click="deletarUsuario(user)">
+            <i class="glyphicon glyphicon-trash"></i>
+          </button>
+          <button type="button" class="btn btn-primary" ng-click="editarUsuario(user)">
+            <i class="glyphicon glyphicon-pencil"></i>
+          </button>
+        </td>
       </tr>
     </tbody>
   </table>
@@ -31,7 +40,7 @@
 
 <div>
   <button type="button" class="btn btn-primary" ng-click="adicionarUsuario()">
-    <i class="glyphicon glyphicon-thumbs-up"></i>
+    <i class="glyphicon glyphicon-plus"></i>
      Novo Usuario
    </button>
 </div>

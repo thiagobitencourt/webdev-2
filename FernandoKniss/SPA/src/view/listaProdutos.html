@@ -1,0 +1,45 @@
+<div class="panel panel-default">
+  <div class="panel-heading">{{ titulo }}</div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome Produto</th>
+        <th> Codigo </th>
+        <th>Quantidade</th>
+        <th>Disponivel</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr ng-repeat="prod in produtos track by $index"
+      class="sobre-linha"
+    ng-class="{'selecionado' : prod.selecionado }"
+    ng-click="selecionaProduto(prod)"
+    >
+        <td>{{ prod._id }}</td>
+        <td>{{ prod.nome }}</td>
+        <td>{{ prod.codigo }}</td>
+        <td>{{ prod.quantidade }}</td>
+        <td>{{ prod.disponivel }}</td>
+        <td>
+          <button type="button" class="btn btn-danger" ng-click="deletarProduto(prod)">
+            <i class="glyphicon glyphicon-trash"></i>
+          </button>
+          <button type="button" class="btn btn-primary" ng-click="editarProduto(prod)">
+            <i class="glyphicon glyphicon-pencil"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div>
+  <button type="button" class="btn btn-primary" ng-click="adicionarProduto()">
+    <i class="glyphicon glyphicon-plus"></i>
+     Novo Produto
+   </button>
+</div>
