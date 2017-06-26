@@ -1,0 +1,51 @@
+<div class="panel panel-default">
+  <div class="panel-heading">{{ titulo }}</div>
+  <div class="col-md-12">
+        <input type="text" class="form-control" placeholder="Busca de Produtos" ng-model="searchText">
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Código</th>
+        <th>Quantidade</th>
+        <th>Disponível</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+
+
+
+    <tbody>
+      <tr ng-repeat="product in produtos | filter:searchText track by $index"
+        class="sobre-linha"
+        ng-class="{'selecionado': product.selecionado }"
+        ng-click="selecionaProduto(product)">
+        <td>{{ product._id }}</td>
+        <td>{{ product.nome }} </td>
+        <td>{{ product.codigo }}</td>
+        <td>{{ product.quantidade }}</td>
+        <td>{{ product.disponivel }}</td>
+        
+        <td>
+          <button type="button" class ="btn btn-danger" ng-click="deletarProduto(product)">
+            <i class= "glyphicon glyphicon-trash"></i>
+          </button>
+          <button type="button" class ="btn btn-primary" ng-click="editarProduto(product)">
+            <i class= "glyphicon glyphicon-pencil"></i>
+          </button>
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div>
+  <button type="button" class="btn btn-primary" ng-click="adicionarProduto()" >
+    <i class="glyphicon glyphicon-plus"></i>
+    Novo Produto
+  </button>
+</div>

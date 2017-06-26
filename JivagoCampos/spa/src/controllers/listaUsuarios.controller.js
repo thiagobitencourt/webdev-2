@@ -19,4 +19,20 @@ angular
       console.log("vou adicionar um novo usuário");
       $state.go('novoUsuario');
     }
-  })
+$scope.deletarUsuario = function(usuario) {
+manterUsuariosServico.deletarUsuario(usuario)
+.then(function () {
+  console.log("Usuário removido com sucesso")
+
+})
+}
+
+$scope.editarUsuario = function(usuario) {
+  //Mudar para a tela que tem o formulário, passando
+  var param = {
+    usuario: angular.copy(usuario)
+  }
+  $state.go('novoUsuario', param);
+
+  }
+})
