@@ -1,0 +1,57 @@
+<div class="panel panel-default">
+  <div class="panel-heading">{{ titulo }}</div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome do Titular</th>
+        <th>CPF do Titular </th>
+        <th>Email do Titular</th>
+        <th>Numero da Conta</th>
+        <th>Saldo Atual</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr ng-repeat="conta in contasBancarias track by $index"
+      class="sobre-linha"
+    ng-class="{'selecionado' : conta.selecionado }"
+    ng-click="selecionaContaBancaria(conta)"
+    >
+        <td>{{ conta._id }}</td>
+        <td>{{ conta.nomeTitular }}</td>
+        <td>{{ conta.cpfTitular }}</td>
+        <td>{{ conta.emailTitular }}</td>
+        <td>{{ conta.numeroConta }}</td>
+        <td>{{ conta.saldo }}</td>
+        <td>
+          <button type="button" class="btn btn-danger" ng-click="deletarContaBancaria(conta)">
+            <i class="glyphicon glyphicon-trash"></i>
+          </button>
+          <button type="button" class="btn btn-primary" ng-click="editarContaBancaria(conta)">
+            <i class="glyphicon glyphicon-pencil"></i>
+          </button>
+          <button type="button" class="btn btn-warning" ng-click="sacarContaBancaria(conta)">
+            <a ui-sref="sacar" class="btn btn-warning"></a>
+            Sacar
+          </button>
+          <button type="button" class="btn btn-warning" ng-click="transferirContaBancaria(conta)">
+            Transferir
+          </button>
+          <button type="button" class="btn btn-warning" ng-click="depositarContaBancaria(conta)">
+            Depositar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div>
+  <button type="button" class="btn btn-primary" ng-click="adicionarContaBancaria()">
+    <i class="glyphicon glyphicon-plus"></i>
+     Nova Conta
+   </button>
+</div>
