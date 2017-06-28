@@ -26,7 +26,7 @@ angular
         if (produto) {
           if (produto._id) {
             //devemos atualizar o objeto
-            var produtoOriginal = listaDeProdutos.find(function (produto) {
+            var produtoOriginal = listaDeProdutos.find(function (prod) {
               return prod._id === produto._id;
             })
             var index = listaDeProdutos.indexOf(produtoOriginal);

@@ -1,0 +1,17 @@
+<h3>Sacar</h3>
+<div class="row">
+  <div class="col-md-12">
+    <div class="col-md-12">
+    <label>Quantidade de saque</label>
+    <input type="text" class="form-control" ng-model="novaContaBancaria.saldo">
+  </div>
+</div>
+
+<div style="margin-top: 15px">
+  <button  type="button" ng-click="sacarContaBancaria()" class="btn btn-primary">Sacar dinheiro</button>
+
+  <a ui-sref="listaDeContasBancarias" class="btn btn-default">
+    <i class="glyphicon glyphicon-hand-left"></i>
+    Voltar
+  </a>
+</div>

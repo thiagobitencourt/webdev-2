@@ -1,24 +1,25 @@
 <h3>Cadastrar novo Produto</h3>
   <div class="row">
     <div class="col-md-12">
-      <label>Nome</label>
+      <label>Nome do Produto</label>
       <input type="text" class="form-control" ng-model="novoProduto.nome">
     </div>
 
     <div class="col-md-12">
-      <label>Código</label>
+      <label>Código do Produto</label>
       <input type="text" class="form-control" ng-model="novoProduto.codigo">
     </div>
 
     <div class="col-md-12">
-      <label>Quantidade</label>
+      <label>Quantidade de Produto</label>
       <input type="text" class="form-control" ng-model="novoProduto.quantidade">
     </div>
 
     <div class="col-md-12">
-      <label>Disponivel</label>
+      <label>Produto Disponivel</label>
       <br>
-        <input type="text" class="form-control" ng-model="novoProduto.disponivel">
+        Sim: <input type="radio" value="sim" ng-model="novoProduto.disponivel">
+        Não: <input type="radio" value="não" ng-model="novoProduto.disponivel">
     </div>
   </div>
 

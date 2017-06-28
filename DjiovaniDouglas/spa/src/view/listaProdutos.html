@@ -14,18 +14,18 @@
     </thead>
 
     <tbody>
-      <tr ng-repeat="produto in produtos track by $index"
+      <tr ng-repeat="prod in produtos track by $index"
       class="sobre-linha"
     ng-class="{'selecionado' : prod.selecionado }"
     ng-click="selecionaProduto(prod)"
     >
-        <td>{{ produto._id }}</td>
-        <td>{{ produto.nome }}</td>
-        <td>{{ produto.codigo }}</td>
-        <td>{{ produto.quantidade }}</td>
-        <td>{{ produto.disponivel }}</td>
+        <td>{{ prod._id }}</td>
+        <td>{{ prod.nome }}</td>
+        <td>{{ prod.codigo }}</td>
+        <td>{{ prod.quantidade }}</td>
+        <td>{{ prod.disponivel }}</td>
         <td>
-          <button type="button" class="btn btn-danger" ng-click="deletarProduto(produto)">
+          <button type="button" class="btn btn-danger" ng-click="deletarProduto(prod)">
             <i class="glyphicon glyphicon-trash"></i>
           </button>
           <button type="button" class="btn btn-primary" ng-click="editarProduto(produto)">
