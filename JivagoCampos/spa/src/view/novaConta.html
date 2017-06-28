@@ -1,0 +1,31 @@
+<h3>Cadastrar nova conta</h3>
+  <div class="row">
+    <div class="col-md-12">
+      <label>Nome do Titular</label>
+      <input type="text" class="form-control" ng-model="novaConta.nome">
+    </div>
+
+    <div class="col-md-12">
+      <label>CPF</label>
+      <input type="text" class="form-control" ng-model="novaConta.cpf">
+    </div>
+
+    <div class="col-md-12">
+      <label>Email</label>
+      <input type="text" class="form-control" ng-model="novaConta.email">
+    </div>
+
+    <div class="col-md-12">
+      <label>Saldo</label>
+      <input type="text" class="form-control" ng-model="novaConta.saldo">
+    </div>
+  </div>
+
+  <div style="margin-top: 15px">
+    <button  type="button" ng-click="salvarNovaConta(novaConta)" class="btn btn-success">Salvar conta</button>
+    <button  type="button" ng-click="limparCampos()" class="btn btn-warning">Limpar campos</button>
+    <a ui-sref="listaContas" class="btn btn-default">
+      <i class="glyphicon glyphicon-hand-left"></i>
+      Voltar
+    </a>
+  </div>

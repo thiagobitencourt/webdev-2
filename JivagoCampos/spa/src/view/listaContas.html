@@ -1,0 +1,58 @@
+<div class="panel panel-default">
+  <div class="panel-heading">{{ titulo }}</div>
+  <div class="col-md-12">
+        <input type="text" class="form-control" placeholder="Busca de Contas" ng-model="searchText">
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>CPF</th>
+        <th>Email</th>
+        <th>Saldo</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+
+
+
+    <tbody>
+      <tr ng-repeat="account in contas | filter:searchText track by $index"
+        class="sobre-linha"
+        ng-class="{'selecionado': account.selecionado }"
+        ng-click="selecionaConta(account)">
+        <td>{{ account._id }}</td>
+        <td>{{ account.nome }} </td>
+        <td>{{ account.cpf }}</td>
+        <td>{{ account.email }}</td>
+        <td>{{ account.saldo }}</td>
+
+        <td>
+          <button type="button" class ="btn btn-danger" ng-click="deletarConta(account)">
+            <i class= "glyphicon glyphicon-trash"></i>
+          </button>
+          <button type="button" class ="btn btn-primary" ng-click="editarConta(account)">
+            <i class= "glyphicon glyphicon-pencil"></i>
+          </button>
+          <button type="button" class ="btn btn-default" ng-click="saque(contaParaSacar._id)"> <a ui-sref="listaContas" > Sacar </a>
+          </button>
+          <button type="button" class ="btn btn-default" ng-click="depositar(contaParaDepositar._id)"> <a ui-sref="listaContas" > Depositar </a>
+          </button>
+          <button type="button" class ="btn btn-default" ng-click="transferir(contaParaTranferir._id)"> <a ui-sref="listaContas"> Tranferir </a>
+          </button>
+          </button>
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div>
+  <button type="button" class="btn btn-primary" ng-click="adicionarConta()" >
+    <i class="glyphicon glyphicon-plus"></i>
+    Nova Conta
+  </button>
+</div>
