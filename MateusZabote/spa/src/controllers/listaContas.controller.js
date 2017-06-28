@@ -38,20 +38,20 @@ angular
         $state.go("novaConta", param);
 
       }
+
+
+      $scope.sacarContas = function() {
+        console.log("vou sacar da conta");
+        $state.go('sacarContas');
+      }
+
+      $scope.depositarConta = function() {
+        console.log("vou depositar na conta");
+        $state.go('depositarConta');
+      }
+
+      $scope.transferirConta = function() {
+        console.log("vou transferir");
+        $state.go('transferirContas');
+      }
     })
-
-
-    $scope.sacarContas = function() {
-      console.log("vou sacar da conta");
-      $state.go('sacarContas');
-    }
-
-    $scope.depositarConta = function() {
-      console.log("vou depositar na conta");
-      $state.go('depositarConta');
-    }
-
-    $scope.transferirConta = function() {
-      console.log("vou transferir");
-      $state.go('transferirContas');
-    }
