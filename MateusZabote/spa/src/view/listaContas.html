@@ -1,0 +1,73 @@
+<div class="panel panel-default">
+  <div class="panel-heading"><h3>{{ titulo }}</h3></div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome </th>
+        <th>cpf</th>
+        <th>email</th>
+        <th>saldo</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="cont in contas track by $index"
+        class="sobre-linha"
+        ng-class="{'selecionado': cont.selecionado }"
+        ng-click="selecionaConta(cont)"
+      >
+        <td>{{ cont._id }}</td>
+        <td>{{ cont.nome }}</td>
+        <td>{{ cont.cpf }}</td>
+        <td>{{ cont.email }}</td>
+        <td>{{ cont.saldo }}</td>
+        <td>
+          <button type="button" class="btn btn-danger" ng-click="deletarConta(cont)">
+            <i class="glyphicon glyphicon-trash"></i>
+
+          </button>
+
+          <button type="button" class="btn btn-primary" ng-click="editarConta(cont)">
+            <i class="glyphicon glyphicon-pencil"></i>
+
+          </button>
+
+          <button type="button" class="btn btn-success" ng-click="sacarConta()">
+            <a ui-sref="sacarContas" class="btn ">
+              <i class="glyphicon glyphicon-usd"></i>
+
+            Sacar
+            </a>
+          </button>
+
+          <button type="button" class="btn btn-success" ng-click="depositarConta()">
+            <a ui-sref="depositarContas" class="btn ">
+            <i class="glyphicon glyphicon-asterisk"></i>
+            Depositar
+          </a>
+          </button>
+
+          <button type="button" class="btn btn-success" ng-click="transferirConta()">
+            <a ui-sref="transferirContas" class="btn ">
+            <i class="glyphicon glyphicon-send"></i>
+            Transferir
+          </a>
+          </button>
+      </td>
+
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div>
+  <button type="button" class="btn btn-primary" ng-click="adicionarConta()">
+    <i class="glyphicon glyphicon-plus"></i>
+    Nova Conta
+  </button>
+  <a ui-sref="padrao" class="btn btn-default">
+    <i class="glyphicon glyphicon-home"></i>
+    Inicio
+  </a>
+</div>

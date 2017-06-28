@@ -55,6 +55,47 @@ angular
   }
 
 
+  // Contas
+  let novaContaState = {
+    name: 'novaConta',
+    url: '/novaConta',
+    templateUrl: '/src/view/novaConta.html',
+    controller: 'novaContaController',
+    params: {
+      conta: undefined
+    }
+  }
+
+  let listaContasState = {
+    name: 'listaContas',
+    url: '/listaContas',
+    templateUrl: '/src/view/listaContas.html',
+    controller: 'listaContasController'
+  }
+
+  let sacarContasState = {
+    name: 'sacarContas',
+    url: '/sacarContas',
+    templateUrl: '/src/view/sacar.html',
+    controller: 'listaContasController'
+  }
+
+  let depositarContasState = {
+    name: 'depositarContas',
+    url: '/depositarContas',
+    templateUrl: '/src/view/depositar.html',
+    controller: 'listaContasController'
+  }
+
+  let transferirContasState = {
+    name: 'transferirContas',
+    url: '/transferirContas',
+    templateUrl: '/src/view/transferir.html',
+    controller: 'listaContasController'
+  }
+
+
+
 
 
   $stateProvider.state(novoUsuarioState);
@@ -63,6 +104,11 @@ angular
   $stateProvider.state(padraoState);
   $stateProvider.state(novoProdutoState);
   $stateProvider.state(listaProdutosState);
+  $stateProvider.state(novaContaState);
+  $stateProvider.state(listaContasState);
+  $stateProvider.state(sacarContasState);
+  $stateProvider.state(depositarContasState);
+  $stateProvider.state(transferirContasState);
 
 
 });
